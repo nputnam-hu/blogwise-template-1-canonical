@@ -1,0 +1,45 @@
+#searchbar
+  width: 255px
+  height: 25px
+  font-size: 14px
+  font-family: 'Lato'
+  color: #828282
+  border-radius: 2px
+  border-top: none
+  border-left: none
+  border-right: none
+  border-bottom: 1px solid #828282
+  text-indent: 5px
+  position: absolute
+
+#searchbar.big
+  width: 60%
+  height: 45px
+  font-size: 22px
+  text-indent: 7px
+  @media (max-width: 600px)
+    width: 88vw
+    overflow-x: hidden
+
+input:focus
+  outline: none
+  border-color: inherit
+  box-shadow: none
+
+#searchbutton
+  position: relative
+  border: none
+  background: none
+  top: 5px
+  right: -80%
+#searchbutton.big
+  right: -95%
+  top: 15px
+  @media (max-width: 600px)
+    right: -85%
+
+#searchicon
+  height: 18px
+
+#searchicon.big
+  height: 25px

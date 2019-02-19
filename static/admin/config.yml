@@ -1,0 +1,68 @@
+backend:
+  name: git-gateway
+  branch: master
+media_folder: static/img
+public_folder: /img
+logo_url: 'https://megaphone-logo-uploads.s3.amazonaws.com/1550419696337_tutoring.png'
+collections:
+  - name: blog
+    label: Blog Post
+    folder: src/pages/a
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - label: Template Key
+        name: templateKey
+        widget: hidden
+        default: blog-post
+      - label: Title
+        name: title
+        widget: string
+      - label: Author
+        name: author
+        widget: select
+        options:
+          - label: Noah Putnam
+            value: 2b2893af-8d29-4693-af85-a38bd94ca1bf
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Thumbnail
+        name: thumbnail
+        widget: image
+        required: false
+        allow_multiple: false
+      - label: Description
+        name: description
+        widget: text
+      - label: Body
+        name: body
+        widget: markdown
+      - label: Topics
+        name: tags
+        widget: select
+        multiple: true
+        options:
+          - label: Tutoring
+            value: c7d6cbe0-7e2a-45f3-93e3-78536e037bbb
+          - label: Noah Putnam
+            value: d37809c9-c514-4383-bdfa-dfe83859c81f
+          - label: Charles River Walks
+            value: f6e9c685-38d2-4a3e-a76d-7f661ad6a111
+  - name: pages
+    label: Pages
+    files:
+      - file: src/pages/about/index.md
+        label: About
+        name: about
+        fields:
+          - label: Template Key
+            name: templateKey
+            widget: hidden
+            default: about-page
+          - label: Title
+            name: title
+            widget: string
+          - label: Body
+            name: body
+            widget: markdown
