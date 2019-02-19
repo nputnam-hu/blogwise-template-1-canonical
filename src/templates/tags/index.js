@@ -15,6 +15,7 @@ class TagView extends Component {
   render() {
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
     const { tag } = this.props.pathContext
+    if (!tags[tag]) return <div>Wrong Page</div>
     const { name, description } = tags[tag]
 
     const firstPost = posts[0].node
