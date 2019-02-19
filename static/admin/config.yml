@@ -3,7 +3,8 @@ backend:
   branch: master
 media_folder: static/img
 public_folder: /img
-logo_url: 'https://megaphone-logo-uploads.s3.amazonaws.com/1550419696337_tutoring.png'
+logo_url: >-
+  https://megaphone-logo-uploads.s3.amazonaws.com/1550525574604_devLogo_white.png
 collections:
   - name: blog
     label: Blog Post
@@ -22,8 +23,8 @@ collections:
         name: author
         widget: select
         options:
-          - label: Noah Putnam
-            value: 2b2893af-8d29-4693-af85-a38bd94ca1bf
+          - label: Blogwise Staff
+            value: blogwiseStaff
       - label: Publish Date
         name: date
         widget: datetime
@@ -43,12 +44,12 @@ collections:
         widget: select
         multiple: true
         options:
-          - label: Tutoring
-            value: c7d6cbe0-7e2a-45f3-93e3-78536e037bbb
-          - label: Noah Putnam
-            value: d37809c9-c514-4383-bdfa-dfe83859c81f
-          - label: Charles River Walks
-            value: f6e9c685-38d2-4a3e-a76d-7f661ad6a111
+          - label: ReactJS
+            value: 222d6736-b1e4-477c-c36-ce9f07c1562b
+          - label: 'Entrepreneurship '
+            value: 573b4271-c513-47d3-825-ce443604dea5
+          - label: Marketing
+            value: 9b10d33a-a52b-4cf1-a265-0e8c574d07d
   - name: pages
     label: Pages
     files:

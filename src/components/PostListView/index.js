@@ -7,8 +7,8 @@ import './styles.sass'
 
 const PostListView = ({ posts }) => (
   <div id="posts-container">
-    {posts.map(({ title, author, thumbnail, slug, description, date }) => {
-      const { name, img } = author
+    {posts.map(({ title, author = {}, thumbnail, slug, description, date }) => {
+      const { name = '', img = '' } = author
       const thumbExists = Boolean(thumbnail)
       return (
         <div className="post" key={slug}>

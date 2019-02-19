@@ -38,7 +38,7 @@ const Popular = () => (
         <div className="linebreak" />
         {posts.map(({ node }, i) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug
-          const { name } = authors[get(node, 'frontmatter.author')]
+          const { name = '' } = authors[get(node, 'frontmatter.author')] || {}
           return (
             <div className="popular-article" key={node.fields.slug}>
               <span className="numbertext">{`0${i + 1}`}</span>

@@ -1,1 +1,33 @@
-{"title":"NOAH IS THE BESTTSTTSTSRETAEjtoilkajetl","description":"We are the only Harvard students who run their own Web and App Development Company. A group of pioneers, computer freaks, and eclectic creatives united by the shared excitement of the unknown and driven by unstoppable curiosity. ","logoUri":"https://megaphone-logo-uploads.s3.amazonaws.com/1550525574604_devLogo_white.png","backgroundHexCode":"#555b9e","social":{"mainSite":"","twitter":"https://twitter.com/hsa_dev","facebook":"","linkedin":""},"tags":{"222d6736-b1e4-477c-bc36-ce9f07c1562b":{"name":"ReactJS","description":"Our favorite front-end framework"},"573b4271-c513-47d3-8250-ce443604dea5":{"name":"Entrepreneurship ","description":"Always be hustling"},"9b10d33a-a52b-4cf1-a265-0e08c574d07d":{"name":"Marketing","description":"How to reach your customers"}},"authors":{"c9d24de1-e526-4aea-9491-ba89429ea940":{"name":"Noah Putnam","bio":"Noah is the best great coder!!\n","img":"https://megaphone-logo-uploads.s3.amazonaws.com/1550532855576_Noah.jpg"}}}
+{
+  "title": "NOAH IS THE BESTTSTTSTSRETAEjtoilkajetl",
+  "description": "We are the only Harvard students who run their own Web and App Development Company. A group of pioneers, computer freaks, and eclectic creatives united by the shared excitement of the unknown and driven by unstoppable curiosity. ",
+  "logoUri": "https://megaphone-logo-uploads.s3.amazonaws.com/1550525574604_devLogo_white.png",
+  "backgroundHexCode": "#555b9e",
+  "social": {
+    "mainSite": "",
+    "twitter": "https://twitter.com/hsa_dev",
+    "facebook": "",
+    "linkedin": ""
+  },
+  "tags": {
+    "222d6736-b1e4-477c-c36-ce9f07c1562b": {
+      "name": "ReactJS",
+      "description": "Our favorite front-end framework"
+    },
+    "573b4271-c513-47d3-825-ce443604dea5": {
+      "name": "Entrepreneurship ",
+      "description": "Always be hustling"
+    },
+    "9b10d33a-a52b-4cf1-a265-0e8c574d07d": {
+      "name": "Marketing",
+      "description": "How to reach your customers"
+    }
+  },
+  "authors": {
+    "blogwiseStaff": {
+      "name": "Blogwise Staff",
+      "bio": "Blogwise is the best way to start content marketing for your business",
+      "img": "https://megaphone-logo-uploads.s3.amazonaws.com/1550532855576_Noah.jpg"
+    }
+  }
+}

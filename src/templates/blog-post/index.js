@@ -93,7 +93,7 @@ export class BlogPostTemplate extends Component {
                   <Link
                     to={kebabCase(userTags[tag] ? userTags[tag].name : tag)}
                   >
-                    {userTags[tag].name}
+                    {userTags[tag] ? userTags[tag].name : ''}
                   </Link>
                 </li>
               ))}
@@ -156,10 +156,10 @@ export class BlogPostTemplate extends Component {
   }
 }
 const BlogPost = ({ data }) => {
-  const {
-    markdownRemark: post,
-    allMarkdownRemark: { edges: morePosts },
-  } = data
+  const { markdownRemark: post } = data
+  const morePosts = data.allMarkdownRemark
+    ? data.allMarkdownRemark.edges.morePosts
+    : []
   return (
     <Layout>
       <BlogPostTemplate
