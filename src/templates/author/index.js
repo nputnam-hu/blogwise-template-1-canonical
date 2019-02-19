@@ -13,14 +13,18 @@ const Author = ({ pageContext, data }) => {
       <div id="author-container">
         <h1 id="authorheader">Posts from {name}</h1>
         <PostListView
-          posts={data.allMarkdownRemark.edges.map(({ node }) => ({
-            title: node.frontmatter.title,
-            author: authors[node.frontmatter.author],
-            thumbnail: node.frontmatter.thumbnail,
-            slug: node.fields.slug,
-            description: node.excerpt,
-            date: node.frontmatter.date,
-          }))}
+          posts={
+            data.allMarkdownRemark
+              ? data.allMarkdownRemark.edges.map(({ node }) => ({
+                  title: node.frontmatter.title,
+                  author: authors[node.frontmatter.author],
+                  thumbnail: node.frontmatter.thumbnail,
+                  slug: node.fields.slug,
+                  description: node.excerpt,
+                  date: node.frontmatter.date,
+                }))
+              : []
+          }
         />
       </div>
     </Layout>
