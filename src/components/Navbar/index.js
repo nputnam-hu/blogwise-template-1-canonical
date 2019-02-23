@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import {
-  logoUri,
+  headerPhotoUri,
   backgroundHexCode,
   customNavbarLinks,
 } from '../../constants/user.json'
@@ -17,7 +17,7 @@ function getColorByBgColor(bgColor) {
 const Navbar = () => (
   <div className="navbar-container" style={{ background: backgroundHexCode }}>
     <Link to="/" className="navbar-item" title="Logo">
-      <img id="navbar-logo" src={logoUri} alt="Kaldi" />
+      <img id="navbar-logo" src={headerPhotoUri} alt="Kaldi" />
     </Link>
     <div id="navbar-links">
       {customNavbarLinks.map(({ link, name }) => (

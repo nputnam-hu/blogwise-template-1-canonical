@@ -28,6 +28,12 @@ export default class IndexPage extends Component {
           style={{ height: '60px' }}
           alt="Blogwise"
         />
+        <br />
+        <img
+          src="https://surveyo24.com/css/loader.gif"
+          alt="Loading"
+          style={{ height: '60px' }}
+        />
         <p>
           Your blog is in the process of being deployed, check back in a couple
           minutes

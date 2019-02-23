@@ -3,7 +3,7 @@ backend:
   branch: master
 media_folder: static/img
 public_folder: /img
-logo_url: 'https://megaphone-logo-uploads.s3.amazonaws.com/1550589306438_logo.png'
+logo_url: ''
 collections:
   - name: blog
     label: Blog Post
@@ -22,8 +22,6 @@ collections:
         name: author
         widget: select
         options:
-          - label: Noah Putnam
-            value: 2c72490d-cca2-4846-85dc-6537f65477f7
           - label: Blogwise Staff
             value: blogwiseStaff
       - label: Publish Date
@@ -44,13 +42,7 @@ collections:
         name: tags
         widget: select
         multiple: true
-        options:
-          - label: Blogging
-            value: af4b3bd3-7351-4277-8f6f-8e482e87e274
-          - label: Programming
-            value: cfdd1613-8cc9-4801-be08-a22d9c3db4f1
-          - label: Marketing
-            value: ea3900d2-78d9-4791-ba5a-6d9f47631516
+        options: []
   - name: pages
     label: Pages
     files:

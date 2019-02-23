@@ -11,7 +11,7 @@ const { authors, tags } = user
     fs.readFileSync('./static/admin/config.yml'),
     'utf-8',
   )
-  doc.logo_url = user.logoUri
+  doc.logo_url = user.headerPhotoUri
   const blogIndex = _.findIndex(doc.collections, { name: 'blog' })
   const blogFields = doc.collections[blogIndex].fields
   const authorIndex = _.findIndex(blogFields, { name: 'author' })

@@ -12,7 +12,7 @@ import {
   description as blogDescription,
   social,
   backgroundHexCode,
-  logoUri,
+  headerPhotoUri as logoUri,
   title,
 } from '../../constants/user.json'
 
