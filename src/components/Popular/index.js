@@ -34,7 +34,7 @@ const Popular = () => (
     `}
     render={({ allMarkdownRemark: { edges: posts } }) => (
       <div id="popular-container">
-        <span id="header-text">Latest from KALDI</span>
+        <span id="header-text">Latest Posts</span>
         <div className="linebreak" />
         {posts.map(({ node }, i) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug

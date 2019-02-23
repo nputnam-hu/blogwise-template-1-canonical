@@ -18,13 +18,25 @@ import {
 
 import './styles.sass'
 
+function getColorByBgColor(bgColor) {
+  if (!bgColor) {
+    return ''
+  }
+  return parseInt(bgColor.replace('#', ''), 16) > 0xffffff / 2 ? '#000' : '#fff'
+}
+
 const IndexContent = ({ posts }) => (
   <div>
     <div id="headercontainer" style={{ background: backgroundHexCode }}>
       <div id="headercontent" style={{ background: backgroundHexCode }}>
         <img id="headerimg" alt="Kaldi Logo" src={logoUri} />
         <br />
-        <span id="headertext">{title}</span>
+        <span
+          id="headertext"
+          style={{ color: getColorByBgColor(backgroundHexCode) }}
+        >
+          {title}
+        </span>
         <div id="headerbottom" style={{ background: backgroundHexCode }}>
           <div id="headersocialbuttons">
             {social.twitter && (

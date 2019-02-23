@@ -13,12 +13,12 @@ import './styles.sass'
 
 class TagView extends Component {
   render() {
-    const posts = get(this, 'props.data.allMarkdownRemark.edges')
-    const { tag } = this.props.pathContext
+    const posts = get(this, 'props.data.allMarkdownRemark.edges') || []
+    const { tag } = this.props.pageContext
     if (!tags[tag]) return <div>Wrong Page</div>
     const { name, description } = tags[tag]
 
-    const firstPost = posts[0].node
+    const firstPost = posts.length > 0 ? posts[0].node : null
     const otherPosts = posts.slice(1)
     return (
       <Layout>
@@ -32,46 +32,53 @@ class TagView extends Component {
           <hr />
           <div id="tagcontent-container">
             <div id="articles">
-              {Boolean(firstPost.frontmatter.thumbnail) && (
-                <Link
-                  style={{ textDecoration: 'none' }}
-                  to={firstPost.fields.slug}
-                >
-                  <Img
-                    fluid={
-                      firstPost.frontmatter.thumbnail.childImageSharp.largeFluid
-                    }
-                  />
-                </Link>
-              )}
-              <br />
-              <Link
-                style={{ textDecoration: 'none' }}
-                to={firstPost.fields.slug}
-              >
-                <span className="articletitle">
-                  {firstPost.frontmatter.title}
-                </span>
-                <p className="articledescription">{firstPost.excerpt}</p>
-              </Link>
-              <br />
-              <div>
-                <Link
-                  style={{ textDecoration: 'none' }}
-                  to={`/authors/${kebabCase(name)}`}
-                >
-                  <img
-                    className="authorimg first"
-                    alt={name}
-                    src={authors[firstPost.frontmatter.author].img}
-                  />
-                  <div className="articlebyline">
-                    {authors[firstPost.frontmatter.author].name}
+              {firstPost ? (
+                <>
+                  {Boolean(firstPost.frontmatter.thumbnail) && (
+                    <Link
+                      style={{ textDecoration: 'none' }}
+                      to={firstPost.fields.slug}
+                    >
+                      <Img
+                        fluid={
+                          firstPost.frontmatter.thumbnail.childImageSharp
+                            .largeFluid
+                        }
+                      />
+                    </Link>
+                  )}
+                  <br />
+                  <Link
+                    style={{ textDecoration: 'none' }}
+                    to={firstPost.fields.slug}
+                  >
+                    <span className="articletitle">
+                      {firstPost.frontmatter.title}
+                    </span>
+                    <p className="articledescription">{firstPost.excerpt}</p>
+                  </Link>
+                  <br />
+                  <div>
+                    <Link
+                      style={{ textDecoration: 'none' }}
+                      to={`/authors/${kebabCase(name)}`}
+                    >
+                      <img
+                        className="authorimg first"
+                        alt={name}
+                        src={authors[firstPost.frontmatter.author].img}
+                      />
+                      <div className="articlebyline">
+                        {authors[firstPost.frontmatter.author].name}
+                      </div>
+                    </Link>
+                    <Time date={firstPost.frontmatter.date} size="med" />
                   </div>
-                </Link>
-                <Time date={firstPost.frontmatter.date} size="med" />
-              </div>
-              <hr />
+                  <hr />
+                </>
+              ) : (
+                <h1>No posts yet</h1>
+              )}
               {otherPosts.map(({ node }) => (
                 <div key={node.slug}>
                   <div className="tagarticle-container">

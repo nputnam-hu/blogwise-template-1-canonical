@@ -1,12 +1,20 @@
+/* eslint-disable consistent-return */
 const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 const fs = require('fs')
 
-const { authors, tags: currentTags } = require('./src/constants/user.json')
+const {
+  authors,
+  tags: currentTags,
+  hasBeenInitialized,
+} = require('./src/constants/user.json')
 
 exports.createPages = ({ actions, graphql }) => {
+  if (!hasBeenInitialized) {
+    return
+  }
   const { createPage } = actions
   Object.keys(authors).forEach(author => {
     createPage({
@@ -59,7 +67,7 @@ exports.createPages = ({ actions, graphql }) => {
     })
 
     // Tag pages:
-    let tags = Object.values(currentTags).map(tag => tag.name)
+    let tags = Object.keys(currentTags)
     // Iterate through each post, putting all found tags into `tags`
     posts.forEach(edge => {
       if (_.get(edge, `node.frontmatter.tags`)) {
@@ -102,6 +110,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 // Build search index
 exports.onPostBootstrap = ({ getNodes }) => {
+  if (!hasBeenInitialized) {
+    return
+  }
   const nodes = getNodes().filter(
     n =>
       n.internal.type === 'MarkdownRemark' &&
