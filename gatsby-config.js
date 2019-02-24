@@ -74,7 +74,7 @@ module.exports = {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`,
-        enableIdentityWidget: true,
+        enableIdentityWidget: false,
       },
     },
     {
@@ -88,7 +88,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-purgecss', // must be after other CSS plugins,
-    'gatsby-plugin-netlify-identity-widget',
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 }
