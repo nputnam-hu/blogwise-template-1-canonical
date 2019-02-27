@@ -27,48 +27,50 @@
     color: #828282
 
   .article
-    width: 70%
+    display: flex
+    flex-direction: row
     @media (max-width: 1150px)
       width: 100%
 
   .articletop
+    margin-left: 30px
     display: flex
-    flex-direction: row
+    flex-direction: column
     justify-content: space-between
 
   .articlelink
     font-size: 20px
     font-weight: 700
     text-decoration: none
-    font-family: 'Roboto'
+    font-family: 'Nunito'
     color: #333333
     @media (max-width: 1150px)
       width: 70%
 
   .articlepreview
-    margin-top: 5px
+    margin-top: 20px
     margin-bottom: 8px
-    font-family: 'Lato'
-    font-size: 16px
+    font-family: 'Assistant Regular'
+    font-size: 14px
     color: #828282
+    @media (max-width: 1100px)
+      margin-top: -50px
+      width: 70%
+    @media (max-width: 750px)
+      margin-top: 0px
 
   .author-container
-    margin-top: 15px
-
-  .authorimg
-    float: left
-    margin-right: 10px
-    height: 45px
-    width: 45px
-    border-radius: 40px
-
+    margin-top: 5px
+    display: flex
+    flex-direction: row
   .authorname
-    font-family: 'Lato'
+    font-family: 'Nunito'
     font-weight: 700
-    font-size: 15px
+    font-size: 13px
     padding-top: 2px
     padding-bottom: 2px
     color: black
+    padding-right: 15px
 
   .articleimage
     width: 153px
@@ -89,3 +91,8 @@
     @media (max-width: 750px)
       width: 69px
       height: 60px
+
+  .mobile-articletop
+    @media (max-width: 1150px)
+      display: flex
+      flex-direction: row

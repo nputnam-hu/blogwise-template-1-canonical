@@ -20,7 +20,7 @@ export default class IndexPage extends Component {
           width: '100vw',
           textAlign: 'center',
           fontSize: '16px',
-          fontFamily: 'Roboto',
+          fontFamily: 'Nunito',
         }}
       >
         <img
@@ -52,7 +52,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          excerpt(pruneLength: 140)
+          excerpt(pruneLength: 150)
           id
           fields {
             slug

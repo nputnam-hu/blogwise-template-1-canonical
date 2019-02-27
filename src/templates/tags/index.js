@@ -72,12 +72,16 @@ class TagView extends Component {
                         {authors[firstPost.frontmatter.author].name}
                       </div>
                     </Link>
-                    <Time date={firstPost.frontmatter.date} size="med" />
+                    <div style={{ paddingTop: '3px' }}>
+                      <Time date={firstPost.frontmatter.date} size="small" />
+                    </div>
                   </div>
                   <hr />
                 </>
               ) : (
-                <h1>No posts yet</h1>
+                <h2 style={{ fontFamily: 'Assistant Regular' }}>
+                  No posts tagged {name} yet
+                </h2>
               )}
               {otherPosts.map(({ node }) => (
                 <div key={node.slug}>

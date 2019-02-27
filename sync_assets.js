@@ -2,6 +2,7 @@ const Jimp = require('jimp')
 const fs = require('fs')
 const { faviconPhotoUri, headerPhotoUri } = require('./src/constants/user.json')
 
+// eslint-disable-next-line import/newline-after-import
 ;(async () => {
   try {
     const favicon = await Jimp.read(faviconPhotoUri)

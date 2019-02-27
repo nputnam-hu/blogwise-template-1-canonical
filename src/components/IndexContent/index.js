@@ -2,9 +2,8 @@ import React from 'react'
 import Link from 'gatsby-link'
 import _ from 'lodash'
 import { TwitterIcon, FacebookIcon, LinkedinIcon } from 'react-share'
-
 import SearchBar from '../SearchBar'
-import searchIcon from './search.svg'
+import searchIcon from './search'
 import PostListView from '../PostListView'
 import {
   authors,
@@ -14,8 +13,11 @@ import {
   backgroundHexCode,
   headerPhotoUri as logoUri,
   title,
+  name,
 } from '../../constants/user.json'
-
+import linkedin from './linkedin.png'
+import facebook from './facebook.png'
+import twitter from './twitter.png'
 import './styles.sass'
 
 function getColorByBgColor(bgColor) {
@@ -25,17 +27,16 @@ function getColorByBgColor(bgColor) {
   return parseInt(bgColor.replace('#', ''), 16) > 0xffffff / 2 ? '#000' : '#fff'
 }
 
+const contrastingBgColor = getColorByBgColor(backgroundHexCode)
+
 const IndexContent = ({ posts }) => (
   <div>
     <div id="headercontainer" style={{ background: backgroundHexCode }}>
       <div id="headercontent" style={{ background: backgroundHexCode }}>
         <img id="headerimg" alt="Kaldi Logo" src={logoUri} />
         <br />
-        <span
-          id="headertext"
-          style={{ color: getColorByBgColor(backgroundHexCode) }}
-        >
-          {title}
+        <span id="headertext" style={{ color: contrastingBgColor }}>
+          <i>{title}</i>
         </span>
         <div id="headerbottom" style={{ background: backgroundHexCode }}>
           <div id="headersocialbuttons">
@@ -48,7 +49,8 @@ const IndexContent = ({ posts }) => (
                 <TwitterIcon
                   size={32}
                   style={{ marginBottom: '13px' }}
-                  iconBgStyle={{ fill: '#3E5641' }}
+                  logoFillColor={contrastingBgColor}
+                  iconBgStyle={{ fill: backgroundHexCode }}
                 />
               </a>
             )}
@@ -58,7 +60,11 @@ const IndexContent = ({ posts }) => (
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FacebookIcon size={32} iconBgStyle={{ fill: '#3E5641' }} />
+                <FacebookIcon
+                  size={32}
+                  logoFillColor={contrastingBgColor}
+                  iconBgStyle={{ fill: backgroundHexCode }}
+                />
               </a>
             )}
             {social.linkedin && (
@@ -67,29 +73,37 @@ const IndexContent = ({ posts }) => (
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <LinkedinIcon size={32} iconBgStyle={{ fill: '#3E5641' }} />
+                <LinkedinIcon
+                  size={32}
+                  logoFillColor={contrastingBgColor}
+                  iconBgStyle={{ fill: backgroundHexCode }}
+                />
               </a>
             )}
           </div>
-          <Link to="/about" id="headerabout">
+          <Link
+            to="/about"
+            id="headerabout"
+            style={{ color: contrastingBgColor }}
+          >
             | &nbsp;&nbsp;&nbsp;About
           </Link>
           <Link to="/search" id="headersearch">
-            <img src={searchIcon} alt="Search Posts" />
+            <img
+              src={searchIcon(contrastingBgColor)}
+              alt="Search Posts"
+              style={{ fill: contrastingBgColor }}
+            />
           </Link>
         </div>
       </div>
     </div>
     <div id="indexcontent-container">
       <div id="content">
-        <span id="featured-text">Featured Articles</span>
+        <span id="featured-text">FEATURED ARTICLES</span>
         <Link id="link-more" to="/latest">
-          SEE ALL &gt;
+          SEE ALL
         </Link>
-        <div>
-          <span className="linebreak left" />
-          <span className="linebreak right" />
-        </div>
         <br />
         <br />
         <br />
@@ -109,7 +123,7 @@ const IndexContent = ({ posts }) => (
         <div id="explore-container">
           {Object.values(tags).length > 0 && (
             <React.Fragment>
-              <h2 className="rightheader">Explore Topics</h2>
+              <h2 className="rightheader">Topics</h2>
               <ul className="taglist">
                 {Object.keys(tags).map(key => (
                   <Link
@@ -123,26 +137,42 @@ const IndexContent = ({ posts }) => (
             </React.Fragment>
           )}
         </div>
-        <h2 className="rightheader">About</h2>
-        <img alt="Kalid" src={logoUri} id="rightlogo" />
+        <h2 className="rightheader">About {name}</h2>
+        <img alt={title} src={logoUri} id="rightlogo" />
         <div id="blogdescription">{blogDescription}</div>
         <Link id="moreonblog" to="/about">
-          Read More &gt;
+          READ MORE &gt;
         </Link>
+        <h2 className="rightheader">Find us on</h2>
         <div id="sociallinks">
           {social.twitter && (
-            <a href={social.twitter} target="_blank" rel="noopener noreferrer">
-              <TwitterIcon size={32} round />
+            <a
+              className="right-sociallink"
+              href={social.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={twitter} alt="twitter" />
             </a>
           )}
           {social.facebook && (
-            <a href={social.facebook} target="_blank" rel="noopener noreferrer">
-              <FacebookIcon size={32} round />
+            <a
+              className="right-sociallink"
+              href={social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={facebook} alt="facebook" />
             </a>
           )}
           {social.linkedin && (
-            <a href={social.linkedin} target="_blank" rel="noopener noreferrer">
-              <LinkedinIcon size={32} round />
+            <a
+              className="right-sociallink"
+              href={social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={linkedin} alt="linkedin" />
             </a>
           )}
         </div>

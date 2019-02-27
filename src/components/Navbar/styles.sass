@@ -4,19 +4,26 @@
   display: flex
   flex-direction: row
   align-items: center
+  border-bottom: 1px solid #E0E4E7
 
   #navbar-logo
     margin-left: 70px
-    max-height: 50px
+    max-height: 40px
+    @media (max-width: 800px)
+      margin-left: 10px
     
   #navbar-links
-    margin-left: 80px
     height: 100%
     display: flex
     flex-direction: row
     align-items: center
+    margin-left: auto
+    margin-right: 80px
+    @media (max-width: 800px)
+      margin-right: 10px
     a
-      font-family: 'Lato'
+      padding-top: 5px
+      font-family: 'Nunito'
       font-weight: 300
       font-size: 18px
       text-decoration: none

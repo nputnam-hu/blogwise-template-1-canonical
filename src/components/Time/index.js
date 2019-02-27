@@ -25,9 +25,9 @@ const genText = function genText(date) {
 const genFontSize = function genFontSize(size) {
   switch (size) {
     case 'small':
-      return '14px'
+      return '13px'
     case 'med':
-      return '14px'
+      return '12px'
     case 'large':
       return '16px'
     default:
@@ -40,7 +40,7 @@ const genPadding = function genPadding(size) {
     case 'small':
       return '1px'
     case 'med':
-      return '2px'
+      return '0px'
     case 'large':
       return '0px'
     default:

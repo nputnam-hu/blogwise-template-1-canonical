@@ -1,6 +1,7 @@
 #headercontainer
   height: 300px
   margin: -8px
+  border-bottom: 1px solid #E0E4E7
 
   #headercontent
     padding-left: 13%
@@ -9,12 +10,16 @@
     #headerimg
       max-height: 90px
       margin-bottom: 30px
+      @media (max-width: 800px)
+        max-width: 80vw
 
     #headertext
-      font-family: 'Lato'
+      font-family: 'Nunito'
       color: white
       font-weight: 300
       font-size: 28px
+      @media (max-width: 800px)
+        font-size: 22px
 
     #headerbottom
       display: none
@@ -31,7 +36,7 @@
         margin-top: -7px
 
     #headerabout
-      font-family: 'Lato'
+      font-family: 'Nunito'
       color: white
       font-size: 16px
       padding-left: 5px
@@ -44,7 +49,7 @@
       padding-left: 10px
 
 #indexcontent-container 
-  margin: 70px 12% 10px
+  margin: 70px 12% 70px
   display: flex
   @media (max-width: 1150px) 
     justify-content: center
@@ -59,10 +64,11 @@
 
   #featured-text
     align-self: left
-    font-family: 'Roboto'
+    font-family: 'Nunito'
+    letter-spacing: 0.35px
+    color: #B3B3B3 
     font-weight: 700
-    font-size: 20px
-    letter-spacing: 5%
+    font-size: 16px
 
   #link-more
     position: absolute
@@ -70,8 +76,8 @@
     right: 0px
     float: right
     text-decoration: none
-    font-family: 'Roboto'
-    font-size: 14px
+    font-family: 'Assistant Regular'
+    font-size: 13px
     color: #828282
 
   .linebreak
@@ -80,31 +86,25 @@
     height: 2px
     margin-top: 20px
     margin-bottom: 20px
-
-  .linebreak.left
-    background: #4f4f4f
-    width: 155px
-
-  .linebreak.right
-    background: #e0e0e0
-    width: calc(100% - 155px)
   
 
   #rightcontent
     width: 30%
     margin-left: 10%
+    display: flex
+    flex-direction: column
     @media (max-width: 1000px) 
       display: none
 
     .rightheader
-      font-family: 'Roboto'
+      font-family: 'Nunito'
       font-weight: 700
-      font-size: 20px
+      font-size: 15px
+      color: #b3b3b3
       letter-spacing: 5%
 
     #explore-container
       padding-top: 40px
-
       .taglist
         list-style: none
         padding-left: 0px
@@ -123,9 +123,10 @@
           background: #ebe9e7
           align-items: center
           justify-content: center
-          font-family: 'Roboto'
+          font-family: 'Nunito'
           font-weight: 300
-          font-size: 16px
+          font-size: 13px
+          text-transform: uppercase
         a
           text-decoration: none
           color: black
@@ -133,28 +134,38 @@
           background: #e0e0e0
 
     #rightlogo
+      display: block
+      object-fit: contain
       height: 15px
-      padding-top: 5px
-      padding-bottom: 10px
+      align-self: flex-start
+      margin-top: 5px
+      margin-bottom: 10px
 
     #blogdescription
-      color: #878787
-      font-family: 'Roboto'
+      color: black
+      font-family: 'Assistant Regular'
       font-weight: 300
-      font-size: 14px
+      line-height: 16px
+      color: #666666
+      font-size: 13px
       padding-bottom: 5px
     
     #moreonblog
       text-decoration: none
-      font-family: 'Roboto'
-      font-size: 13px
+      align-self: flex-end
+      font-family: 'PT Sans'
+      font-size: 12px
       color: #828282
+      padding-top: 5px
 
     #sociallinks
       display: flex
       flex-direction: row
       flex-wrap: wrap
       justify-content: flex-start
-      padding-top: 10px
+      padding-top: 5px
       a
         padding-right: 7px 
+
+    .right-sociallink
+      margin-right: 30px

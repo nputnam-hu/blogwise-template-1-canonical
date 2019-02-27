@@ -13,56 +13,57 @@ const PostListView = ({ posts }) => (
       return (
         <div className="post" key={slug}>
           <div className="article" style={thumbExists ? {} : { width: '90%' }}>
-            <Link style={{ textDecoration: 'none' }} to={slug}>
-              <div className="articletop">
-                <div className="articlelink">{title}</div>
+            {thumbExists && (
+              <Link to={slug}>
                 {thumbExists &&
                   (typeof thumbnail === 'string' ? (
                     <img
                       alt={title}
-                      className="articleimage mobile"
+                      className="articleimage desktop"
                       src={thumbnail}
                     />
                   ) : (
                     <Img
                       alt={title}
-                      className="articleimage mobile"
+                      className="articleimage desktop"
                       fluid={thumbnail.childImageSharp.fluid}
                     />
                   ))}
-              </div>
-              <p className="articlepreview">{description}</p>
-            </Link>
-            <div className="author-container">
-              <Link
-                style={{ textDecoration: 'none' }}
-                to={`/authors/${_.kebabCase(name)}`}
-              >
-                <img className="authorimg" alt={name} src={img} />
-                <div className="authorname">{name}</div>
               </Link>
-              <Time date={date} size="med" />
+            )}
+            <div className="articletop">
+              <Link style={{ textDecoration: 'none' }} to={slug}>
+                <div className="mobile-articletop">
+                  <div className="articlelink">{title}</div>
+                  {thumbExists &&
+                    (typeof thumbnail === 'string' ? (
+                      <img
+                        alt={title}
+                        className="articleimage mobile"
+                        src={thumbnail}
+                      />
+                    ) : (
+                      <Img
+                        alt={title}
+                        className="articleimage mobile"
+                        fluid={thumbnail.childImageSharp.fluid}
+                      />
+                    ))}
+                </div>
+                <p className="articlepreview">{description}</p>
+              </Link>
+              <div className="author-container">
+                <Link
+                  style={{ textDecoration: 'none' }}
+                  to={`/authors/${_.kebabCase(name)}`}
+                >
+                  <div className="authorname">{name}</div>
+                </Link>
+                <Time date={date} size="med" />
+              </div>
             </div>
           </div>
-          {thumbExists && (
-            <Link to={slug}>
-              {thumbExists &&
-                (typeof thumbnail === 'string' ? (
-                  <img
-                    alt={title}
-                    className="articleimage desktop"
-                    src={thumbnail}
-                  />
-                ) : (
-                  <Img
-                    alt={title}
-                    className="articleimage desktop"
-                    fluid={thumbnail.childImageSharp.fluid}
-                  />
-                ))}
-            </Link>
-          )}
-          <div className="linebreak article-break" />
+          <br />
         </div>
       )
     })}

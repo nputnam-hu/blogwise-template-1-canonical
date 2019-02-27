@@ -80,15 +80,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          `Roboto:300,400,400i,700`,
-          `Lato:300,400,400i,700`,
-          `Source Serif Pro`,
-        ],
+        fonts: [`Source Serif Pro`, `Nunito`],
       },
     },
     'gatsby-plugin-purgecss', // must be after other CSS plugins,
-        'gatsby-plugin-netlify-identity-widget',	
+    'gatsby-plugin-netlify-identity-widget',
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 }

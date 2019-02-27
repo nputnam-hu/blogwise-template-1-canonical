@@ -3,7 +3,7 @@ backend:
   branch: master
 media_folder: static/img
 public_folder: /img
-logo_url: ''
+logo_url: 'https://megaphone-logo-uploads.s3.amazonaws.com/1550945594384_dev%20logo.png'
 collections:
   - name: blog
     label: Blog Post
@@ -22,8 +22,8 @@ collections:
         name: author
         widget: select
         options:
-          - label: Blogwise Staff
-            value: blogwiseStaff
+          - label: Jada Lee
+            value: dc3e4de5-c9f8-4007-807c-26ac4cdba81e
       - label: Publish Date
         name: date
         widget: datetime
@@ -42,7 +42,17 @@ collections:
         name: tags
         widget: select
         multiple: true
-        options: []
+        options:
+          - label: Product Management
+            value: 1fe9532a-1774-4441-b4af-123ff1d7e834
+          - label: Project Management
+            value: 2e8085c5-d7e0-419b-adcb-3606fcc7e119
+          - label: Design
+            value: 59b876bb-8b03-45d3-89dd-751e6ec98775
+          - label: Programming
+            value: 79616632-eddf-481c-82df-6876dafa57c6
+          - label: Startups
+            value: b17e826a-8da1-4ed7-9f07-c4b988804335
   - name: pages
     label: Pages
     files:

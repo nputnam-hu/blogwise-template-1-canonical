@@ -1,23 +1,20 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import { social, backgroundHexCode } from '../../constants/user.json'
+import { social, name } from '../../constants/user.json'
 import './styles.sass'
 
 const Footer = () => (
-  <div id="footer-container" style={{ background: backgroundHexCode }}>
+  <div id="footer-container">
     <div id="footerlinks">
       <Link to="/about">About</Link>
       <Link to="/search">Search</Link>
       <a href={social.mainSite} target="_blank" rel="noopener noreferrer">
-        Visit
+        Visit {name}
       </a>
-      <span>|</span>
-      <a
-        href="https://www.blogwise.co"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Powered By Blogwise
+    </div>
+    <div id="poweredby">
+      <a href="https://blogwise.co" target="_blank" rel="noopener noreferrer">
+        Powered by blogwise
       </a>
     </div>
   </div>
