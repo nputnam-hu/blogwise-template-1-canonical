@@ -63,7 +63,6 @@ const PostListView = ({ posts }) => (
               </div>
             </div>
           </div>
-          <br />
         </div>
       )
     })}

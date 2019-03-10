@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import _ from 'lodash'
-import { TwitterIcon, FacebookIcon, LinkedinIcon } from 'react-share'
 import SearchBar from '../SearchBar'
 import searchIcon from './search'
 import PostListView from '../PostListView'
@@ -11,7 +10,9 @@ import {
   description as blogDescription,
   social,
   backgroundHexCode,
+  bgImgUri,
   headerPhotoUri as logoUri,
+  sidebarPhotoUri,
   title,
   name,
 } from '../../constants/user.json'
@@ -31,8 +32,18 @@ const contrastingBgColor = getColorByBgColor(backgroundHexCode)
 
 const IndexContent = ({ posts }) => (
   <div>
-    <div id="headercontainer" style={{ background: backgroundHexCode }}>
-      <div id="headercontent" style={{ background: backgroundHexCode }}>
+    <div
+      id="headercontainer"
+      style={{
+        background: bgImgUri
+          ? `url('/header_background.png')`
+          : backgroundHexCode,
+      }}
+    >
+      <div
+        id="headercontent"
+        style={{ background: bgImgUri ? '' : backgroundHexCode }}
+      >
         <img id="headerimg" alt="Kaldi Logo" src={logoUri} />
         <br />
         <span id="headertext" style={{ color: contrastingBgColor }}>
@@ -46,12 +57,7 @@ const IndexContent = ({ posts }) => (
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <TwitterIcon
-                  size={32}
-                  style={{ marginBottom: '13px' }}
-                  logoFillColor={contrastingBgColor}
-                  iconBgStyle={{ fill: backgroundHexCode }}
-                />
+                <img src={twitter} alt="twitter" />
               </a>
             )}
             {social.facebook && (
@@ -60,11 +66,7 @@ const IndexContent = ({ posts }) => (
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FacebookIcon
-                  size={32}
-                  logoFillColor={contrastingBgColor}
-                  iconBgStyle={{ fill: backgroundHexCode }}
-                />
+                <img src={facebook} alt="facebook" />
               </a>
             )}
             {social.linkedin && (
@@ -73,11 +75,7 @@ const IndexContent = ({ posts }) => (
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <LinkedinIcon
-                  size={32}
-                  logoFillColor={contrastingBgColor}
-                  iconBgStyle={{ fill: backgroundHexCode }}
-                />
+                <img src={linkedin} alt="linkedin" />
               </a>
             )}
           </div>
@@ -138,7 +136,7 @@ const IndexContent = ({ posts }) => (
           )}
         </div>
         <h2 className="rightheader">About {name}</h2>
-        <img alt={title} src={logoUri} id="rightlogo" />
+        <img alt={title} src={sidebarPhotoUri} id="rightlogo" />
         <div id="blogdescription">{blogDescription}</div>
         <Link id="moreonblog" to="/about">
           READ MORE &gt;

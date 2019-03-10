@@ -1,13 +1,13 @@
 ---
 templateKey: 'blog-post'
-title: 'Welcome To Blogwise!'
-author: blogwiseStaff
-date: 2017-01-04T15:04:10.000Z
+title: 'DEV Features: Tim Tamm'
+author: 5176e3dc-07c5-4c13-8797-f484bf695f2f
+date: 2019-01-04T15:04:10.000Z
 thumbnail: /img/cover.png
 description: >-
   Ignore the smiling Estonian man, this will eventually have useful onboarding content. Currently, just a bunch of filler, delete it plz
 tags:
-  - 9b10d33a-a52b-4cf1-a265-0e08c574d07d
+  - c7883027-ca2f-49b2-b0eb-8f357bf4cc25
 ---
 
 We expect the shipment of a limited quantity of green beans next Monday. We’ll be offering the roasted beans from Tuesday, but quantities are limited, so be quick.

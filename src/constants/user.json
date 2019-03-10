@@ -1,20 +1,40 @@
 {
-  "hasBeenInitialized": false,
-  "title": "",
-  "description": "",
-  "headerPhotoUri": "",
-  "sidebarPhotoUri": "",
-  "faviconPhotoUri": "",
-  "backgroundHexCode": "",
-  "siteUrl": "",
-  "social": { "mainSite": "", "twitter": "", "facebook": "", "linkedin": "" },
-  "tags": {},
+  "title": "The Lightning Blog",
+  "description": "blogwise is a platform geared towards startups that facilitates building fast, beautiful blogs for business in minutes. With custom domain hosting and simple UI, blogwise makes it easier for startups to reach their audiences. ",
+  "headerPhotoUri": "https://s3.amazonaws.com/megaphone-logo-uploads/1550942821883_blogwise%20logo%20final%20%281%29.png",
+  "sidebarPhotoUri": "https://s3.amazonaws.com/megaphone-logo-uploads/1550959939781_b_blogwise_social.png",
+  "backgroundHexCode": "#000000",
+  "faviconPhotoUri": "https://megaphone-logo-uploads.s3.amazonaws.com/1550959939781_b_blogwise_social.png",
+  "bgImgUri": "e",
+  "siteUrl": "blog.blogwise.co",
+  "name": "blogwise",
+  "social": {
+    "mainSite": "https://blogwise.co",
+    "twitter": "https://twitter.com/realblogwise",
+    "facebook": "https://www.facebook.com/blogwise.co",
+    "linkedin": "https://www.linkedin.com/blogwise"
+  },
   "customNavbarLinks": [],
-  "authors": {
-    "blogwiseStaff": {
-      "name": "Blogwise Staff",
-      "bio": "Blogwise is the best way to start content marketing for your business",
-      "img": "https://s3.amazonaws.com/megaphone-logo-uploads/defaultUser.png"
+  "tags": {
+    "53b5aa80-2250-407a-ab98-6d365d39dffc": {
+      "name": "Blogging",
+      "description": ""
+    },
+    "be032b77-8040-46d6-86a1-f9dffb082c6d": {
+      "name": "Content Marketing",
+      "description": ""
+    },
+    "c7883027-ca2f-49b2-b0eb-8f357bf4cc25": {
+      "name": "Startups",
+      "description": ""
     }
-  }
+  },
+  "authors": {
+    "5176e3dc-07c5-4c13-8797-f484bf695f2f": {
+      "name": "Dara Li",
+      "bio": "Dara is a squirrel",
+      "img": "https://megaphone-logo-uploads.s3.amazonaws.com/1550942915839_Dara_Li%20copy.jpg"
+    }
+  },
+  "hasBeenInitialized": true
 }

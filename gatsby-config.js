@@ -71,20 +71,12 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-netlify-cms',
-      options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
-        enableIdentityWidget: true,
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [`Source Serif Pro`, `Nunito`],
       },
     },
     'gatsby-plugin-purgecss', // must be after other CSS plugins,
-    'gatsby-plugin-netlify-identity-widget',
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 }

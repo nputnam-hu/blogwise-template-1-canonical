@@ -6,15 +6,19 @@ import './styles.sass'
 const Footer = () => (
   <div id="footer-container">
     <div id="footerlinks">
-      <Link to="/about">About</Link>
-      <Link to="/search">Search</Link>
+      <Link to="/about">ABOUT</Link>
+      <Link to="/search">SEARCH</Link>
       <a href={social.mainSite} target="_blank" rel="noopener noreferrer">
         Visit {name}
       </a>
     </div>
     <div id="poweredby">
-      <a href="https://blogwise.co" target="_blank" rel="noopener noreferrer">
-        Powered by blogwise
+      <a
+        href="https://www.blogwise.co?rel=blog"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        powered by blogwise
       </a>
     </div>
   </div>
