@@ -4,8 +4,7 @@ backend:
 publish_mode: editorial_workflow
 media_folder: static/img
 public_folder: /img
-logo_url: >-
-  https://s3.amazonaws.com/megaphone-logo-uploads/1550942821883_blogwise%20logo%20final%20%281%29.png
+logo_url: ''
 collections:
   - name: blog
     label: Blog Post
@@ -24,8 +23,8 @@ collections:
         name: author
         widget: select
         options:
-          - label: Dara Li
-            value: 5176e3dc-07c5-4c13-8797-f484bf695f2f
+          - label: Blogwise Staff
+            value: blogwiseStaff
       - label: Publish Date
         name: date
         widget: datetime
@@ -44,13 +43,7 @@ collections:
         name: tags
         widget: select
         multiple: true
-        options:
-          - label: Blogging
-            value: 53b5aa80-2250-407a-ab98-6d365d39dffc
-          - label: Content Marketing
-            value: be032b77-8040-46d6-86a1-f9dffb082c6d
-          - label: Startups
-            value: c7883027-ca2f-49b2-b0eb-8f357bf4cc25
+        options: []
   - name: pages
     label: Pages
     files:

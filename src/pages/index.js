@@ -24,7 +24,7 @@ export default class IndexPage extends Component {
         }}
       >
         <img
-          src="https://app.blogwise.co/static/media/logo.243ba0ff.png"
+          src="https://s3.amazonaws.com/megaphone-logo-uploads/logo-yellow.png"
           style={{ height: '60px' }}
           alt="Blogwise"
         />

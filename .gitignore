@@ -9,3 +9,4 @@ yarn-error.log
 # Project specific
 src/constants
 src/pages/a
+push_to_all.sh
