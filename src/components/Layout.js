@@ -28,6 +28,7 @@ const TemplateWrapper = ({ showNav = true, children }) => (
             name="description"
             content={data.site.siteMetadata.description}
           />
+          <link rel="stylesheet" href="https://use.typekit.net/nxa2kay.css" />
 
           <link
             rel="apple-touch-icon"

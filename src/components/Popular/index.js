@@ -44,7 +44,7 @@ const Popular = () => (
               <span className="numbertext">{`0${i + 1}`}</span>
               <div className="content">
                 <Link className="article-link" to={node.fields.slug}>
-                  <b>{title}</b>
+                  {title}
                 </Link>
                 <br />
                 <div className="author-name">{name}</div>

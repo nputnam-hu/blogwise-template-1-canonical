@@ -73,7 +73,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Source Serif Pro`, `Nunito`],
+        fonts: [`Source Serif Pro`],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-netlify-cms',
+      options: {
+        modulePath: `${__dirname}/src/cms/cms.js`,
+        enableIdentityWidget: false,
       },
     },
     'gatsby-plugin-purgecss', // must be after other CSS plugins,

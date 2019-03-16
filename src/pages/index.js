@@ -20,7 +20,7 @@ export default class IndexPage extends Component {
           width: '100vw',
           textAlign: 'center',
           fontSize: '16px',
-          fontFamily: 'Nunito',
+          fontFamily: 'futura-pt, sans-serif',
         }}
       >
         <img
