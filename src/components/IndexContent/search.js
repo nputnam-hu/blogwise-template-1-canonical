@@ -1,6 +1,0 @@
-export default (stroke = '#fff') => `data:image/svg+xml;charset=utf-8,
-<svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="6" cy="6" r="5.25" stroke="${stroke}" stroke-width="1.5"/>
-<line x1="14.4697" y1="14.5303" x2="9.46967" y2="9.53033" stroke="${stroke}" stroke-width="1.5"/>
-</svg>
-`

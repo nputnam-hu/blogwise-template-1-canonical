@@ -24,25 +24,7 @@
       font-weight: 200
       font-size: 24px
       @media (max-width: 800px)
-        font-size: 18px
-
-    #headerbottom
-      display: none
-      @media (max-width: 1000px)
-        display: flex
-        padding-top: 70px
-        flex-direction: row
-        justify-content: flex-start
-
-      #headersocialbuttons
-        display: flex
-        flex-direction: row
-        justify-content: flex-start
-
-      a
-        img
-          height: 16px
-          padding-right: 20px
+        font-size: 20px
 
     #headerabout
       font-family: futura-pt, sans-serif
@@ -52,10 +34,33 @@
       text-decoration: none
       margin-top: -1px
 
-    #headersearch
-      height: 32px
-      padding-top: 2.5px
-      padding-left: 10px
+#headerbottom
+  display: none
+  @media (max-width: 1000px)
+    font-family: futura-pt, sans-serif
+    display: flex
+    padding-left: 35px
+    margin-top: 25px
+    margin-bottom: -20px
+    flex-direction: row
+    justify-content: flex-start
+
+  #headersocialbuttons
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    img
+      height: 16px
+      padding-right: 20px
+  #headerabout
+    color: #B3B3B3
+    text-decoration: none
+    margin-top: -3px
+    font-size: 18px
+  #headersearch
+    height: 36px
+    padding-top: 1.5px
+    padding-left: 15px
 
 #indexcontent-container 
   margin: 70px 12% 70px

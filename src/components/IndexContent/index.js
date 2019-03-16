@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import _ from 'lodash'
 import SearchBar from '../SearchBar'
-import searchIcon from './search'
+import searchIcon from './search.svg'
 import PostListView from '../PostListView'
 import {
   authors,
@@ -49,52 +49,32 @@ const IndexContent = ({ posts }) => (
         <span id="headertext" style={{ color: contrastingBgColor }}>
           <i>{title}</i>
         </span>
-        <div id="headerbottom" style={{ background: backgroundHexCode }}>
-          <div id="headersocialbuttons">
-            {social.twitter && (
-              <a
-                href={social.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src={twitter} alt="twitter" />
-              </a>
-            )}
-            {social.facebook && (
-              <a
-                href={social.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src={facebook} alt="facebook" />
-              </a>
-            )}
-            {social.linkedin && (
-              <a
-                href={social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src={linkedin} alt="linkedin" />
-              </a>
-            )}
-          </div>
-          <Link
-            to="/about"
-            id="headerabout"
-            style={{ color: contrastingBgColor }}
-          >
-            | &nbsp;&nbsp;&nbsp;About
-          </Link>
-          <Link to="/search" id="headersearch">
-            <img
-              src={searchIcon(contrastingBgColor)}
-              alt="Search Posts"
-              style={{ fill: contrastingBgColor }}
-            />
-          </Link>
-        </div>
       </div>
+    </div>
+    <div id="headerbottom">
+      <div id="headersocialbuttons">
+        {social.twitter && (
+          <a href={social.twitter} target="_blank" rel="noopener noreferrer">
+            <img src={twitter} alt="twitter" />
+          </a>
+        )}
+        {social.facebook && (
+          <a href={social.facebook} target="_blank" rel="noopener noreferrer">
+            <img src={facebook} alt="facebook" />
+          </a>
+        )}
+        {social.linkedin && (
+          <a href={social.linkedin} target="_blank" rel="noopener noreferrer">
+            <img src={linkedin} alt="linkedin" />
+          </a>
+        )}
+      </div>
+      <Link to="/about" id="headerabout">
+        | &nbsp;&nbsp;&nbsp;About
+      </Link>
+      <Link to="/search" id="headersearch">
+        <img src={searchIcon} alt="Search Posts" />
+      </Link>
     </div>
     <div id="indexcontent-container">
       <div id="content">
