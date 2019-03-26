@@ -28,6 +28,7 @@ class Search extends Component {
     if (typeof window !== 'undefined') {
       // eslint-disable-next-line no-underscore-dangle
       posts = window.__SEARCH__.search(this.state.query)
+      console.log(posts)
     }
     return (
       <Layout>

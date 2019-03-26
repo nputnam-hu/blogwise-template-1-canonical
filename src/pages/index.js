@@ -75,7 +75,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    allTag {
+    allTag(
+      filter: {
+        id: { ne: "blogwise-tag-51e8f9eb-1617-4f18-a1f8-d48175e79ae0" }
+      }
+    ) {
       edges {
         node {
           name
