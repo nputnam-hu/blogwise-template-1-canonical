@@ -3,7 +3,7 @@ import Layout from '../components/Layout'
 import PostListView from '../components/PostListView'
 import { SearchWidget } from '../components/SearchBar'
 import { navigate } from 'gatsby'
-import './search.sass'
+import '../styles/search.sass'
 
 class Search extends Component {
   constructor(props) {

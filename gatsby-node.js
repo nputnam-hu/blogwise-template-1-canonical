@@ -1,7 +1,10 @@
 /* eslint-disable consistent-return */
 const path = require('path')
 const fs = require('fs')
+const schemaData = require('./plugins/gatsby-source-blogwise/schema.json')
 
+const { schemaAuthor, schemaPost, schemaTag } = schemaData
+const schemaTagId = `blogwise-tag-${Object.keys(schemaTag)[0]}`
 const { hasBeenInitialized } = require('./src/constants/user.json')
 
 exports.createPages = ({ actions, graphql }) => {

@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Layout from '../components/Layout'
-import './about.sass'
+import '../styles/about.sass'
 
 const About = ({
   data: {
