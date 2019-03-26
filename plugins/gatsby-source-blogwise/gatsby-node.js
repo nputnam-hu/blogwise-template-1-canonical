@@ -171,15 +171,26 @@ exports.sourceNodes = async (
   })
 
   const dataNodeId = `blogwise-data`
+  const defaultValues = {
+    title: '',
+    name: '',
+    description: '',
+    backgroundHexCode: '#ffffff',
+    mainSiteUrl: null,
+    twitterUrl: null,
+    facebookUrl: null,
+    linkedinUrl: null,
+  }
   const fields = {
-    title: data.title,
-    name: data.name,
-    description: data.description,
-    backgroundHexCode: data.backgroundHexCode,
-    mainSiteUrl: data.mainSiteUrl,
-    twitterUrl: data.twitterUrl,
-    facebookUrl: data.facebookUrl,
-    linkedinUrl: data.linkedinUrl,
+    title: data.title || defaultValues.title,
+    name: data.name || defaultValues.name,
+    description: data.description || defaultValues.description,
+    backgroundHexCode:
+      data.backgroundHexCode || defaultValues.backgroundHexCode,
+    mainSiteUrl: data.mainSiteUrl || defaultValues.mainSiteUrl,
+    twitterUrl: data.twitterUrl || defaultValues.twitterUrl,
+    facebookUrl: data.facebookUrl || defaultValues.facebookUrl,
+    linkedinUrl: data.linkedinUrl || defaultValues.linkedinUrl,
   }
   const dataNodeData = {
     ...fields,
@@ -193,7 +204,9 @@ exports.sourceNodes = async (
     },
   }
   const headerNode = await createRemoteFileNode({
-    url: data.headerPhotoUri,
+    url:
+      data.headerPhotoUri ||
+      'https://s3.amazonaws.com/megaphone-logo-uploads/defaultLogo.png',
     parentNodeId: dataNodeId,
     store,
     cache,
@@ -205,7 +218,9 @@ exports.sourceNodes = async (
     dataNodeData.header___NODE = headerNode.id
   }
   const sidebarNode = await createRemoteFileNode({
-    url: data.sidebarPhotoUri,
+    url:
+      data.sidebarPhotoUri ||
+      'https://s3.amazonaws.com/megaphone-logo-uploads/defaultLogo.png',
     parentNodeId: dataNodeId,
     store,
     cache,
