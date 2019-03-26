@@ -4,6 +4,8 @@ const truncate = require('truncatise')
 const decode = require('unescape')
 const rp = require('request-promise')
 
+const blogData = require('./queryData.json')
+
 exports.sourceNodes = async (
   { actions, createNodeId, createContentDigest, store, cache },
   { token, apiUrl },
@@ -15,14 +17,15 @@ exports.sourceNodes = async (
   if (!apiUrl) {
     throw new Error('Must provide a valid API url')
   }
-  const blogData = await rp({
-    method: 'GET',
-    uri: `${apiUrl}/blogs/build`,
-    headers: {
-      'x-access-token': token,
-    },
-    json: true,
-  })
+  // const blogData = await rp({
+  //   method: 'GET',
+  //   uri: `${apiUrl}/blogs/build`,
+  //   headers: {
+  //     'x-access-token': token,
+  //   },
+  //   json: true,
+  // })
+
   const { posts, tags, authors, data } = blogData
 
   const createPostId = id => `blogwise-post-${id}`
