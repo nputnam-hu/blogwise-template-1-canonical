@@ -46,7 +46,13 @@ export default class IndexPage extends Component {
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allBlogPost(sort: { order: DESC, fields: [publishDate] }, limit: 5) {
+    allBlogPost(
+      sort: { order: DESC, fields: [publishDate] }
+      limit: 5
+      filter: {
+        id: { ne: "blogwise-post-3b8cba55-b05d-43fc-bfa6-a51c4aea3d61" }
+      }
+    ) {
       edges {
         node {
           id

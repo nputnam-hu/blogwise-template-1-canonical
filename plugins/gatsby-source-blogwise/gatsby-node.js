@@ -5,6 +5,7 @@ const decode = require('unescape')
 const rp = require('request-promise')
 
 const schema = require('./schema.json')
+const realData = require('./realData.json')
 
 exports.sourceNodes = async (
   { actions, createNodeId, createContentDigest, store, cache },
@@ -26,7 +27,13 @@ exports.sourceNodes = async (
   //   json: true,
   // })
 
-  const { posts, tags, authors, data } = schema
+  const { schemaPost, schemaTag, schemaAuthor } = schema
+  let { posts, authors } = realData
+  const { tags, data } = realData
+
+  posts = posts.concat(schemaPost)
+  Object.assign(tags, schemaTag)
+  authors = authors.concat(schemaAuthor)
 
   const createPostId = id => `blogwise-post-${id}`
   const createAuthorId = id => `blogwise-author-${id}`
