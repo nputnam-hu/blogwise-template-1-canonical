@@ -25,18 +25,5 @@
       "name": "Schema Tag",
       "description": "Description of schema tag."
     }
-  },
-  "data": {
-    "title": "Title of Schema Blog",
-    "name": "Name of Schema Blog",
-    "description": "Description of schema blog.",
-    "headerPhotoUri": "https://s3.amazonaws.com/megaphone-logo-uploads/defaultLogo.png",
-    "sidebarPhotoUri": "https://s3.amazonaws.com/megaphone-logo-uploads/defaultLogo.png",
-    "bgImgUri": "https://s3.amazonaws.com/megaphone-logo-uploads/defaultLogo.png",
-    "backgroundHexCode": "#ffffff",
-    "mainSiteUrl": "https://www.blogwise.co/",
-    "twitterUrl": "https://twitter.com/",
-    "facebookUrl": "https://www.facebook.com/",
-    "linkedinUrl": "https://www.linkedin.com/"
   }
 }
