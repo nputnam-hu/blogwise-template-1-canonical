@@ -4,7 +4,7 @@ const truncate = require('truncatise')
 const decode = require('unescape')
 const rp = require('request-promise')
 
-const blogData = require('./queryData.json')
+const schema = require('./schema.json')
 
 exports.sourceNodes = async (
   { actions, createNodeId, createContentDigest, store, cache },
@@ -26,7 +26,7 @@ exports.sourceNodes = async (
   //   json: true,
   // })
 
-  const { posts, tags, authors, data } = blogData
+  const { posts, tags, authors, data } = schema
 
   const createPostId = id => `blogwise-post-${id}`
   const createAuthorId = id => `blogwise-author-${id}`
@@ -43,6 +43,7 @@ exports.sourceNodes = async (
   // objects to store the posts associated with each author and tag
   const authorPosts = {}
   const tagPosts = {}
+
   const postData = await Promise.all(
     posts.map(async post => {
       const postNodeId = createPostId(post.id)
@@ -91,6 +92,7 @@ exports.sourceNodes = async (
           postNodeData.coverPhoto___NODE = coverPhotoNode.id
         }
       }
+
       return postNodeData
     }),
   )
@@ -128,6 +130,7 @@ exports.sourceNodes = async (
       if (headshotNode) {
         authorNodeData.headshot___NODE = headshotNode.id
       }
+
       return authorNodeData
     }),
   )
@@ -156,6 +159,7 @@ exports.sourceNodes = async (
         contentDigest: createContentDigest(tag),
       },
     }
+
     return tagNodeData
   })
 
