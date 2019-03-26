@@ -1,19 +1,15 @@
-const { title, description } = require('./src/constants/user.json')
+const { token, apiUrl } = require('./src/constants/user.json')
 
 module.exports = {
-  siteMetadata: {
-    title,
-    description,
-  },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
-      // keep as first gatsby-source-filesystem plugin for gatsby image support
-      resolve: 'gatsby-source-filesystem',
+      // must be first source-filesystem call
+      resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/static/img`,
-        name: 'uploads',
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
     },
     {
@@ -23,64 +19,19 @@ module.exports = {
         name: 'pages',
       },
     },
-    // {
-    //   resolve: 'gatsby-source-filesystem',
-    //   options: {
-    //     path: `${__dirname}/src/img`,
-    //     name: 'images',
-    //   },
-    // },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          {
-            resolve: 'gatsby-remark-relative-images',
-            options: {
-              name: 'uploads',
-            },
-          },
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 2048,
-            },
-          },
-          {
-            resolve: 'gatsby-remark-copy-linked-files',
-            options: {
-              destinationDir: 'static',
-            },
-          },
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: 'language-',
-              inlineCodeMarker: null,
-              aliases: {},
-              showLineNumbers: false,
-              noInlineHighlight: false,
-            },
-          },
-        ],
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Source Serif Pro`],
+        fonts: [`Rubik`],
       },
     },
     {
-      resolve: 'gatsby-plugin-netlify-cms',
+      resolve: 'gatsby-source-blogwise',
       options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
-        enableIdentityWidget: false,
+        token,
+        apiUrl,
       },
     },
     'gatsby-plugin-purgecss', // must be after other CSS plugins,

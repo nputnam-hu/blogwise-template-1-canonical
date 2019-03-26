@@ -15,7 +15,7 @@ export const SearchWidget = ({
       id="searchbar"
       type="text"
       className={size}
-      value={query}
+      value={query || ''}
       onChange={handleChange}
       onKeyPress={e => {
         if (e.key === 'Enter') {

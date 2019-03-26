@@ -45,7 +45,7 @@
     padding-bottom: 2px
 
   .bodytext
-    font-family: 'Source Serif Pro'
+    font-family: Rubik
     font-size: 20px
     font-weight: 300
     line-height: 30px
@@ -53,7 +53,14 @@
     @media (max-width: 800px)
       margin-top: 20px
       font-size: 18px
-  
+    p
+      display: flex
+      flex-direction: column
+    img
+      align-self: center
+      max-width: 500px
+      @media (max-width: 600px)
+        max-width: 300px
     code
       font-size: 14px
 
@@ -69,23 +76,19 @@
       height: 175px
 
     .article-authorbio
-      width: 200px
+      width: 250px
       font-family: 'Assistant Regular'
       font-weight: 300
       font-size: 14px
 
     .sharebuttons
+      margin-top: 20px
       align-self: center
       display: flex
       flex-direction: row
       width: 200px
       justify-content: space-around
-    
-    img
-      margin-top: 10px
-      width: 60px
-      height: 60px
-      border-radius: 60px
+
 
   .taglist
     list-style: none

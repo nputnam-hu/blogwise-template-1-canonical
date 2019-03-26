@@ -1,44 +1,40 @@
 /* eslint-disable consistent-return */
-const _ = require('lodash')
 const path = require('path')
-const { createFilePath } = require('gatsby-source-filesystem')
-const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 const fs = require('fs')
 
-const {
-  authors,
-  tags: currentTags,
-  hasBeenInitialized,
-} = require('./src/constants/user.json')
+const { hasBeenInitialized } = require('./src/constants/user.json')
 
 exports.createPages = ({ actions, graphql }) => {
   if (!hasBeenInitialized) {
     return
   }
   const { createPage } = actions
-  Object.keys(authors).forEach(author => {
-    createPage({
-      path: `/authors/${_.kebabCase(authors[author].name)}`,
-      component: path.resolve(`src/templates/author/index.js`),
-      // additional data can be passed via context
-      context: {
-        author,
-      },
-    })
-  })
   return graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      allBlogPost(limit: 1000) {
         edges {
           node {
             id
-            fields {
-              slug
+            slug
+            tags {
+              id
             }
-            frontmatter {
-              tags
-              templateKey
-            }
+          }
+        }
+      }
+      allAuthor {
+        edges {
+          node {
+            id
+            slug
+          }
+        }
+      }
+      allTag {
+        edges {
+          node {
+            id
+            slug
           }
         }
       }
@@ -49,63 +45,44 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    const posts = result.data.allMarkdownRemark.edges
-    posts.forEach(edge => {
-      const { id } = edge.node
+    const posts = result.data.allBlogPost.edges
+    posts.forEach(({ node }) => {
+      const { slug, id, tags } = node
       createPage({
-        path: edge.node.fields.slug,
-        tags: edge.node.frontmatter.tags,
-        component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}/index.js`,
-        ),
+        path: slug,
+        component: path.resolve(`src/templates/blog-post/index.js`),
         // additional data can be passed via context
         context: {
           id,
-          tags: edge.node.frontmatter.tags,
+          tagIds: tags.map(t => t.id),
         },
       })
     })
-
-    // Tag pages:
-    let tags = Object.keys(currentTags)
-    // Iterate through each post, putting all found tags into `tags`
-    posts.forEach(edge => {
-      if (_.get(edge, `node.frontmatter.tags`)) {
-        tags = tags.concat(edge.node.frontmatter.tags)
-      }
+    const authors = result.data.allAuthor.edges
+    authors.forEach(({ node }) => {
+      const { slug, id } = node
+      createPage({
+        path: slug,
+        component: path.resolve(`src/templates/author/index.js`),
+        // additional data can be passed via context
+        context: {
+          id,
+        },
+      })
     })
-    // Eliminate duplicate tags
-    tags = _.uniq(tags)
-
-    // Make tag pages
-    tags.forEach(tag => {
-      const tagPath = `/${_.kebabCase(
-        currentTags[tag] ? currentTags[tag].name : tag,
-      )}/`
+    const tags = result.data.allTag.edges
+    tags.forEach(({ node }) => {
+      const { slug, id } = node
 
       createPage({
-        path: tagPath,
+        path: slug,
         component: path.resolve(`src/templates/tags/index.js`),
         context: {
-          tag,
+          id,
         },
       })
     })
   })
-}
-
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-  fmImagesToRelative(node) // convert image paths for gatsby images
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
 }
 
 // Build search index
@@ -113,22 +90,15 @@ exports.onPostBootstrap = ({ getNodes }) => {
   if (!hasBeenInitialized) {
     return
   }
-  const nodes = getNodes().filter(
-    n =>
-      n.internal.type === 'MarkdownRemark' &&
-      n.frontmatter.templateKey === 'blog-post',
-  )
+  const nodes = getNodes().filter(n => n.internal.type === 'BlogPost')
   const docs = nodes.map(node => ({
     id: node.id,
-    title: node.frontmatter.title,
-    author: authors[node.frontmatter.author],
-    description: node.frontmatter.description,
-    date: node.frontmatter.date,
-    tags: node.frontmatter.tags,
-    thumbnail: node.frontmatter.thumbnail
-      ? node.frontmatter.thumbnail.match(/\/img.*/g)[0]
-      : null,
-    slug: node.fields.slug,
+    title: node.title,
+    slug: node.slug,
+    author: node.author___NODE,
+    excerpt: node.excerpt,
+    publishDate: node.publishDate,
+    tags: node.tags___NODE,
   }))
   fs.writeFileSync('./public/search_index.json', JSON.stringify({ docs }))
 }

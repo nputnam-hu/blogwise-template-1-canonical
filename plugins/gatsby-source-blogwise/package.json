@@ -1,0 +1,19 @@
+{
+  "name": "plugins",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gatsby-source-filesystem": "^2.0.28",
+    "lodash": "^4.17.11",
+    "request-promise": "^4.2.4",
+    "truncatise": "0.0.7",
+    "unescape": "^1.0.1"
+  }
+}

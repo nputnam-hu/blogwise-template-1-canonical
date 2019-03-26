@@ -1,10 +1,7 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import {
-  headerPhotoUri,
-  backgroundHexCode,
-  customNavbarLinks,
-} from '../../constants/user.json'
+import { StaticQuery, graphql, Link } from 'gatsby'
+import Img from 'gatsby-image'
+import { customNavbarLinks } from '../../constants/user.json'
 import './styles.sass'
 
 function getColorByBgColor(bgColor) {
@@ -15,24 +12,49 @@ function getColorByBgColor(bgColor) {
 }
 
 const Navbar = () => (
-  <div className="navbar-container" style={{ background: backgroundHexCode }}>
-    <Link to="/" className="navbar-item" title="Logo">
-      <img id="navbar-logo" src={headerPhotoUri} alt="Kaldi" />
-    </Link>
-    <div id="navbar-links">
-      {customNavbarLinks.map(({ link, name }) => (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href={link}
-          alt={name}
-          style={{ color: getColorByBgColor(backgroundHexCode) }}
-        >
-          {name}
-        </a>
-      ))}
-    </div>
-  </div>
+  <StaticQuery
+    query={graphql`
+      query Navbar {
+        blogData {
+          backgroundHexCode
+          header {
+            childImageSharp {
+              fixed(height: 40) {
+                ...GatsbyImageSharpFixed
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={({ blogData: { backgroundHexCode, header } }) => (
+      <div
+        className="navbar-container"
+        style={{ background: backgroundHexCode }}
+      >
+        <Link to="/" className="navbar-item" title="Logo">
+          <Img
+            className="navbar-logo"
+            fixed={header.childImageSharp.fixed}
+            alt="logo"
+          />
+        </Link>
+        <div id="navbar-links">
+          {customNavbarLinks.map(({ link, name }) => (
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={link}
+              alt={name}
+              style={{ color: getColorByBgColor(backgroundHexCode) }}
+            >
+              {name}
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  />
 )
 
 export default Navbar

@@ -11,25 +11,21 @@ const TemplateWrapper = ({ showNav = true, children }) => (
   <StaticQuery
     query={graphql`
       query HeadingQuery {
-        site {
-          siteMetadata {
-            title
-            description
-          }
+        blogData {
+          title
+          description
         }
       }
     `}
     render={data => (
       <div>
-        <Helmet>
+        <Helmet
+          defaultTitle={data.blogData.title}
+          titleTemplate={`%s - ${data.blogData.title}`}
+        >
           <html lang="en" />
-          <title>{data.site.siteMetadata.title}</title>
-          <meta
-            name="description"
-            content={data.site.siteMetadata.description}
-          />
+          <meta name="description" content={data.blogData.description} />
           <link rel="stylesheet" href="https://use.typekit.net/nxa2kay.css" />
-
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -56,7 +52,7 @@ const TemplateWrapper = ({ showNav = true, children }) => (
           <meta name="theme-color" content="#fff" />
 
           <meta property="og:type" content="business.business" />
-          <meta property="og:title" content={data.site.siteMetadata.title} />
+          <meta property="og:title" content={data.blogData.title} />
           <meta property="og:url" content="/" />
           <meta property="og:image" content="/img/og-image.jpg" />
         </Helmet>

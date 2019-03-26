@@ -3,29 +3,24 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
-import { get, upperFirst, kebabCase } from 'lodash'
+import { upperFirst } from 'lodash'
 
 import Popular from '../../components/Popular'
 import Time from '../../components/Time'
 import Layout from '../../components/Layout'
-import { tags, authors } from '../../constants/user.json'
 import './styles.sass'
 
 class TagView extends Component {
   render() {
-    const posts = get(this, 'props.data.allMarkdownRemark.edges') || []
-    const { tag } = this.props.pageContext
-    if (!tags[tag]) return <div>Wrong Page</div>
-    const { name, description } = tags[tag]
-
-    const firstPost = posts.length > 0 ? posts[0].node : null
+    let { posts } = this.props.data.tag
+    const { name, description } = this.props.data.tag
+    if (!posts) posts = []
+    const firstPost = posts.length > 0 ? posts[0] : null
     const otherPosts = posts.slice(1)
     return (
       <Layout>
         <div id="tag-container">
-          <Helmet
-            title={`${name} | ${this.props.data.site.siteMetadata.title}`}
-          />
+          <Helmet title={name} />
           <span id="tagheader">{`${upperFirst(name)}`}</span>
           <br />
           <span id="tagdescription">{description}</span>
@@ -34,46 +29,40 @@ class TagView extends Component {
             <div id="articles">
               {firstPost ? (
                 <>
-                  {Boolean(firstPost.frontmatter.thumbnail) && (
+                  {Boolean(firstPost.thumbnail) && (
                     <Link
                       style={{ textDecoration: 'none' }}
-                      to={firstPost.fields.slug}
+                      to={firstPost.slug}
                     >
                       <Img
-                        fluid={
-                          firstPost.frontmatter.thumbnail.childImageSharp
-                            .largeFluid
-                        }
+                        fluid={firstPost.thumbnail.childImageSharp.largeFluid}
                       />
                     </Link>
                   )}
                   <br />
-                  <Link
-                    style={{ textDecoration: 'none' }}
-                    to={firstPost.fields.slug}
-                  >
-                    <span className="articletitle">
-                      {firstPost.frontmatter.title}
-                    </span>
-                    <p className="articledescription">{firstPost.excerpt}</p>
+                  <Link style={{ textDecoration: 'none' }} to={firstPost.slug}>
+                    <span className="articletitle">{firstPost.title}</span>
+                    <p className="articledescription">
+                      {firstPost.excerpt || firstPost.description}
+                    </p>
                   </Link>
                   <br />
                   <div>
                     <Link
                       style={{ textDecoration: 'none' }}
-                      to={`/authors/${kebabCase(name)}`}
+                      to={firstPost.author.slug}
                     >
-                      <img
+                      <Img
                         className="authorimg first"
-                        alt={name}
-                        src={authors[firstPost.frontmatter.author].img}
+                        alt={firstPost.author.name}
+                        fixed={firstPost.author.headshot.childImageSharp.fixed}
                       />
                       <div className="articlebyline">
-                        {authors[firstPost.frontmatter.author].name}
+                        {firstPost.author.name}
                       </div>
                     </Link>
                     <div style={{ paddingTop: '3px' }}>
-                      <Time date={firstPost.frontmatter.date} size="small" />
+                      <Time date={firstPost.publishDate} size="small" />
                     </div>
                   </div>
                   <hr />
@@ -83,20 +72,14 @@ class TagView extends Component {
                   No posts tagged {name} yet
                 </h2>
               )}
-              {otherPosts.map(({ node }) => (
-                <div key={node.slug}>
+              {otherPosts.map(post => (
+                <div key={post.id}>
                   <div className="tagarticle-container">
-                    {Boolean(node.frontmatter.thumbnail) && (
+                    {Boolean(post.thumbnail) && (
                       <React.Fragment>
-                        <Link
-                          style={{ textDecoration: 'none' }}
-                          to={node.fields.slug}
-                        >
+                        <Link style={{ textDecoration: 'none' }} to={post.slug}>
                           <Img
-                            fixed={
-                              node.frontmatter.thumbnail.childImageSharp
-                                .smallFixed
-                            }
+                            fixed={post.thumbnail.childImageSharp.smallFixed}
                           />
                         </Link>
                         <br />
@@ -105,38 +88,33 @@ class TagView extends Component {
                     <div
                       className="tagarticle"
                       style={
-                        !node.frontmatter.thumbnail
+                        !post.thumbnail
                           ? { marginLeft: 0, width: '100%', marginTop: 0 }
                           : {}
                       }
                     >
-                      <Link
-                        style={{ textDecoration: 'none' }}
-                        to={node.fields.slug}
-                      >
-                        <span className="articletitle">
-                          {node.frontmatter.title}
-                        </span>
-                        <p className="articledescription">{node.excerpt}</p>
+                      <Link style={{ textDecoration: 'none' }} to={post.slug}>
+                        <span className="articletitle">{post.title}</span>
+                        <p className="articledescription">
+                          {post.excerpt || post.description}
+                        </p>
                       </Link>
                       <Link
                         style={{ textDecoration: 'none' }}
-                        to={`/authors/${kebabCase(name)}`}
+                        to={post.author.slug}
                       >
-                        <img
+                        <Img
                           className="authorimg"
                           alt={name}
-                          src={authors[node.frontmatter.author].img}
+                          fixed={post.author.headshot.childImageSharp.fixed}
                         />
                       </Link>
-                      <div className="articlebyline">
-                        {authors[node.frontmatter.author].name}
-                      </div>
+                      <div className="articlebyline">{post.author.name}</div>
                       <br />
                       <br />
                       <div>
                         <div className="timewrapper">
-                          <Time size="small" date={node.frontmatter.date} />
+                          <Time size="small" date={post.publishDate} />
                         </div>
                       </div>
                     </div>
@@ -156,34 +134,34 @@ class TagView extends Component {
 export default TagView
 
 export const pageQuery = graphql`
-  query TaqQuery($tag: String!) {
-    site {
-      siteMetadata {
+  query TaqQuery($id: String!) {
+    tag(id: { eq: $id }) {
+      name
+      description
+      posts {
+        id
+        excerpt
+        description
+        slug
         title
-      }
-    }
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { eq: $tag } } }
-    ) {
-      edges {
-        node {
-          excerpt(pruneLength: 140)
-          fields {
-            slug
+        publishDate
+        thumbnail: coverPhoto {
+          childImageSharp {
+            largeFluid: fluid(maxWidth: 769, maxHeight: 412) {
+              ...GatsbyImageSharpFluid
+            }
+            smallFixed: fixed(width: 373, height: 281) {
+              ...GatsbyImageSharpFixed
+            }
           }
-          frontmatter {
-            date(formatString: "DD MMMM, YYYY")
-            title
-            author
-            thumbnail {
-              childImageSharp {
-                largeFluid: fluid(maxWidth: 769, maxHeight: 412) {
-                  ...GatsbyImageSharpFluid
-                }
-                smallFixed: fixed(width: 373, height: 281) {
-                  ...GatsbyImageSharpFixed
-                }
+        }
+        author {
+          name
+          slug
+          headshot {
+            childImageSharp {
+              fixed(height: 50, width: 50) {
+                ...GatsbyImageSharpFixed
               }
             }
           }

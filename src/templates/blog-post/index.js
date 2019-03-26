@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
+import Img from 'gatsby-image'
 import {
   EmailIcon,
   FacebookIcon,
@@ -17,7 +17,6 @@ import Layout from '../../components/Layout'
 import Time from '../../components/Time'
 import Content, { HTMLContent } from '../../components/Content'
 import MorePosts from '../../components/MorePosts'
-import { authors, siteUrl, tags as userTags } from '../../constants/user.json'
 import './styles.sass'
 
 export class BlogPostTemplate extends Component {
@@ -40,19 +39,19 @@ export class BlogPostTemplate extends Component {
   }
   render() {
     const {
-      content,
+      htmlBody,
       contentComponent,
       helmet,
-      slug = '',
-      description = '',
+      coverPhoto,
+      description,
       tags = [],
-      title = '',
-      date = Date.now(),
-      author = {},
+      title,
+      publishDate,
+      author,
       morePosts = [],
     } = this.props
     const PostContent = contentComponent || Content
-    const { name = '', img = '', bio = '' } = author
+    const pageUrl = window.location.href
     return (
       <section id="article-container">
         <div
@@ -66,127 +65,107 @@ export class BlogPostTemplate extends Component {
         />
         {helmet || ''}
         <h1 id="article-title">{title}</h1>
-        <Link
-          style={{ textDecoration: 'none' }}
-          to={`/authors/${kebabCase(name)}`}
-        >
-          <img className="authorimg" alt={name} src={img} />
+        <Link style={{ textDecoration: 'none' }} to={author.slug}>
+          <Img
+            className="authorimg"
+            alt={`${author.name} headshot`}
+            fixed={author.headshot.childImageSharp.fixed}
+          />
         </Link>
         <div className="authorinfo">
-          <Link
-            style={{ textDecoration: 'none' }}
-            to={`/authors/${kebabCase(name)}`}
-          >
-            <div className="article-authorname">{name}</div>
+          <Link style={{ textDecoration: 'none' }} to={author.slug}>
+            <div className="article-authorname">{author.name}</div>
           </Link>
-          <Time size="large" date={date} />
+          <Time size="large" date={publishDate} />
         </div>
         <i>
           <PostContent className="bodytext" content={description} />
         </i>
-        <PostContent className="bodytext" content={content} />
-        {tags && tags.length > 0 ? (
+        {coverPhoto && (
+          <Img
+            fluid={coverPhoto.childImageSharp.fluid}
+            alt="Cover Photo"
+            className="article-cover"
+          />
+        )}
+        <PostContent className="bodytext" content={htmlBody} />
+        {tags && tags.length > 0 && (
           <div style={{ marginTop: `3rem` }}>
             <ul className="taglist">
               {tags.map(tag => (
-                <li key={`${tag}tag`}>
-                  <Link
-                    to={kebabCase(userTags[tag] ? userTags[tag].name : tag)}
-                  >
-                    {userTags[tag] ? userTags[tag].name : ''}
-                  </Link>
+                <li key={`${tag.id}tag`}>
+                  <Link to={tag.slug}>{tag.name}</Link>
                 </li>
               ))}
             </ul>
           </div>
-        ) : null}
+        )}
         <div id="articlebottomcontent">
           <div>
-            <Link
-              style={{ textDecoration: 'none' }}
-              to={`/authors/${kebabCase(name)}`}
-            >
-              <img className="authorimg" alt={name} src={img} />
+            <Link style={{ textDecoration: 'none' }} to={author.slug}>
+              <Img
+                className="authorimg"
+                alt={`${author.name} headshot`}
+                fixed={author.headshot.childImageSharp.fixed}
+              />
             </Link>
             <div className="authorinfo">
-              <Link
-                style={{ textDecoration: 'none' }}
-                to={`/authors/${kebabCase(name)}`}
-              >
-                <div className="article-authorname">{name}</div>
+              <Link style={{ textDecoration: 'none' }} to={author.slug}>
+                <div className="article-authorname">{author.name}</div>
               </Link>
-              <div className="article-authorbio">{bio}</div>
+              <div className="article-authorbio">{author.bio}</div>
             </div>
           </div>
           <div className="sharebuttons">
-            <FacebookShareButton
-              url={`${siteUrl}${slug}`}
-              quote={title}
-              className="Demo__some-network__share-button"
-            >
+            <FacebookShareButton url={pageUrl} quote={title}>
               <FacebookIcon size={32} round />
             </FacebookShareButton>
-            <TwitterShareButton
-              url={`${siteUrl}${slug}`}
-              title={title}
-              className="Demo__some-network__share-button"
-            >
+            <TwitterShareButton url={pageUrl} title={title}>
               <TwitterIcon size={32} round />
             </TwitterShareButton>
-            <EmailShareButton
-              url={`${siteUrl}${slug}`}
-              subject={title}
-              className="Demo__some-network__share-button"
-            >
+            <EmailShareButton url={pageUrl} subject={title}>
               <EmailIcon size={32} round />
             </EmailShareButton>
-            <LinkedinShareButton
-              url={`${siteUrl}${slug}`}
-              title={title}
-              className="Demo__some-network__share-button"
-            >
+            <LinkedinShareButton url={pageUrl} title={title}>
               <LinkedinIcon size={32} round />
             </LinkedinShareButton>
           </div>
         </div>
         <hr />
-        <MorePosts posts={morePosts} />
+        {morePosts && morePosts.length > 0 && <MorePosts posts={morePosts} />}
       </section>
     )
   }
 }
 const BlogPost = ({ data }) => {
-  const { markdownRemark: post } = data
-  const morePosts = data.allMarkdownRemark
-    ? data.allMarkdownRemark.edges.morePosts
+  const { blogPost: post } = data
+  const morePosts = data.allBlogPost
+    ? data.allBlogPost.edges.map(p => p.node)
     : []
   return (
     <Layout>
       <BlogPostTemplate
-        content={post.html}
+        htmlBody={post.htmlBody}
         contentComponent={HTMLContent}
-        description={post.frontmatter.description}
+        description={post.description}
         helmet={
           <Helmet titleTemplate="%s | Blog">
-            <title>{`${post.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.description}`}
-            />
-            <meta property="og:title" content={post.frontmatter.title} />
-            {post.frontmatter.thumbnail && (
+            <title>{`${post.title}`}</title>
+            <meta name="description" content={`${post.description}`} />
+            <meta property="og:title" content={post.title} />
+            {post.coverPhoto && (
               <meta
                 property="og:image"
-                content={post.frontmatter.thumbnail.absolutePath}
+                content={post.coverPhoto.absolutePath}
               />
             )}
           </Helmet>
         }
-        tags={post.frontmatter.tags}
-        slug={post.fields.slug}
-        title={post.frontmatter.title}
-        date={post.frontmatter.date}
-        author={authors[post.frontmatter.author]}
+        coverPhoto={post.coverPhoto}
+        tags={post.tags}
+        title={post.title}
+        publishDate={post.publishDate}
+        author={post.author}
         morePosts={morePosts}
       />
     </Layout>
@@ -196,44 +175,58 @@ const BlogPost = ({ data }) => {
 export default BlogPost
 
 export const pageQuery = graphql`
-  query BlogPostByID($id: String!, $tags: [String!]!) {
-    markdownRemark(id: { eq: $id }) {
+  query BlogPostByID($id: String!, $tagIds: [String!]) {
+    blogPost(id: { eq: $id }) {
       id
-      html
-      fields {
-        slug
-      }
-      frontmatter {
-        date(formatString: "MMMM DD, YYYY")
-        title
-        description
-        thumbnail {
-          absolutePath
+      htmlBody
+      slug
+      publishDate
+      title
+      description
+      coverPhoto {
+        childImageSharp {
+          fluid(maxWidth: 450) {
+            ...GatsbyImageSharpFluid
+          }
         }
-        tags
-        author
+      }
+      tags {
+        id
+        slug
+        name
+      }
+      author {
+        name
+        bio
+        slug
+        headshot {
+          childImageSharp {
+            fixed(height: 50, width: 50) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
       }
     }
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: $tags } }, id: { ne: $id } }
+    allBlogPost(
+      sort: { fields: [publishDate], order: DESC }
+      filter: { id: { ne: $id }, tags: { elemMatch: { id: { in: $tagIds } } } }
       limit: 3
     ) {
       edges {
         node {
-          excerpt(pruneLength: 80)
-          fields {
+          description
+          publishDate
+          title
+          slug
+          author {
             slug
+            name
           }
-          frontmatter {
-            date(formatString: "DD MMMM, YYYY")
-            title
-            author
-            thumbnail {
-              childImageSharp {
-                fixed(width: 200, height: 150) {
-                  ...GatsbyImageSharpFixed
-                }
+          thumbnail: coverPhoto {
+            childImageSharp {
+              fixed(width: 200, height: 150) {
+                ...GatsbyImageSharpFixed
               }
             }
           }

@@ -1,6 +1,8 @@
 # Project dependencies
 node_modules
 .cache/
+plugins/*/node_modules
+plugins/*/.cache
 # Build directory
 public/
 static/admin/*.bundle.*
@@ -8,5 +10,4 @@ static/admin/*.bundle.*
 yarn-error.log
 # Project specific
 src/constants
-src/pages/a
 push_to_all.sh

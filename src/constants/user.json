@@ -1,22 +1,7 @@
 {
-  "hasBeenInitialized": false,
-  "title": "",
-  "description": "",
-  "headerPhotoUri": "",
-  "sidebarPhotoUri": "",
-  "faviconPhotoUri": "",
-  "backgroundHexCode": "",
-  "bgImgUri": "",
-  "siteUrl": "",
-  "name": "",
-  "social": { "mainSite": "", "twitter": "", "facebook": "", "linkedin": "" },
-  "tags": {},
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImZjYWUzMDQ0LTZhMWUtNGMyMC05MDlhLWFhNDFkMDliYzAwMSIsImVtYWlsIjoibkBwLmNvbSJ9._5GM-T6vQ67aJM2-FRfLF2_JgY8Fy_BS9jBl0s1Om7g",
+  "apiUrl": "http://localhost:3001",
+  "faviconPhotoUri": "https://megaphone-logo-uploads.s3.amazonaws.com/1552706715156_favicon.png",
   "customNavbarLinks": [],
-  "authors": {
-    "blogwiseStaff": {
-      "name": "Blogwise Staff",
-      "bio": "Blogwise is the best way to start content marketing for your business",
-      "img": "https://s3.amazonaws.com/megaphone-logo-uploads/defaultUser.png"
-    }
-  }
+  "hasBeenInitialized": true
 }

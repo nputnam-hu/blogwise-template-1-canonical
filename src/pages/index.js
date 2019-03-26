@@ -7,11 +7,12 @@ import { hasBeenInitialized } from '../constants/user.json'
 export default class IndexPage extends Component {
   render() {
     const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
+    const { edges: posts } = data.allBlogPost
+    const { edges: tags } = data.allTag
 
     return hasBeenInitialized ? (
       <Layout showNav={false}>
-        <IndexContent posts={posts} />
+        <IndexContent posts={posts} tags={tags} blogData={data.blogData} />
       </Layout>
     ) : (
       <div
@@ -45,30 +46,63 @@ export default class IndexPage extends Component {
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
-      limit: 5
-    ) {
+    allBlogPost(sort: { order: DESC, fields: [publishDate] }, limit: 5) {
       edges {
         node {
-          excerpt(pruneLength: 150)
           id
-          fields {
+          description
+          excerpt
+          slug
+          title
+          publishDate
+          author {
+            name
             slug
           }
-          frontmatter {
-            title
-            author
-            templateKey
-            thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 153, maxHeight: 133) {
-                  ...GatsbyImageSharpFluid
-                }
+          thumbnail: coverPhoto {
+            childImageSharp {
+              fluid(maxWidth: 153, maxHeight: 133) {
+                ...GatsbyImageSharpFluid
               }
             }
-            date(formatString: "MMMM DD, YYYY")
+          }
+        }
+      }
+    }
+    allTag {
+      edges {
+        node {
+          name
+          slug
+        }
+      }
+    }
+    blogData {
+      title
+      name
+      description
+      backgroundHexCode
+      twitterUrl
+      facebookUrl
+      linkedinUrl
+      header {
+        childImageSharp {
+          fixed(height: 75) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      sidebar {
+        childImageSharp {
+          fixed(height: 35) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      background {
+        childImageSharp {
+          fluid(maxHeight: 35) {
+            ...GatsbyImageSharpFluid
           }
         }
       }

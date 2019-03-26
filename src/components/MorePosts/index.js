@@ -7,19 +7,16 @@ const MorePosts = ({ posts }) => (
   <div>
     <h3 id="morepostsheader">More Like This Post</h3>
     <div id="moreposts-container">
-      {posts.map(({ node }) => (
+      {posts.map(({ slug, title, description, thumbnail }) => (
         <div className="morebox">
-          <Link to={node.fields.slug}>
-            {node.frontmatter.thumbnail ? (
-              <Img
-                alt={node.frontmatter.title}
-                fixed={node.frontmatter.thumbnail.childImageSharp.fixed}
-              />
+          <Link to={slug}>
+            {thumbnail ? (
+              <Img alt={title} fixed={thumbnail.childImageSharp.fixed} />
             ) : (
               <div style={{ height: 150, width: 200 }} />
             )}
-            <div className="moretitle"> {node.frontmatter.title}</div>
-            <div className="moreexcerpt"> {node.excerpt}</div>
+            <div className="moretitle"> {title}</div>
+            <div className="moreexcerpt"> {description}</div>
           </Link>
         </div>
       ))}
