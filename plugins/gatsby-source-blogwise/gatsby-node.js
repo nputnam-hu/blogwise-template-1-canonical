@@ -18,6 +18,11 @@ exports.sourceNodes = async (
   if (!apiUrl) {
     throw new Error('Must provide a valid API url')
   }
+
+  // Depending on whether you want to use the API vs local data, uncomment one
+  // of the blocks below.
+
+  // Uncomment this block to use the API.
   // const blogData = await rp({
   //   method: 'GET',
   //   uri: `${apiUrl}/blogs/build`,
@@ -26,10 +31,14 @@ exports.sourceNodes = async (
   //   },
   //   json: true,
   // })
+  // let { posts, authors, tags } = blogData
+  // const { data } = blogData
 
-  const { schemaPost, schemaTag, schemaAuthor } = schema
+  // Uncomment this block to use the locally saved data.
   let { posts, authors, tags } = realData
   const { data } = realData
+
+  const { schemaPost, schemaTag, schemaAuthor } = schema
 
   posts = posts.concat(schemaPost)
   tags = { ...tags, ...schemaTag }
