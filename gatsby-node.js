@@ -3,8 +3,12 @@ const path = require('path')
 const fs = require('fs')
 const schemaData = require('./plugins/gatsby-source-blogwise/schema.json')
 
+// Extract the id values for the schemas
 const { schemaAuthor, schemaPost, schemaTag } = schemaData
+const schemaAuthorId = `blogwise-author-${schemaAuthor[0].id}`
+const schemaPostId = `blogwise-post-${schemaPost[0].id}`
 const schemaTagId = `blogwise-tag-${Object.keys(schemaTag)[0]}`
+
 const { hasBeenInitialized } = require('./src/constants/user.json')
 
 exports.createPages = ({ actions, graphql }) => {
@@ -12,9 +16,15 @@ exports.createPages = ({ actions, graphql }) => {
     return
   }
   const { createPage } = actions
+  // TODO: Figure out how to use variables for ids here
   return graphql(`
     {
-      allBlogPost(limit: 1000) {
+      allBlogPost(
+        limit: 1000
+        filter: {
+          id: { ne: "blogwise-post-3b8cba55-b05d-43fc-bfa6-a51c4aea3d61" }
+        }
+      ) {
         edges {
           node {
             id
@@ -25,7 +35,11 @@ exports.createPages = ({ actions, graphql }) => {
           }
         }
       }
-      allAuthor {
+      allAuthor(
+        filter: {
+          id: { ne: "blogwise-author-fcae3044-6a1e-4c20-909a-aa41d09bc001" }
+        }
+      ) {
         edges {
           node {
             id
@@ -33,7 +47,11 @@ exports.createPages = ({ actions, graphql }) => {
           }
         }
       }
-      allTag {
+      allTag(
+        filter: {
+          id: { ne: "blogwise-tag-51e8f9eb-1617-4f18-a1f8-d48175e79ae0" }
+        }
+      ) {
         edges {
           node {
             id
@@ -85,6 +103,22 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
+  })
+}
+
+// Pass the schema values in the context
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions
+
+  deletePage(page)
+  // You can access the variable "house" in your page queries now
+  createPage({
+    ...page,
+    context: {
+      schemaAuthorId,
+      schemaPostId,
+      schemaTagId,
+    },
   })
 }
 

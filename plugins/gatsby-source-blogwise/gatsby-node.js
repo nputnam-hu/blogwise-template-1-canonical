@@ -28,11 +28,11 @@ exports.sourceNodes = async (
   // })
 
   const { schemaPost, schemaTag, schemaAuthor } = schema
-  let { posts, authors } = realData
-  const { tags, data } = realData
+  let { posts, authors, tags } = realData
+  const { data } = realData
 
   posts = posts.concat(schemaPost)
-  Object.assign(tags, schemaTag)
+  tags = { ...tags, ...schemaTag }
   authors = authors.concat(schemaAuthor)
 
   const createPostId = id => `blogwise-post-${id}`
@@ -176,10 +176,10 @@ exports.sourceNodes = async (
     name: '',
     description: '',
     backgroundHexCode: '#ffffff',
-    mainSiteUrl: null,
-    twitterUrl: null,
-    facebookUrl: null,
-    linkedinUrl: null,
+    mainSiteUrl: '',
+    twitterUrl: '',
+    facebookUrl: '',
+    linkedinUrl: '',
   }
   const fields = {
     title: data.title || defaultValues.title,

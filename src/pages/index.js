@@ -45,13 +45,11 @@ export default class IndexPage extends Component {
 }
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query IndexQuery($schemaPostId: String, $schemaTagId: String) {
     allBlogPost(
       sort: { order: DESC, fields: [publishDate] }
       limit: 5
-      filter: {
-        id: { ne: "blogwise-post-3b8cba55-b05d-43fc-bfa6-a51c4aea3d61" }
-      }
+      filter: { id: { ne: $schemaPostId } }
     ) {
       edges {
         node {
@@ -75,11 +73,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allTag(
-      filter: {
-        id: { ne: "blogwise-tag-51e8f9eb-1617-4f18-a1f8-d48175e79ae0" }
-      }
-    ) {
+    allTag(filter: { id: { ne: $schemaTagId } }) {
       edges {
         node {
           name

@@ -5,6 +5,10 @@ import { SearchWidget } from '../components/SearchBar'
 import { navigate } from 'gatsby'
 import '../styles/search.sass'
 
+const schemaData = require('../../plugins/gatsby-source-blogwise/schema.json')
+
+const schemaPostId = `blogwise-post-${schemaData.schemaPost[0].id}`
+
 class Search extends Component {
   constructor(props) {
     super(props)
@@ -28,7 +32,7 @@ class Search extends Component {
     if (typeof window !== 'undefined') {
       // eslint-disable-next-line no-underscore-dangle
       posts = window.__SEARCH__.search(this.state.query)
-      console.log(posts)
+      posts = posts.filter(post => post.id !== schemaPostId)
     }
     return (
       <Layout>

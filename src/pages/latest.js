@@ -30,12 +30,10 @@ const Latest = ({ data: { allBlogPost } }) => {
 export default Latest
 
 export const pageQuery = graphql`
-  query LatestQuery {
+  query LatestQuery($schemaPostId: String) {
     allBlogPost(
       sort: { order: DESC, fields: [publishDate] }
-      filter: {
-        id: { ne: "blogwise-post-3b8cba55-b05d-43fc-bfa6-a51c4aea3d61" }
-      }
+      filter: { id: { ne: $schemaPostId } }
     ) {
       edges {
         node {

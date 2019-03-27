@@ -55,12 +55,8 @@ const About = ({
 export default About
 
 export const pageQuery = graphql`
-  query AboutQuery {
-    allAuthor(
-      filter: {
-        id: { ne: "blogwise-author-fcae3044-6a1e-4c20-909a-aa41d09bc001" }
-      }
-    ) {
+  query AboutQuery($schemaAuthorId: String) {
+    allAuthor(filter: { id: { ne: $schemaAuthorId } }) {
       edges {
         node {
           id
