@@ -48,6 +48,10 @@ const IndexContent = ({ posts, blogData, tags }) => {
       </span>
     </div>
   )
+  let PostList = <div>Sorry, no posts yet! Come back later.</div>
+  if (posts.length !== 0) {
+    PostList = <PostListView posts={posts.map(p => p.node)} />
+  }
   return (
     <div>
       {background.childImageSharp ? (
@@ -102,7 +106,7 @@ const IndexContent = ({ posts, blogData, tags }) => {
           <br />
           <br />
           <br />
-          <PostListView posts={posts.map(p => p.node)} />
+          {PostList}
         </div>
         <div id="rightcontent">
           <SearchBar />
