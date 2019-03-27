@@ -71,7 +71,7 @@ export const pageQuery = graphql`
             name
             slug
           }
-          thumbnail: coverPhoto {
+          thumbnail {
             childImageSharp {
               fluid(maxWidth: 153, maxHeight: 133) {
                 ...GatsbyImageSharpFluid

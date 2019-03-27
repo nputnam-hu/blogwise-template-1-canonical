@@ -15,6 +15,7 @@
       "htmlBody": "<p>Schema Post</p>",
       "publishDate": "2019-03-14T04:00:00.000Z",
       "coverPhotoUri": "https://megaphone-logo-uploads.s3.amazonaws.com/1553556225144_5b314b940e3c09c32304c098_HSA_Logo%20%282%29-p-500.png",
+      "thumbnailUri": "https://megaphone-logo-uploads.s3.amazonaws.com/1553556225144_5b314b940e3c09c32304c098_HSA_Logo%20%282%29-p-500.png",
       "tagIds": ["cccccccc-cccc-cccc-cccc-cccccccccccc"],
       "slug": "/a/2019-03-14-title-of-schema-post",
       "authorId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
