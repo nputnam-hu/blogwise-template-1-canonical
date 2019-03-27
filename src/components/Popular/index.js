@@ -7,9 +7,16 @@ import './styles.sass'
 
 const Popular = () => (
   <StaticQuery
+    // Figure out how to insert schema post id with variable.
     query={graphql`
       query LatestArticles {
-        allBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 3) {
+        allBlogPost(
+          sort: { fields: [publishDate], order: DESC }
+          limit: 3
+          filter: {
+            id: { ne: "blogwise-post-3b8cba55-b05d-43fc-bfa6-a51c4aea3d61" }
+          }
+        ) {
           edges {
             node {
               publishDate
