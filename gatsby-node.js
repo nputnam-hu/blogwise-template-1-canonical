@@ -22,7 +22,7 @@ exports.createPages = ({ actions, graphql }) => {
       allBlogPost(
         limit: 1000
         filter: {
-          id: { ne: "blogwise-post-3b8cba55-b05d-43fc-bfa6-a51c4aea3d61" }
+          id: { ne: "blogwise-post-bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" }
         }
       ) {
         edges {
@@ -37,7 +37,7 @@ exports.createPages = ({ actions, graphql }) => {
       }
       allAuthor(
         filter: {
-          id: { ne: "blogwise-author-fcae3044-6a1e-4c20-909a-aa41d09bc001" }
+          id: { ne: "blogwise-author-aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa" }
         }
       ) {
         edges {
@@ -49,7 +49,7 @@ exports.createPages = ({ actions, graphql }) => {
       }
       allTag(
         filter: {
-          id: { ne: "blogwise-tag-51e8f9eb-1617-4f18-a1f8-d48175e79ae0" }
+          id: { ne: "blogwise-tag-cccccccc-cccc-cccc-cccc-cccccccccccc" }
         }
       ) {
         edges {
