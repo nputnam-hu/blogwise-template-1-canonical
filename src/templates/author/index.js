@@ -35,7 +35,7 @@ export const pageQuery = graphql`
         slug
         title
         publishDate
-        thumbnail: coverPhoto {
+        thumbnail {
           childImageSharp {
             fluid(maxWidth: 153, maxHeight: 133) {
               ...GatsbyImageSharpFluid

@@ -99,6 +99,20 @@ exports.sourceNodes = async (
           postNodeData.coverPhoto___NODE = coverPhotoNode.id
         }
       }
+      if (post.thumbnailUri) {
+        const thumbnailNode = await createRemoteFileNode({
+          url: post.thumbnailUri,
+          parentNodeId: postNodeId,
+          store,
+          cache,
+          createNode,
+          createNodeId,
+          ext: `.${post.thumbnailUri.split('.').pop()}`,
+        })
+        if (thumbnailNode) {
+          postNodeData.thumbnail___NODE = thumbnailNode.id
+        }
+      }
 
       return postNodeData
     }),
