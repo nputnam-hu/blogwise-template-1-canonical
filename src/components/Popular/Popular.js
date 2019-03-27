@@ -14,7 +14,7 @@ const Popular = () => (
           sort: { fields: [publishDate], order: DESC }
           limit: 3
           filter: {
-            id: { ne: "blogwise-post-3b8cba55-b05d-43fc-bfa6-a51c4aea3d61" }
+            id: { ne: "blogwise-post-bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" }
           }
         ) {
           edges {

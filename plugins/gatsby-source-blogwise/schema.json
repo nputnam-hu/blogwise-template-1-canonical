@@ -1,7 +1,7 @@
 {
   "schemaAuthor": [
     {
-      "id": "fcae3044-6a1e-4c20-909a-aa41d09bc001",
+      "id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
       "name": "Schema Author",
       "headshotUri": "https://s3.amazonaws.com/megaphone-logo-uploads/defaultUser.png",
       "bio": "Bio for Schema Author."
@@ -9,19 +9,19 @@
   ],
   "schemaPost": [
     {
-      "id": "3b8cba55-b05d-43fc-bfa6-a51c4aea3d61",
+      "id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
       "title": "Title of Schema Post",
       "description": "Description of schema post.",
       "htmlBody": "<p>Schema Post</p>",
       "publishDate": "2019-03-14T04:00:00.000Z",
       "coverPhotoUri": "https://megaphone-logo-uploads.s3.amazonaws.com/1553556225144_5b314b940e3c09c32304c098_HSA_Logo%20%282%29-p-500.png",
-      "tagIds": ["51e8f9eb-1617-4f18-a1f8-d48175e79ae0"],
+      "tagIds": ["cccccccc-cccc-cccc-cccc-cccccccccccc"],
       "slug": "/a/2019-03-14-title-of-schema-post",
-      "authorId": "fcae3044-6a1e-4c20-909a-aa41d09bc001"
+      "authorId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
     }
   ],
   "schemaTag": {
-    "51e8f9eb-1617-4f18-a1f8-d48175e79ae0": {
+    "cccccccc-cccc-cccc-cccc-cccccccccccc": {
       "name": "Schema Tag",
       "description": "Description of schema tag."
     }

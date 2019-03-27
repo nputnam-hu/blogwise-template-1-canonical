@@ -15,7 +15,7 @@ export default class IndexPage extends Component {
     }
 
     if (data.allTag !== null) {
-      tags = data.allTag.edges.tags // eslint-disable-line
+      tags = data.allTag.edges // eslint-disable-line
     }
 
     return hasBeenInitialized ? (
