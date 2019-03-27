@@ -5,8 +5,6 @@ import { StaticQuery, graphql } from 'gatsby'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
-import './all.sass'
-
 const TemplateWrapper = ({ showNav = true, children }) => (
   <StaticQuery
     query={graphql`
