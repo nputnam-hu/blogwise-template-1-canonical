@@ -22,9 +22,11 @@ import './styles.sass'
 export class BlogPostTemplate extends Component {
   state = {
     scrollHeight: 0,
+    pageUrl: '',
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
+    this.setState({ pageUrl: window.location.href })
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
@@ -51,7 +53,7 @@ export class BlogPostTemplate extends Component {
       morePosts = [],
     } = this.props
     const PostContent = contentComponent || Content
-    const pageUrl = window.location.href
+    const { pageUrl } = this.state
     return (
       <section id="article-container">
         <div
