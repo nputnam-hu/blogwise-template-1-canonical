@@ -65,8 +65,10 @@ exports.createPages = ({ actions, graphql }) => {
       result.errors.forEach(e => console.error(e.toString()))
       return Promise.reject(result.errors)
     }
-
-    const posts = result.data.allBlogPost.edges
+    let posts = []
+    if (result.data.allBlogPost !== null) {
+      posts = result.data.allBlogPost.edges
+    }
     posts.forEach(({ node }) => {
       const { slug, id, tags } = node
       createPage({
@@ -91,18 +93,21 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
-    const tags = result.data.allTag.edges
-    tags.forEach(({ node }) => {
-      const { slug, id } = node
+    let tags = {}
+    if (result.data.allTag !== null) {
+      tags = result.data.allTag.edges
+      tags.forEach(({ node }) => {
+        const { slug, id } = node
 
-      createPage({
-        path: slug,
-        component: path.resolve(`src/templates/tags/index.js`),
-        context: {
-          id,
-        },
+        createPage({
+          path: slug,
+          component: path.resolve(`src/templates/tags/index.js`),
+          context: {
+            id,
+          },
+        })
       })
-    })
+    }
   })
 }
 

@@ -8,12 +8,7 @@
     }
   ],
   "posts": [],
-  "tags": {
-    "5558f9eb-1617-4f18-a1f8-d48175e79ae0": {
-      "name": "real Tag",
-      "description": "Description of real tag."
-    }
-  },
+  "tags": {},
   "data": {
     "title": "Title of real Blog",
     "name": "Name of real Blog",
