@@ -212,6 +212,10 @@ exports.sourceNodes = async (
       contentDigest: createContentDigest(data),
     },
   }
+  if (data.headerPhotoUri === '') {
+    data.headerPhotoUri =
+      'https://s3.amazonaws.com/megaphone-logo-uploads/defaultLogo.png'
+  }
   const headerNode = await createRemoteFileNode({
     url:
       data.headerPhotoUri ||

@@ -9,9 +9,11 @@ export default class IndexPage extends Component {
     const { data } = this.props
     let posts = []
     let tags = {}
+
     if (data.allBlogPost !== null) {
-      posts = data.allBlogPost.edges.posts // eslint-disable-line
+      posts = data.allBlogPost.edges // eslint-disable-line
     }
+
     if (data.allTag !== null) {
       tags = data.allTag.edges.tags // eslint-disable-line
     }
