@@ -1,6 +1,6 @@
 {
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImZkYmE1ZTdlLTllZmQtNDE3ZC05MmRkLTI1YWIzMDJlNDBlYyIsImVtYWlsIjoibkBwLmNvbSJ9.dkGnze7J9NmVb3gCbzzt_p30Prd0uccfgY6H_FCL0Es",
-  "apiUrl": "http://localhost:3001",
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE5MTlmMmI5LTRiOGYtNGYwZi05YzEzLTVlZWRhMTg5MjhlMyIsImVtYWlsIjoiYWhpbGxtYW5uQGNvbGxlZ2UuaGFydmFyZC5lZHUifQ.P23hA56eIp_fjugoJfYZSx2cJaKcE48QsDNIXbOd7nI",
+  "apiUrl": "https://megaphone-api-prod.herokuapp.com",
   "faviconPhotoUri": "https://megaphone-logo-uploads.s3.amazonaws.com/1552706715156_favicon.png",
   "customNavbarLinks": [],
   "hasBeenInitialized": true

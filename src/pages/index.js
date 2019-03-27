@@ -7,8 +7,16 @@ import { hasBeenInitialized } from '../constants/user.json'
 export default class IndexPage extends Component {
   render() {
     const { data } = this.props
-    const { edges: posts } = data.allBlogPost
-    const { edges: tags } = data.allTag
+    let posts = []
+    let tags = {}
+
+    if (data.allBlogPost !== null) {
+      posts = data.allBlogPost.edges // eslint-disable-line
+    }
+
+    if (data.allTag !== null) {
+      tags = data.allTag.edges // eslint-disable-line
+    }
 
     return hasBeenInitialized ? (
       <Layout showNav={false}>
