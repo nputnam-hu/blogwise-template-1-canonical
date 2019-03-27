@@ -1,5 +1,5 @@
 {
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImZjYWUzMDQ0LTZhMWUtNGMyMC05MDlhLWFhNDFkMDliYzAwMSIsImVtYWlsIjoibkBwLmNvbSJ9._5GM-T6vQ67aJM2-FRfLF2_JgY8Fy_BS9jBl0s1Om7g",
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImZkYmE1ZTdlLTllZmQtNDE3ZC05MmRkLTI1YWIzMDJlNDBlYyIsImVtYWlsIjoibkBwLmNvbSJ9.dkGnze7J9NmVb3gCbzzt_p30Prd0uccfgY6H_FCL0Es",
   "apiUrl": "http://localhost:3001",
   "faviconPhotoUri": "https://megaphone-logo-uploads.s3.amazonaws.com/1552706715156_favicon.png",
   "customNavbarLinks": [],

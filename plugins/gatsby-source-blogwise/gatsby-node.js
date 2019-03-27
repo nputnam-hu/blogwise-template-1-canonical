@@ -5,7 +5,7 @@ const decode = require('unescape')
 const rp = require('request-promise')
 
 const schema = require('./schema.json')
-const realData = require('./realData.json')
+// const realData = require('./realData.json')
 
 exports.sourceNodes = async (
   { actions, createNodeId, createContentDigest, store, cache },
@@ -18,18 +18,18 @@ exports.sourceNodes = async (
   if (!apiUrl) {
     throw new Error('Must provide a valid API url')
   }
-  // const blogData = await rp({
-  //   method: 'GET',
-  //   uri: `${apiUrl}/blogs/build`,
-  //   headers: {
-  //     'x-access-token': token,
-  //   },
-  //   json: true,
-  // })
+  const blogData = await rp({
+    method: 'GET',
+    uri: `${apiUrl}/blogs/build`,
+    headers: {
+      'x-access-token': token,
+    },
+    json: true,
+  })
 
   const { schemaPost, schemaTag, schemaAuthor } = schema
-  let { posts, authors, tags } = realData
-  const { data } = realData
+  let { posts, authors, tags } = blogData
+  const { data } = blogData
 
   posts = posts.concat(schemaPost)
   tags = { ...tags, ...schemaTag }
