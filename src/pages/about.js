@@ -2,54 +2,60 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Layout from '../components/Layout'
-import '../styles/about.sass'
 
-const About = ({
-  data: {
-    blogData: { name, description },
-    allAuthor,
-  },
-}) => {
-  let AboutContents = (
-    <Layout>
-      <div className="about-container">
-        <h1 id="authorheader">About {name}</h1>
-        <div className="body-text">{description}</div>
-        <div style={{ height: '50px' }} />
-      </div>
-    </Layout>
+import styles from '../styles/about.module.sass'
+
+const About = ({ data: { blogData, allAuthor } }) => {
+  let AboutBlog = (
+    <div className={styles.About__blogInfo}>
+      <div className={styles.About__blogInfo__title}>About</div>
+    </div>
   )
+  let AboutWriters = <div />
+
+  if (blogData !== null) {
+    const { name, description } = blogData
+    AboutBlog = (
+      <div className={styles.About__blogInfo}>
+        <div className={styles.About__blogInfo__title}>About {name}</div>
+        <div className={styles.About__blogInfo__body}>{description}</div>
+      </div>
+    )
+  }
 
   if (allAuthor !== null) {
     const { edges: authors } = allAuthor
-    AboutContents = (
-      <Layout>
-        <div className="about-container">
-          <h1 id="authorheader">About {name}</h1>
-          <div className="body-text">{description}</div>
-          <div style={{ height: '50px' }} />
-          <div className="writers">
-            <h2>Writers</h2>
-            {authors.map(({ node }) => (
-              <Link key={node.id} className="writers__entry" to={node.slug}>
+    AboutWriters = (
+      <div className={styles.About__writers}>
+        <div className={styles.About__writers__title}>Writers</div>
+        <div className={styles.About__writers__list}>
+          {authors.map(({ node }) => (
+            <Link key={node.id} className={styles.writer} to={node.slug}>
+              <div className={styles.writer__headshot}>
                 <Img
                   alt={`${node.name} headshot`}
                   fixed={node.headshot.childImageSharp.fixed}
-                  className="writers__headshot"
                 />
-                <div style={{ width: '30px' }} />
-                <div className="writers__text">
-                  <span className="writers__name">{node.name}</span>
-                  <p className="writers__bio">{node.bio}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+              </div>
+              <div className={styles.writer__text}>
+                <div className={styles.writer__text__name}>{node.name}</div>
+                <div className={styles.writer__text__bio}>{node.bio}</div>
+              </div>
+            </Link>
+          ))}
         </div>
-      </Layout>
+      </div>
     )
   }
-  return AboutContents
+
+  return (
+    <Layout>
+      <div className={styles.About}>
+        {AboutBlog}
+        {AboutWriters}
+      </div>
+    </Layout>
+  )
 }
 
 export default About
