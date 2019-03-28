@@ -1,6 +1,6 @@
 /* global __PATH_PREFIX__ */
 require('prismjs/themes/prism-twilight.css')
-require('./src/styles/global.css')
+require('./src/styles/global.sass')
 const JsSearch = require('js-search')
 
 exports.onClientEntry = () => {

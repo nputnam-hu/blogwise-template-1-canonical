@@ -30,11 +30,11 @@ const Popular = () => (
         }
       }
     `}
-    render={({ allBlogPost: { edges: posts } }) => (
+    render={({ allBlogPost }) => (
       <div id="popular-container">
         <span id="header-text">Latest Posts</span>
         <div className="linebreak" />
-        {posts.map(({ node }, i) => {
+        {(allBlogPost.edges.posts || []).map(({ node }, i) => {
           const { title, publishDate, slug, author } = node
           return (
             <div className="popular-article" key={slug}>
