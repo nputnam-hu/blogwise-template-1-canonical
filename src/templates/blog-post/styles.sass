@@ -1,6 +1,7 @@
 #article-container
   width: 55%
   margin: 40px 22.5% 10px
+
   @media (max-width: 800px)
     width: 90%
     margin: 40px 5% 10px
@@ -50,16 +51,20 @@
     font-weight: 300
     line-height: 30px
     margin: 45px 0%
+
     @media (max-width: 800px)
       margin-top: 20px
       font-size: 18px
+
     img
       height: auto
       display: block
       margin: auto
       max-width: 500px
+
       @media (max-width: 600px)
         max-width: 300px
+
     code
       font-size: 14px
 
@@ -68,15 +73,23 @@
     padding-top: 30px
     display: flex
     flex-direction: row
-    justify-content: space-around
+    justify-content: space-between
+    align-items: center
+
     @media (max-width: 1000px)
       flex-direction: column
+
       // align-items: center
       height: 175px
 
     .article-authorbio
       width: 250px
-      font-family: 'Assistant Regular'
+
+      // max-height: 100px
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+      font-family: "Assistant Regular"
       font-weight: 300
       font-size: 14px
 
@@ -88,7 +101,6 @@
       width: 200px
       justify-content: space-around
 
-
   .taglist
     list-style: none
     padding-left: 0px
@@ -96,6 +108,7 @@
     display: flex
     flex-wrap: wrap
     flex-direction: row
+
     li
       display: flex
       height: 35px
@@ -109,8 +122,10 @@
       font-family: futura-pt, sans-serif
       font-weight: 300
       font-size: 18px
+
     a
       text-decoration: none
       color: black
+
     li:hover
       background: #e0e0e0
