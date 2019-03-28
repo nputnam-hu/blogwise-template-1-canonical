@@ -1,7 +1,7 @@
 {
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE5MTlmMmI5LTRiOGYtNGYwZi05YzEzLTVlZWRhMTg5MjhlMyIsImVtYWlsIjoiYWhpbGxtYW5uQGNvbGxlZ2UuaGFydmFyZC5lZHUifQ.P23hA56eIp_fjugoJfYZSx2cJaKcE48QsDNIXbOd7nI",
-  "apiUrl": "https://megaphone-api-prod.herokuapp.com",
-  "faviconPhotoUri": "https://megaphone-logo-uploads.s3.amazonaws.com/1552706715156_favicon.png",
+  "faviconPhotoUri": "",
   "customNavbarLinks": [],
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjQ3YzYwMTNkLWI2NzUtNDQ0OS1iNmI1LTE2YjI0ZDNhNGIxZSIsImVtYWlsIjoibG93bWFuc3RvbmVAY29sbGVnZS5oYXJ2YXJkLmVkdSJ9.WDY8jOmSjHEe3Jm1yBYUyb2oRTidbq-p988LLju_nWY",
+  "apiUrl": "https://megaphone-api-prod.herokuapp.com",
   "hasBeenInitialized": true
 }
