@@ -190,6 +190,8 @@ exports.sourceNodes = async (
     name: '',
     description: '',
     backgroundHexCode: '#ffffff',
+    faviconPhotoUri:
+      'https://s3.amazonaws.com/megaphone-logo-uploads/1552706715156_favicon.png',
     mainSiteUrl: '',
     twitterUrl: '',
     facebookUrl: '',
@@ -201,6 +203,7 @@ exports.sourceNodes = async (
     description: data.description || defaultValues.description,
     backgroundHexCode:
       data.backgroundHexCode || defaultValues.backgroundHexCode,
+    faviconPhotoUri: data.faviconPhotoUri || defaultValues.faviconPhotoUri,
     mainSiteUrl: data.mainSiteUrl || defaultValues.mainSiteUrl,
     twitterUrl: data.twitterUrl || defaultValues.twitterUrl,
     facebookUrl: data.facebookUrl || defaultValues.facebookUrl,

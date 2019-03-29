@@ -12,6 +12,10 @@ const TemplateWrapper = ({ showNav = true, children }) => (
         blogData {
           title
           description
+          header {
+            absolutePath
+          }
+          faviconPhotoUri
         }
       }
     `}
@@ -27,7 +31,7 @@ const TemplateWrapper = ({ showNav = true, children }) => (
           <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href="/img/apple-touch-icon.png"
+            href={data.blogData.faviconPhotoUri}
           />
           <link
             rel="icon"
@@ -52,7 +56,10 @@ const TemplateWrapper = ({ showNav = true, children }) => (
           <meta property="og:type" content="business.business" />
           <meta property="og:title" content={data.blogData.title} />
           <meta property="og:url" content="/" />
-          <meta property="og:image" content="/img/og-image.jpg" />
+          <meta
+            property="og:image"
+            content={data.blogData.header.absolutePath}
+          />
         </Helmet>
         {showNav && <Navbar />}
         <div>{children}</div>
