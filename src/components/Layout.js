@@ -36,21 +36,16 @@ const TemplateWrapper = ({ showNav = true, children }) => (
           <link
             rel="icon"
             type="image/png"
-            href="/img/favicon-32x32.png"
+            href={data.blogData.faviconPhotoUri}
             sizes="32x32"
           />
           <link
             rel="icon"
             type="image/png"
-            href="/img/favicon-16x16.png"
+            href={data.blogData.faviconPhotoUri}
             sizes="16x16"
           />
 
-          <link
-            rel="mask-icon"
-            href="/img/safari-pinned-tab.svg"
-            color="#ff4400"
-          />
           <meta name="theme-color" content="#fff" />
 
           <meta property="og:type" content="business.business" />

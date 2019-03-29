@@ -186,6 +186,7 @@ export const pageQuery = graphql`
       title
       description
       coverPhoto {
+        absolutePath
         childImageSharp {
           fluid(maxWidth: 450, quality: 100) {
             ...GatsbyImageSharpFluid

@@ -43,7 +43,7 @@
   "main": "n/a",
   "scripts": {
     "start": "npm run develop",
-    "clean": "node sync_assets.js && rimraf .cache public",
+    "clean": "rimraf .cache public",
     "build": "npm run clean && gatsby build",
     "develop": "npm run clean && gatsby develop",
     "serve": "gatsby serve",
