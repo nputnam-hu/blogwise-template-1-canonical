@@ -1,4 +1,4 @@
-const { token, apiUrl } = require('./src/constants/user.json')
+const { token, apiUrl } = require('./config')
 
 module.exports = {
   plugins: [

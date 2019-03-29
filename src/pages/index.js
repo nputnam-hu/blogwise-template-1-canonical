@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import IndexContent from '../components/IndexContent'
-import { hasBeenInitialized } from '../constants/user.json'
+
+const { hasBeenInitialized } = require('../../config')
 
 export default class IndexPage extends Component {
   render() {

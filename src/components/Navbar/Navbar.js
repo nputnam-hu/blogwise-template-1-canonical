@@ -1,8 +1,10 @@
 import React from 'react'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import { customNavbarLinks } from '../../constants/user.json'
+
 import './styles.sass'
+
+const { customNavbarLinks } = require('../../../config')
 
 function getColorByBgColor(bgColor) {
   if (!bgColor) {
