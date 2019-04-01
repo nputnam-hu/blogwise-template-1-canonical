@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import IndexContent from '../components/IndexContent'
 
-const c = require('../../config')
+const c = require('../../config.json')
 
 console.log(c)
 const { hasBeenInitialized } = c

@@ -9,7 +9,7 @@ const schemaAuthorId = `blogwise-author-${schemaAuthor[0].id}`
 const schemaPostId = `blogwise-post-${schemaPost[0].id}`
 const schemaTagId = `blogwise-tag-${Object.keys(schemaTag)[0]}`
 
-const { hasBeenInitialized } = require('./config')
+const { hasBeenInitialized } = require('./config.json')
 
 exports.createPages = ({ actions, graphql }) => {
   if (!hasBeenInitialized) {
