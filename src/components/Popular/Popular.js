@@ -34,10 +34,7 @@ const Popular = () => (
       <div id="popular-container">
         <span id="header-text">Latest Posts</span>
         <div className="linebreak" />
-        {(console.log(allBlogPost, allBlogPost.edges) || allBlogPost
-          ? allBlogPost.edges.posts
-          : []
-        ).map(({ node }, i) => {
+        {(allBlogPost ? allBlogPost.edges : []).map(({ node }, i) => {
           const { title, publishDate, slug, author } = node
           return (
             <div className="popular-article" key={slug}>
