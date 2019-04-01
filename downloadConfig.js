@@ -9,7 +9,13 @@ const defaultConfig = {
   hasBeenInitialized: false,
 }
 
-fs.writeFileSync(
-  './config.json',
-  process.env.INCOMING_HOOK_BODY || JSON.stringify(defaultConfig),
+console.log(process.env.INCOMING_HOOK_BODY)
+
+setTimeout(
+  () =>
+    fs.writeFileSync(
+      './config.json',
+      process.env.INCOMING_HOOK_BODY || JSON.stringify(defaultConfig),
+    ),
+  3000,
 )
