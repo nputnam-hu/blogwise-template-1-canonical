@@ -3,10 +3,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import IndexContent from '../components/IndexContent'
 
-const c = require('../../config.json')
-
-console.log(c)
-const { hasBeenInitialized } = c
+const { hasBeenInitialized } = require('../../config.json')
 
 export default class IndexPage extends Component {
   render() {
