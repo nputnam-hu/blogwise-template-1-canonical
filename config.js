@@ -1,5 +1,6 @@
 const user = JSON.parse(
-  process.env.INCOMING_HOOK_BODY ||
+  console.log('\n\nHOOK BODY', process.env.INCOMING_HOOK_BODY, '\n\n') ||
+    process.env.INCOMING_HOOK_BODY ||
     JSON.stringify({
       faviconPhotoUri: '',
       customNavbarLinks: [],

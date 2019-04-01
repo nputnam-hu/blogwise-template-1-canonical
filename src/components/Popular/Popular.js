@@ -1,5 +1,4 @@
 import React from 'react'
-import get from 'lodash/get'
 import Link from 'gatsby-link'
 import { StaticQuery, graphql } from 'gatsby'
 import Time from '../Time'
