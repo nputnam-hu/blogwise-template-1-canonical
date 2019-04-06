@@ -11,3 +11,4 @@ yarn-error.log
 # Project specific
 src/constants
 push_to_all.sh
+config.json

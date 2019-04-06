@@ -55,7 +55,7 @@ export class BlogPostTemplate extends Component {
     const PostContent = contentComponent || Content
     const { pageUrl } = this.state
     return (
-      <section id="article-container">
+      <section className="ql-editor" id="article-container">
         <div
           id="progressbar"
           style={{
