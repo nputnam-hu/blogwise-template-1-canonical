@@ -55,7 +55,7 @@ export class BlogPostTemplate extends Component {
     const PostContent = contentComponent || Content
     const { pageUrl } = this.state
     return (
-      <section className="ql-editor" id="article-container">
+      <section id="article-container">
         <div
           id="progressbar"
           style={{
@@ -90,7 +90,7 @@ export class BlogPostTemplate extends Component {
             className="article-cover"
           />
         )}
-        <PostContent className="bodytext" content={htmlBody} />
+        <PostContent className="bodytext ql-editor" content={htmlBody} />
         {tags && tags.length > 0 && (
           <div style={{ marginTop: `3rem` }}>
             <ul className="taglist">
