@@ -40,7 +40,6 @@
   height: 100%;
   outline: none;
   overflow-y: auto;
-  padding: 12px 15px;
   tab-size: 4;
   -moz-tab-size: 4;
   text-align: left;
@@ -82,28 +81,28 @@
   content: '\2022';
 }
 
-.ql-editor ul[data-checked=true],
-.ql-editor ul[data-checked=false] {
+.ql-editor ul[data-checked='true'],
+.ql-editor ul[data-checked='false'] {
   pointer-events: none;
 }
 
-.ql-editor ul[data-checked=true] > li *,
-.ql-editor ul[data-checked=false] > li * {
+.ql-editor ul[data-checked='true'] > li *,
+.ql-editor ul[data-checked='false'] > li * {
   pointer-events: all;
 }
 
-.ql-editor ul[data-checked=true] > li::before,
-.ql-editor ul[data-checked=false] > li::before {
+.ql-editor ul[data-checked='true'] > li::before,
+.ql-editor ul[data-checked='false'] > li::before {
   color: #777;
   cursor: pointer;
   pointer-events: all;
 }
 
-.ql-editor ul[data-checked=true] > li::before {
+.ql-editor ul[data-checked='true'] > li::before {
   content: '\2611';
 }
 
-.ql-editor ul[data-checked=false] > li::before {
+.ql-editor ul[data-checked='false'] > li::before {
   content: '\2610';
 }
 
@@ -140,7 +139,7 @@
 }
 
 .ql-editor ol li:before {
-  content: counter(list-0, decimal) ". ";
+  content: counter(list-0, decimal) '. ';
 }
 
 .ql-editor ol li.ql-indent-1 {
@@ -148,7 +147,7 @@
 }
 
 .ql-editor ol li.ql-indent-1:before {
-  content: counter(list-1, lower-alpha) ". ";
+  content: counter(list-1, lower-alpha) '. ';
 }
 
 .ql-editor ol li.ql-indent-1 {
@@ -160,7 +159,7 @@
 }
 
 .ql-editor ol li.ql-indent-2:before {
-  content: counter(list-2, lower-roman) ". ";
+  content: counter(list-2, lower-roman) '. ';
 }
 
 .ql-editor ol li.ql-indent-2 {
@@ -172,7 +171,7 @@
 }
 
 .ql-editor ol li.ql-indent-3:before {
-  content: counter(list-3, decimal) ". ";
+  content: counter(list-3, decimal) '. ';
 }
 
 .ql-editor ol li.ql-indent-3 {
@@ -184,7 +183,7 @@
 }
 
 .ql-editor ol li.ql-indent-4:before {
-  content: counter(list-4, lower-alpha) ". ";
+  content: counter(list-4, lower-alpha) '. ';
 }
 
 .ql-editor ol li.ql-indent-4 {
@@ -196,7 +195,7 @@
 }
 
 .ql-editor ol li.ql-indent-5:before {
-  content: counter(list-5, lower-roman) ". ";
+  content: counter(list-5, lower-roman) '. ';
 }
 
 .ql-editor ol li.ql-indent-5 {
@@ -208,7 +207,7 @@
 }
 
 .ql-editor ol li.ql-indent-6:before {
-  content: counter(list-6, decimal) ". ";
+  content: counter(list-6, decimal) '. ';
 }
 
 .ql-editor ol li.ql-indent-6 {
@@ -220,7 +219,7 @@
 }
 
 .ql-editor ol li.ql-indent-7:before {
-  content: counter(list-7, lower-alpha) ". ";
+  content: counter(list-7, lower-alpha) '. ';
 }
 
 .ql-editor ol li.ql-indent-7 {
@@ -232,7 +231,7 @@
 }
 
 .ql-editor ol li.ql-indent-8:before {
-  content: counter(list-8, lower-roman) ". ";
+  content: counter(list-8, lower-roman) '. ';
 }
 
 .ql-editor ol li.ql-indent-8 {
@@ -244,7 +243,7 @@
 }
 
 .ql-editor ol li.ql-indent-9:before {
-  content: counter(list-9, decimal) ". ";
+  content: counter(list-9, decimal) '. ';
 }
 
 .ql-editor .ql-indent-1:not(.ql-direction-rtl) {
