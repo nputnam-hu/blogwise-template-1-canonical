@@ -1,0 +1,71 @@
+///////////////////////////////////////////////////////////////////////////////
+// Footer.module.sass /////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+@import ../../styles/global
+
+///////////////////
+// Footer Styles //
+///////////////////
+
+.Footer
+  margin-left: auto
+  margin-right: auto
+  height: 90px
+  width: 100%
+  position: absolute
+  left: 0
+  bottom: 0
+
+.Footer__container
+  margin-right: auto
+  margin-left: auto
+  width: 80%
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+
+.Footer__links
+  margin-left: 24px
+  display: flex
+  text-decoration: none
+  font-family: $primaryFont
+  letter-spacing: 0.25px
+  text-transform: uppercase
+
+  @media ($mobileBreak)
+    display: none
+
+.Footer__links__link
+  margin-right: 24px
+  color: $greyFontColor
+  font-size: 18px
+  letter-spacing: 0.06em
+  text-decoration: none
+
+  @media ($mobileBreak)
+    display: none
+
+.Footer__poweredBy
+  margin-right: 24px
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: space-between
+
+  a
+    margin-right: 12px
+    font-family: $primaryFont
+    line-height: 44px
+    letter-spacing: 0.3px
+    text-transform: uppercase
+    text-decoration: none
+    color: $greyFontColor
+
+  @media ($mobileBreak)
+    margin-right: auto
+    margin-left: auto
+    flex-direction: row-reverse
+    width: 100%
+    text-transform: lowercase
