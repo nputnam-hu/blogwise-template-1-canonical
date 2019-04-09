@@ -1,0 +1,168 @@
+///////////////////////////////////////////////////////////////////////////////
+// blog-post.module.sass //////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+@import ../../styles/global
+@import /css/quill.core.css
+
+#article-container
+  width: 55%
+  margin: 40px 22.5% 10px
+
+  @media (max-width: 800px)
+    width: 90%
+    margin: 40px 5% 10px
+
+  #progressbar
+    position: fixed
+    bottom: 0
+    left: 0
+    height: 6px
+    background: #333
+    border-radius: 2px
+    z-index: 1
+
+  a
+    color: black
+
+  a:hover
+    color: #828282
+
+  #article-title
+    font-family: futura-pt, sans-serif
+    font-size: 45px
+    font-weight: 300
+    color: #333333
+
+  .authorimg
+    float: left
+    margin-right: 10px
+    height: 50px
+    width: 50px
+    border-radius: 40px
+
+  .authorinfo
+    padding-left: 5px
+    display: flex
+    flex-direction: column
+
+  .article-authorname
+    font-family: futura-pt, sans-serif
+    font-size: 18px
+    padding-top: 2px
+    padding-bottom: 2px
+
+  .bodytext
+    font-family: Rubik, sans-serif
+    font-size: 20px
+    font-weight: 200
+    line-height: 30px
+    margin: 45px 0%
+
+    @media (max-width: 800px)
+      margin-top: 20px
+      font-size: 18px
+
+    img
+      height: auto
+      display: block
+      margin: auto
+      max-width: 500px
+
+      @media (max-width: 600px)
+        max-width: 300px
+
+    code
+      font-size: 14px
+
+  .taglist
+    list-style: none
+    padding-left: 0px
+    padding-bottom: 10px
+    display: flex
+    flex-wrap: wrap
+    flex-direction: row
+
+    li
+      display: flex
+      height: 35px
+      border-radius: 1px
+      padding-right: 15px
+      padding-left: 15px
+      margin: 10px 13px 0px 0
+      background: #ebe9e7
+      align-items: center
+      justify-content: center
+      font-family: futura-pt, sans-serif
+      font-weight: 300
+      font-size: 18px
+
+    a
+      text-decoration: none
+      color: black
+
+    li:hover
+      background: #e0e0e0
+
+////////////////////
+// Article Footer //
+////////////////////
+
+.Article__footer
+  margin-top: 64px
+  margin-right: auto
+  margin-left: auto
+  margin-bottom: 64px
+  width: 80%
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+
+  @media($mobileBreak)
+    margin-top: 24px
+    margin-bottom: 24px
+    flex-direction: column
+
+.Article__footer__container1
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: center
+
+.container1__image
+  margin-right: 13px
+  height: 50px
+  width: 50px
+  border-radius: 40px
+
+  @media($mobileBreak)
+    height: 83px
+    width: 83px
+
+.container1__name
+  display: none
+
+  @media($mobileBreak)
+    display: inline
+    font-size: 18px
+    color: $greyFontColor
+
+.Article__footer__container2
+  @media($mobileBreak)
+    margin-top: 24px
+
+.container2__name
+  font-family: $secondaryFont
+  font-weight: 500
+
+  @media($mobileBreak)
+    display: none
+
+.container2__bio
+  font-family: $secondaryFont
+
+  @media($mobileBreak)
+    font-size: 13px
+    line-height: 18px
+    text-align: center

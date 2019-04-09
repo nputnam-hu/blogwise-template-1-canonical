@@ -2,31 +2,20 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import {
-  EmailIcon,
-  FacebookIcon,
-  LinkedinIcon,
-  TwitterIcon,
-  EmailShareButton,
-  FacebookShareButton,
-  LinkedinShareButton,
-  TwitterShareButton,
-} from 'react-share'
 
 import Layout from '../../components/Layout'
 import Time from '../../components/Time'
 import Content, { HTMLContent } from '../../components/Content'
 import MorePosts from '../../components/MorePosts'
+import styles from './blog-post.module.sass'
 import './styles.sass'
 
 export class BlogPostTemplate extends Component {
   state = {
     scrollHeight: 0,
-    pageUrl: '',
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
-    this.setState({ pageUrl: window.location.href })
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
@@ -53,7 +42,7 @@ export class BlogPostTemplate extends Component {
       morePosts = [],
     } = this.props
     const PostContent = contentComponent || Content
-    const { pageUrl } = this.state
+
     return (
       <section id="article-container">
         <div
@@ -102,35 +91,27 @@ export class BlogPostTemplate extends Component {
             </ul>
           </div>
         )}
-        <div id="articlebottomcontent">
-          <div>
+        {/* Article Footer */}
+        <div className={styles.Article__footer}>
+          <div className={styles.Article__footer__container1}>
             <Link style={{ textDecoration: 'none' }} to={author.slug}>
               <Img
-                className="authorimg"
+                className={styles.container1__image}
                 alt={`${author.name} headshot`}
                 fixed={author.headshot.childImageSharp.fixed}
               />
             </Link>
-            <div className="authorinfo">
-              <Link style={{ textDecoration: 'none' }} to={author.slug}>
-                <div className="article-authorname">{author.name}</div>
-              </Link>
-              <div className="article-authorbio">{author.bio}</div>
-            </div>
+            <div className={styles.container1__name}>{author.name}</div>
           </div>
-          <div className="sharebuttons">
-            <FacebookShareButton url={pageUrl} quote={title}>
-              <FacebookIcon size={32} round />
-            </FacebookShareButton>
-            <TwitterShareButton url={pageUrl} title={title}>
-              <TwitterIcon size={32} round />
-            </TwitterShareButton>
-            <EmailShareButton url={pageUrl} subject={title}>
-              <EmailIcon size={32} round />
-            </EmailShareButton>
-            <LinkedinShareButton url={pageUrl} title={title}>
-              <LinkedinIcon size={32} round />
-            </LinkedinShareButton>
+          <div className={styles.Article__footer__container2}>
+            <Link
+              style={{ textDecoration: 'none' }}
+              to={author.slug}
+              className={styles.container2__name}
+            >
+              <div>{author.name}</div>
+            </Link>
+            <div className={styles.container2__bio}>{author.bio}</div>
           </div>
         </div>
         <hr />
