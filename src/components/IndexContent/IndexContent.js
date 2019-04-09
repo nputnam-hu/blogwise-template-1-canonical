@@ -11,19 +11,13 @@ import facebook from './facebook.png'
 import twitter from './twitter.png'
 import './styles.sass'
 
-function getColorByBgColor(bgColor) {
-  if (!bgColor) {
-    return ''
-  }
-  return parseInt(bgColor.replace('#', ''), 16) > 0xffffff / 2 ? '#000' : '#fff'
-}
-
 const IndexContent = ({ posts, blogData, tags }) => {
   const {
     title,
     name,
     description,
     backgroundHexCode,
+    headerTextColor,
     header,
     sidebar,
     background,
@@ -31,7 +25,7 @@ const IndexContent = ({ posts, blogData, tags }) => {
     facebookUrl,
     linkedinUrl,
   } = blogData
-  const contrastingBgColor = getColorByBgColor(backgroundHexCode)
+  const contrastingBgColor = headerTextColor
   const HeaderContent = (
     <div
       id="headercontent"

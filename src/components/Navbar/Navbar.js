@@ -18,7 +18,7 @@ const Navbar = () => (
     query={graphql`
       query Navbar {
         blogData {
-          backgroundHexCode
+          navbarHexCode
           header {
             childImageSharp {
               fixed(height: 40) {
@@ -29,11 +29,8 @@ const Navbar = () => (
         }
       }
     `}
-    render={({ blogData: { backgroundHexCode, header } }) => (
-      <div
-        className="navbar-container"
-        style={{ background: backgroundHexCode }}
-      >
+    render={({ blogData: { navbarHexCode, header } }) => (
+      <div className="navbar-container" style={{ background: navbarHexCode }}>
         <Link to="/" className="navbar-item" title="Logo">
           <Img
             className="navbar-logo"
@@ -48,7 +45,7 @@ const Navbar = () => (
               rel="noopener noreferrer"
               href={link}
               alt={name}
-              style={{ color: getColorByBgColor(backgroundHexCode) }}
+              style={{ color: getColorByBgColor(navbarHexCode) }}
             >
               {name}
             </a>
