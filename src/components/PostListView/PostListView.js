@@ -16,6 +16,15 @@ const PostListView = ({ posts }) => (
         author,
         excerpt,
       }) => {
+        console.log({
+          title,
+          description,
+          slug,
+          publishDate,
+          thumbnail,
+          author,
+          excerpt,
+        })
         const { name, slug: authorSlug } = author
         const thumbExists = Boolean(thumbnail)
         return (

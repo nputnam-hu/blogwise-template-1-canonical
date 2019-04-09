@@ -1,0 +1,75 @@
+///////////////////////////////////////////////////////////////////////////////
+// AuthorCard.module.sass /////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+@import ../../../styles/global
+
+///////////////////////////
+// Individual AuthorCard //
+///////////////////////////
+
+.AuthorCard
+  margin-top: 64px
+  margin-right: auto
+  margin-left: auto
+  margin-bottom: 64px
+  width: 100%
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+  color: $greyFontColor
+
+  @media($mobileBreak)
+    margin-top: 24px
+    margin-bottom: 24px
+    flex-direction: column
+
+  a
+
+.AuthorCard__container1
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: center
+
+.AuthorCard__container1__image
+  margin-right: 13px
+  height: 50px
+  width: 50px
+  border-radius: 40px
+
+  @media($mobileBreak)
+    height: 83px
+    width: 83px
+
+.AuthorCard__container1__name
+  display: none
+
+  @media($mobileBreak)
+    display: inline
+    font-family: $primaryFont
+    font-size: 18px
+
+.AuthorCard__container2
+  @media($mobileBreak)
+    margin-top: 24px
+
+.AuthorCard__container2__name
+  margin-bottom: 12px
+  font-family: $primaryFont
+  font-weight: 500
+  font-size: 20px
+  color: $greyFontColor
+
+  @media($mobileBreak)
+    display: none
+
+.AuthorCard__container2__bio
+  font-family: $secondaryFont
+  font-size: 14px
+
+  @media($mobileBreak)
+    font-size: 13px
+    line-height: 18px
+    text-align: center

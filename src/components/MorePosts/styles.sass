@@ -1,3 +1,5 @@
+@import ../../styles/global
+
 #morepostsheader
   font-family: futura-pt, sans-serif
   font-size: 24px
@@ -8,6 +10,7 @@
   display: flex
   flex-direction: row
   justify-content: space-around
+
   @media (max-width: 1000px)
     flex-direction: column
     align-items: center
@@ -21,17 +24,19 @@
 
     a
       text-decoration: none
+      color: $blackFontColor
 
     a:hover *
-      color: #828282
+      color: $greyFontColor
 
     .moretitle
-      font-family: futura-pt, sans-serif
-      font-size: 16px
+      font-family: $primaryFont
+      font-size: 22px
       font-weight: 700
       padding-top: 8px
+      margin-bottom: 12px
 
     .moreexcerpt
-      font-family: 'Assistant Regular'
+      font-family: $secondaryFont
       font-size: 14px
       font-weight: 300

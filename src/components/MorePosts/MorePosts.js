@@ -7,7 +7,7 @@ const MorePosts = ({ posts }) => (
   <div>
     <h3 id="morepostsheader">More Like This Post</h3>
     <div id="moreposts-container">
-      {posts.map(({ slug, title, description, thumbnail }) => (
+      {posts.map(({ slug, title, excerpt, thumbnail }) => (
         <div className="morebox">
           <Link to={slug}>
             {thumbnail ? (
@@ -16,7 +16,7 @@ const MorePosts = ({ posts }) => (
               <div style={{ height: 150, width: 200 }} />
             )}
             <div className="moretitle"> {title}</div>
-            <div className="moreexcerpt"> {description}</div>
+            <div className="moreexcerpt"> {excerpt}</div>
           </Link>
         </div>
       ))}

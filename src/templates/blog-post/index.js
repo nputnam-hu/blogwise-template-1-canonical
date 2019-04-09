@@ -4,6 +4,7 @@ import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 
 import Layout from '../../components/Layout'
+import AuthorList from '../../components/AuthorList'
 import Time from '../../components/Time'
 import Content, { HTMLContent } from '../../components/Content'
 import MorePosts from '../../components/MorePosts'
@@ -64,7 +65,10 @@ export class BlogPostTemplate extends Component {
           />
         </Link>
         <div className="authorinfo">
-          <Link style={{ textDecoration: 'none' }} to={author.slug}>
+          <Link
+            style={{ textDecoration: 'none', color: 'black' }}
+            to={author.slug}
+          >
             <div className="article-authorname">{author.name}</div>
           </Link>
           <Time size="large" date={publishDate} />
@@ -79,7 +83,10 @@ export class BlogPostTemplate extends Component {
             className="article-cover"
           />
         )}
-        <PostContent className="bodytext ql-editor" content={htmlBody} />
+        <PostContent
+          className="bodytext ql-editor mainbody"
+          content={htmlBody}
+        />
         {tags && tags.length > 0 && (
           <div style={{ marginTop: `3rem` }}>
             <ul className="taglist">
@@ -93,26 +100,7 @@ export class BlogPostTemplate extends Component {
         )}
         {/* Article Footer */}
         <div className={styles.Article__footer}>
-          <div className={styles.Article__footer__container1}>
-            <Link style={{ textDecoration: 'none' }} to={author.slug}>
-              <Img
-                className={styles.container1__image}
-                alt={`${author.name} headshot`}
-                fixed={author.headshot.childImageSharp.fixed}
-              />
-            </Link>
-            <div className={styles.container1__name}>{author.name}</div>
-          </div>
-          <div className={styles.Article__footer__container2}>
-            <Link
-              style={{ textDecoration: 'none' }}
-              to={author.slug}
-              className={styles.container2__name}
-            >
-              <div>{author.name}</div>
-            </Link>
-            <div className={styles.container2__bio}>{author.bio}</div>
-          </div>
+          <AuthorList author={author} />
         </div>
         <hr />
         {morePosts && morePosts.length > 0 && <MorePosts posts={morePosts} />}
@@ -139,7 +127,7 @@ const BlogPost = ({ data }) => {
             {post.coverPhoto && (
               <meta
                 property="og:image"
-                content={post.coverPhoto.absolutePath}
+                content={post.coverPhoto.relativePath}
               />
             )}
           </Helmet>
@@ -200,6 +188,7 @@ export const pageQuery = graphql`
       edges {
         node {
           description
+          excerpt
           publishDate
           title
           slug

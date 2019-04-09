@@ -15,12 +15,10 @@ class TagView extends Component {
     let { posts } = this.props.data.tag
     const { name, description } = this.props.data.tag
     if (!posts) posts = []
-    console.log(posts)
     posts.sort(
       (post1, post2) =>
         new Date(post2.publishDate) - new Date(post1.publishDate),
     )
-    console.log(posts)
     const firstPost = posts.length > 0 ? posts[0] : null
     const otherPosts = posts.slice(1)
     return (
