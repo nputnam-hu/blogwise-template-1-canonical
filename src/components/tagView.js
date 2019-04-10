@@ -15,12 +15,11 @@ class TagView extends React.Component {
           props.pageContext.currentPage
         }`,
       )
-      console.log(props.pageContext.pagePosts)
       props.globalState.updateState({
+        slug: props.pageContext.slug,
         items: props.pageContext.pagePosts,
         cursor: props.pageContext.currentPage + 1,
       })
-      console.log(props.globalState.items)
     }
   }
 
@@ -38,9 +37,9 @@ class TagView extends React.Component {
       countPages: pageContext.countPages,
       useInfiniteScroll: g.useInfiniteScroll,
     }
+    console.log(this.props.globalState.items)
 
-    const currentlyVisibleItems = pageContext.pagePosts
-    console.log(currentlyVisibleItems)
+    const currentlyVisibleItems = g.items || pageContext.pagePosts
     return (
       <div>
         <InfiniteScroll
@@ -52,20 +51,6 @@ class TagView extends React.Component {
         >
           <NewPostListView posts={currentlyVisibleItems} />
         </InfiniteScroll>
-        {/* Notification for demo purposes. */}
-        {g.useInfiniteScroll && !g.hasMore(pageContext) && !g.isLoading && (
-          <div style={{ paddingTop: '40px' }}>
-            <h4>
-              <center>
-                Congrats! You scrolled through all
-                {` ${g.items.length} `}
-                items starting from page
-                {` ${pageContext.currentPage}`}.
-                {/* TODO: fix: Go to page <Link to="/">one</Link>? */}
-              </center>
-            </h4>
-          </div>
-        )}
 
         {/* Loading spinner. */}
         {g.isLoading && (
@@ -84,29 +69,6 @@ class TagView extends React.Component {
             </h4>
           </noscript>
         )}
-
-        {/* Fallback to Pagination on toggle (for demo) and also on error. */}
-        {!g.useInfiniteScroll && <Pagination paginationData={paginationData} />}
-
-        <style jsx>
-          {`
-            @keyframes spinner {
-              to {
-                transform: rotate(360deg);
-              }
-            }
-            .spinner {
-              margin-top: 40px;
-              font-size: 60px;
-              text-align: center;
-              display: ${g.useInfiniteScroll ? 'block' : 'none'};
-              :global(svg) {
-                fill: ${theme.color.brand.primaryLight};
-                animation: spinner 3s linear infinite;
-              }
-            }
-          `}
-        </style>
       </div>
     )
   }

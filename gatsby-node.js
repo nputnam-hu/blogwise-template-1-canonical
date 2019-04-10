@@ -50,6 +50,7 @@ exports.createPages = ({ actions, graphql }) => {
             author {
               id
               name
+              slug
             }
             thumbnail {
               id
@@ -161,6 +162,7 @@ exports.createPages = ({ actions, graphql }) => {
             path: `${slug}${pathSuffix}`,
             component: paginatedTagPageTemplate,
             context: {
+              slug,
               id,
               pagePosts,
               currentPage,

@@ -21,15 +21,15 @@ const NewPostListView = ({ posts }) => (
       return (
         <div className="post" key={slug}>
           <div className="article" style={thumbExists ? {} : { width: '100%' }}>
-            {thumbExists && (
+            {/* {thumbExists && (
               <Link to={slug}>
-                {/* <Img
+                <Img
                   alt={title}
                   className="articleimage desktop"
                   fluid={thumbnail.childImageSharp.fluid}
-                /> */}
+                />
               </Link>
-            )}
+            )} */}
             <div className="articletop">
               <Link style={{ textDecoration: 'none' }} to={slug}>
                 <div className="mobile-articletop">

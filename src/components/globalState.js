@@ -22,6 +22,7 @@ export class GlobalState extends React.Component {
     this.updateState = this.updateState.bind(this)
 
     this.state = {
+      slug: 'index',
       items: null,
       isLoading: true,
       cursor: 0,
@@ -44,8 +45,10 @@ export class GlobalState extends React.Component {
   loadMore = () => {
     this.setState({ isLoading: true, error: undefined })
     console.log('Loading more...')
-    fetch(`/paginationJson/index${this.state.cursor}.json`)
-      .then(res => res.json())
+    fetch(`/paginationJson/${this.state.slug}${this.state.cursor}.json`)
+      .then(res => {
+        return res.json()
+      })
       .then(
         res => {
           this.setState(state => ({
@@ -55,6 +58,7 @@ export class GlobalState extends React.Component {
           }))
         },
         error => {
+          console.log(`Fuq there's and error: ${error}`)
           this.setState({
             isLoading: false,
             error,
@@ -64,9 +68,15 @@ export class GlobalState extends React.Component {
       )
   }
 
-  hasMore = pageContext =>
-    this.state.cursor <= pageContext.countPages && this.state.useInfiniteScroll
-
+  hasMore = pageContext => {
+    console.log(`cursor: ${this.state.cursor}`)
+    console.log(`countPages: ${pageContext.countPages}`)
+    console.log(`useInfiniteScroll: ${this.state.useInfiniteScroll}`)
+    return (
+      this.state.cursor <= pageContext.countPages &&
+      this.state.useInfiniteScroll
+    )
+  }
   render() {
     return (
       <GlobalStateContext.Provider value={this.state}>
