@@ -132,6 +132,7 @@ exports.createPages = ({ actions, graphql }) => {
 
       tags.forEach(({ node }) => {
         const { slug, id } = node
+
         const tagPosts = posts.filter(post => {
           let tagPresent = false
           post.node.tags.forEach(ele => {
@@ -169,19 +170,19 @@ exports.createPages = ({ actions, graphql }) => {
               countPages,
             },
           }
-          createJSON(pageData)
-          createPage(pageData)
+          // createJSON(pageData)
+          // createPage(pageData)
         }
 
         console.log(`\nCreated ${countPages} pages of paginated content.`)
 
-        // createPage({
-        //   path: slug,
-        //   component: path.resolve(`src/templates/tags/index.js`),
-        //   context: {
-        //     id,
-        //   },
-        // })
+        createPage({
+          path: slug,
+          component: path.resolve(`src/templates/tags/index.js`),
+          context: {
+            id,
+          },
+        })
       })
     }
   })
