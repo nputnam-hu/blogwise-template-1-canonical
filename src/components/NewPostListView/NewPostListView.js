@@ -21,7 +21,7 @@ const NewPostListView = ({ posts }) => (
       return (
         <div className="post" key={slug}>
           <div className="article" style={thumbExists ? {} : { width: '100%' }}>
-            {/* {thumbExists && (
+            {thumbExists && (
               <Link to={slug}>
                 <Img
                   alt={title}
@@ -29,18 +29,18 @@ const NewPostListView = ({ posts }) => (
                   fluid={thumbnail.childImageSharp.fluid}
                 />
               </Link>
-            )} */}
+            )}
             <div className="articletop">
               <Link style={{ textDecoration: 'none' }} to={slug}>
                 <div className="mobile-articletop">
                   <div className="articlelink">{title}</div>
-                  {/* {thumbExists && (
-                    // <Img
-                    //   alt={title}
-                    //   className="articleimage mobile"
-                    //   fluid={thumbnail.childImageSharp.fluid}
-                    // />
-                  )} */}
+                  {thumbExists && (
+                    <Img
+                      alt={title}
+                      className="articleimage mobile"
+                      fluid={thumbnail.childImageSharp.fluid}
+                    />
+                  )}
                 </div>
                 <p className="articlepreview">{excerpt || description}</p>
               </Link>
