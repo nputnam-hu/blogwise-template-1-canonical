@@ -11,6 +11,21 @@ const schemaTagId = `blogwise-tag-${Object.keys(schemaTag)[0]}`
 
 const { hasBeenInitialized } = require('./config.json')
 
+function createJSON(pageData) {
+  const pathSuffix = pageData.path.substring(1)
+  const dir = 'public/paginationJson/'
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir)
+  }
+  const filePath = `${dir}${pathSuffix}.json`
+  const dataToSave = JSON.stringify(pageData.context.pagePosts)
+  fs.writeFile(filePath, dataToSave, err => {
+    if (err) {
+      return console.log(err)
+    }
+  })
+}
+
 exports.createPages = ({ actions, graphql }) => {
   if (!hasBeenInitialized) {
     return
@@ -96,16 +111,58 @@ exports.createPages = ({ actions, graphql }) => {
     let tags = {}
     if (result.data.allTag !== null) {
       tags = result.data.allTag.edges
+
       tags.forEach(({ node }) => {
         const { slug, id } = node
-
-        createPage({
-          path: slug,
-          component: path.resolve(`src/templates/tags/index.js`),
-          context: {
-            id,
-          },
+        const tagPosts = posts.filter(post => {
+          let tagPresent = false
+          post.node.tags.forEach(ele => {
+            if (ele.id === id) {
+              tagPresent = true
+            }
+          })
+          return tagPresent
         })
+
+        const paginatedTagPageTemplate = path.resolve(
+          'src/templates/tagsTest/index.js',
+        )
+
+        const postsPerPage = 5
+        const countPages = Math.ceil(tagPosts.length / postsPerPage)
+
+        for (let currentPage = 1; currentPage <= countPages; currentPage += 1) {
+          const pathSuffix = currentPage > 1 ? currentPage : ''
+          const startIndexInclusive = postsPerPage * (currentPage - 1)
+          const endIndexInclusive = startIndexInclusive + postsPerPage
+          const pagePosts = tagPosts.slice(
+            startIndexInclusive,
+            endIndexInclusive,
+          )
+
+          const pageData = {
+            path: `${slug}${pathSuffix}`,
+            component: paginatedTagPageTemplate,
+            context: {
+              id,
+              pagePosts,
+              currentPage,
+              countPages,
+            },
+          }
+          createJSON(pageData)
+          createPage(pageData)
+        }
+
+        console.log(`\nCreated ${countPages} pages of paginated content.`)
+
+        // createPage({
+        //   path: slug,
+        //   component: path.resolve(`src/templates/tags/index.js`),
+        //   context: {
+        //     id,
+        //   },
+        // })
       })
     }
   })
