@@ -43,6 +43,23 @@ exports.createPages = ({ actions, graphql }) => {
         edges {
           node {
             id
+            title
+            description
+            htmlBody
+            publishDate
+            author {
+              id
+              name
+            }
+            thumbnail {
+              id
+              childImageSharp {
+                id
+              }
+            }
+            coverPhoto {
+              id
+            }
             slug
             tags {
               id

@@ -1,0 +1,105 @@
+#posts-container
+  .linebreak
+    display: block
+    float: left
+    height: 2px
+    margin-top: 20px
+    margin-bottom: 20px
+
+  .linebreak.article-break
+    margin-top: 20px
+    margin-bottom: 5px
+    height: 1px
+    background: #e0e0e0
+    width: 100%
+
+  .post
+    display: flex
+    flex-wrap: wrap
+    margin-bottom: 30px
+    align-items: center
+    flex-direction: row
+    justify-content: space-between
+
+    @media (max-width: 1150px)
+      justify-content: space-between
+
+  a:hover *
+    color: #828282
+
+  .article
+    display: flex
+    flex-direction: row
+    padding-bottom: 25px
+
+    @media (max-width: 1150px)
+      width: 100%
+
+  .articletop
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+
+  .articlelink
+    font-size: 22px
+    font-weight: 500
+    text-decoration: none
+    font-family: futura-pt, sans-serif
+    color: #333333
+
+    @media (max-width: 1150px)
+      width: 70%
+
+  .articlepreview
+    font-family: "Assistant Regular"
+    font-size: 14px
+    color: #828282
+
+    @media (max-width: 1150px)
+      margin-top: -50px
+      width: 70%
+
+    @media (max-width: 750px)
+      margin-top: 0px
+
+  .author-container
+    margin-top: 5px
+    display: flex
+    flex-direction: row
+
+  .authorname
+    font-family: futura-pt, sans-serif
+    font-weight: 500
+    font-size: 13px
+    padding-top: 2px
+    padding-bottom: 2px
+    color: black
+    padding-right: 15px
+
+  .articleimage
+    width: 153px
+    height: 133px
+    align-self: flex-start
+    border: 1px solid lightgrey
+    margin-right: 24px
+
+  .desktop
+    @media (max-width: 1150px)
+      display: none
+
+  .mobile
+    display: none
+
+    @media (max-width: 1150px)
+      width: 115px
+      height: 100px
+      display: flex
+
+    @media (max-width: 750px)
+      width: 69px
+      height: 60px
+
+  .mobile-articletop
+    @media (max-width: 1150px)
+      display: flex
+      flex-direction: row

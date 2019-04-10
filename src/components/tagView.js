@@ -3,7 +3,7 @@ import Pagination from './pagination'
 import { InfiniteScroll } from './infiniteScroll.tsx'
 import { FaCog } from 'react-icons/fa'
 import theme from '../theme.yaml'
-import Grid from './grid'
+import NewPostListView from '../components/NewPostListView'
 
 class TagView extends React.Component {
   constructor(props) {
@@ -15,10 +15,12 @@ class TagView extends React.Component {
           props.pageContext.currentPage
         }`,
       )
+      console.log(props.pageContext.pagePosts)
       props.globalState.updateState({
         items: props.pageContext.pagePosts,
         cursor: props.pageContext.currentPage + 1,
       })
+      console.log(props.globalState.items)
     }
   }
 
@@ -37,18 +39,18 @@ class TagView extends React.Component {
       useInfiniteScroll: g.useInfiniteScroll,
     }
 
-    const currentlyVisibleItems = g.items || pageContext.pagePosts
-
-    return 0(
+    const currentlyVisibleItems = pageContext.pagePosts
+    console.log(currentlyVisibleItems)
+    return (
       <div>
         <InfiniteScroll
           throttle={150}
           threshold={1800}
           isLoading={g.isLoading}
           hasMore={g.hasMore(pageContext)}
-          onLoadMore={g.onLoadMore}
+          onLoadMore={g.loadMore}
         >
-          <Grid items={currentlyVisibleItems} />
+          <NewPostListView posts={currentlyVisibleItems} />
         </InfiniteScroll>
         {/* Notification for demo purposes. */}
         {g.useInfiniteScroll && !g.hasMore(pageContext) && !g.isLoading && (
@@ -105,7 +107,7 @@ class TagView extends React.Component {
             }
           `}
         </style>
-      </div>,
+      </div>
     )
   }
 }
