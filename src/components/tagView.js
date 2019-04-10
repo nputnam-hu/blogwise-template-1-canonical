@@ -44,7 +44,7 @@ class TagView extends React.Component {
       <div>
         <InfiniteScroll
           throttle={150}
-          threshold={1800}
+          threshold={100}
           isLoading={g.isLoading}
           hasMore={g.hasMore(pageContext)}
           onLoadMore={g.loadMore}

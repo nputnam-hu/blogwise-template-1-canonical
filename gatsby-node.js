@@ -146,7 +146,7 @@ exports.createPages = ({ actions, graphql }) => {
           'src/templates/tagsTest/index.js',
         )
 
-        const postsPerPage = 5
+        const postsPerPage = 2
         const countPages = Math.ceil(tagPosts.length / postsPerPage)
 
         for (let currentPage = 1; currentPage <= countPages; currentPage += 1) {
