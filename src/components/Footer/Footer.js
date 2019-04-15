@@ -48,7 +48,11 @@ const Footer = () => (
             >
               powered by blogwise
             </a>
-            <Img alt={`${name} logo`} fixed={sidebar.childImageSharp.fixed} />
+            <Img
+              className={styles.Footer__poweredBy__logo}
+              alt={`${name} logo`}
+              fixed={sidebar.childImageSharp.fixed}
+            />
           </div>
         </div>
       </div>

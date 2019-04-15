@@ -5,10 +5,12 @@ import Link from 'gatsby-link'
 import _ from 'lodash'
 import SearchBar from '../SearchBar'
 import searchIcon from './search.svg'
-import PostListView from '../PostListView'
+import PostList from '../PostList'
 import linkedin from './linkedin.png'
 import facebook from './facebook.png'
 import twitter from './twitter.png'
+
+import styles from './IndexContent.module.sass'
 import './styles.sass'
 
 const IndexContent = ({ posts, blogData, tags }) => {
@@ -42,9 +44,9 @@ const IndexContent = ({ posts, blogData, tags }) => {
       </span>
     </div>
   )
-  let PostList = <div>Sorry, no posts yet! Come back later.</div>
+  let FeaturedArticles = <div>Sorry, no posts yet! Come back later.</div>
   if (posts.length !== 0) {
-    PostList = <PostListView posts={posts.map(p => p.node)} />
+    FeaturedArticles = <PostList posts={posts.map(p => p.node)} />
   }
   return (
     <div>
@@ -100,7 +102,7 @@ const IndexContent = ({ posts, blogData, tags }) => {
           <br />
           <br />
           <br />
-          {PostList}
+          {FeaturedArticles}
         </div>
         <div id="rightcontent">
           <SearchBar />
