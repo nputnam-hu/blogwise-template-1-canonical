@@ -58,7 +58,7 @@ export const pageQuery = graphql`
           slug
           headshot {
             childImageSharp {
-              fixed(height: 70, width: 70) {
+              fixed(height: 70, width: 70, quality: 100) {
                 ...GatsbyImageSharpFixed
               }
             }

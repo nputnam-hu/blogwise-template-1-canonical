@@ -21,7 +21,7 @@ const Navbar = () => (
           navbarHexCode
           header {
             childImageSharp {
-              fixed(height: 40) {
+              fixed(height: 40, quality: 100) {
                 ...GatsbyImageSharpFixed
               }
             }

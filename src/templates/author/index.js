@@ -37,7 +37,7 @@ export const pageQuery = graphql`
         publishDate
         thumbnail {
           childImageSharp {
-            fluid(maxWidth: 153, maxHeight: 133) {
+            fluid(maxWidth: 153, maxHeight: 133, quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }

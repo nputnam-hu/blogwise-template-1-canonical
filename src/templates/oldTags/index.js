@@ -151,10 +151,10 @@ export const pageQuery = graphql`
         publishDate
         thumbnail {
           childImageSharp {
-            largeFluid: fluid(maxWidth: 769, maxHeight: 412) {
+            largeFluid: fluid(maxWidth: 769, maxHeight: 412, quality: 100) {
               ...GatsbyImageSharpFluid
             }
-            smallFixed: fixed(width: 373, height: 281) {
+            smallFixed: fixed(width: 373, height: 281, quality: 100) {
               ...GatsbyImageSharpFixed
             }
           }
@@ -164,7 +164,7 @@ export const pageQuery = graphql`
           slug
           headshot {
             childImageSharp {
-              fixed(height: 50, width: 50) {
+              fixed(height: 50, width: 50, quality: 100) {
                 ...GatsbyImageSharpFixed
               }
             }

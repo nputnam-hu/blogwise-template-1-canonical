@@ -13,7 +13,7 @@ const Footer = () => (
           mainSiteUrl
           sidebar {
             childImageSharp {
-              fixed(height: 35) {
+              fixed(height: 35, quality: 100) {
                 ...GatsbyImageSharpFixed
               }
             }

@@ -41,10 +41,10 @@ exports.createPages = ({ actions, graphql }) => {
               id
               childImageSharp {
                 id
-                fixed {
+                fixed(quality: 100) {
                   src
                 }
-                fluid {
+                fluid(quality: 100) {
                   src
                   aspectRatio
                 }
