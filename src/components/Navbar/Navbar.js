@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 
-import './styles.sass'
+import styles from './Navbar.module.sass'
 
 const { customNavbarLinks } = require('../../../config')
 
@@ -30,15 +30,15 @@ const Navbar = () => (
       }
     `}
     render={({ blogData: { navbarHexCode, header } }) => (
-      <div className="navbar-container" style={{ background: navbarHexCode }}>
-        <Link to="/" className="navbar-item" title="Logo">
+      <div className={styles.Navbar} style={{ background: navbarHexCode }}>
+        <Link to="/" className={styles.Navbar__logoContainer} title="Logo">
           <Img
-            className="navbar-logo"
+            className={styles.Navbar__logo}
             fixed={header.childImageSharp.fixed}
             alt="logo"
           />
         </Link>
-        <div id="navbar-links">
+        <div className={styles.Navbar__links}>
           {customNavbarLinks.map(({ link, name }) => (
             <a
               target="_blank"
