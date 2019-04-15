@@ -10,7 +10,7 @@ import Time from '../../components/Time'
 import Layout from '../../components/Layout'
 import './styles.sass'
 
-class TagView extends Component {
+class oldTagView extends Component {
   render() {
     let { posts } = this.props.data.tag
     const { name, description } = this.props.data.tag
@@ -135,7 +135,7 @@ class TagView extends Component {
   }
 }
 
-export default TagView
+export default oldTagView
 
 export const pageQuery = graphql`
   query TaqQuery($id: String!) {

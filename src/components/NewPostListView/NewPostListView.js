@@ -15,18 +15,26 @@ const NewPostListView = ({ posts }) => (
         thumbnail,
         author,
         excerpt,
-      } = post.node
+      } = post
+
       const { name, slug: authorSlug } = author
       const thumbExists = Boolean(thumbnail)
+      // if (thumbExists) {
+      //   console.log(post)
+      //   console.log(thumbnail)
+      // } else {
+      //   console.log('PROBLEM')
+      //   console.log(thumbnail)
+      // }
       return (
         <div className="post" key={slug}>
           <div className="article" style={thumbExists ? {} : { width: '100%' }}>
-            {thumbExists && (
+            {thumbExists && console.log(thumbnail) && (
               <Link to={slug}>
                 <Img
                   alt={title}
                   className="articleimage desktop"
-                  fluid={thumbnail.childImageSharp.fluid}
+                  fluid={thumbnail.childImageSharp.largeFluid}
                 />
               </Link>
             )}
@@ -38,7 +46,7 @@ const NewPostListView = ({ posts }) => (
                     <Img
                       alt={title}
                       className="articleimage mobile"
-                      fluid={thumbnail.childImageSharp.fluid}
+                      fluid={thumbnail.childImageSharp.largeFluid}
                     />
                   )}
                 </div>

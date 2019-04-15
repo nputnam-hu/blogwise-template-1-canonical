@@ -1,32 +1,38 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import { GlobalStateContext } from '../../components/globalState'
-import TagView from '../../components/tagView'
+import TagPageContent from '../../components/TagPageContent'
 
 import Layout from '../../components/Layout'
-import './styles.sass'
+import styles from './styles.module.sass'
 
-class TagTestView extends Component {
+class TagPage extends Component {
   render() {
     return (
       <Layout>
-        <GlobalStateContext.Consumer>
-          {globalState => (
-            <TagView
-              globalState={globalState}
-              pageContext={this.props.pageContext}
-            />
-          )}
-        </GlobalStateContext.Consumer>
+        <div className={styles.TagPage}>
+          <div className={styles.TagPage__title}>
+            {this.props.data.tag.name}
+          </div>
+          <GlobalStateContext.Consumer>
+            {globalState => (
+              <TagPageContent
+                globalState={globalState}
+                pageContext={this.props.pageContext}
+                allPosts={this.props.data.tag.posts}
+              />
+            )}
+          </GlobalStateContext.Consumer>
+        </div>
       </Layout>
     )
   }
 }
 
-export default TagTestView
+export default TagPage
 
 export const pageQuery = graphql`
-  query TaqTestQuery($id: String!) {
+  query TagPageQuery($id: String!) {
     tag(id: { eq: $id }) {
       name
       description
@@ -42,7 +48,7 @@ export const pageQuery = graphql`
             largeFluid: fluid(maxWidth: 769, maxHeight: 412) {
               ...GatsbyImageSharpFluid
             }
-            smallFixed: fixed(width: 373, height: 281) {
+            smallFixed: fixed(width: 120, height: 90) {
               ...GatsbyImageSharpFixed
             }
           }

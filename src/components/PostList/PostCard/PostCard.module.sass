@@ -1,0 +1,64 @@
+///////////////////////////////////////////////////////////////////////////////
+// PostCard.module.sass ///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+@import ../../../styles/global
+
+///////////////////////////////////////////////////////////////////////////////
+// Normal PostCard ////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+.Post
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  width: 100%
+  margin-bottom: 48px
+
+.Post__thumbnail
+  width: 120px
+
+  @media($mobileBreak)
+    display: none
+
+.Post__text
+  max-width: 200px
+  text-decoration: none
+
+  a
+    text-decoration: none
+
+.Post__text__title
+  font-family: $primaryFont
+  color: $blackFontColor
+  font-size: 14px
+
+  @media($mobileBreak)
+    font-family: $secondaryFont
+
+.Post__text__description
+  @media($mobileBreak)
+    display: none
+
+.Post__text__info
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+  margin-top: 12px
+  font-size: 12px
+
+  a
+    text-decoration: none
+
+.Post__text__info__author
+  font-family: $secondaryFont
+  color: $greyFontColor
+
+.Post__thumbnailMobile
+  @media($mobileBreak)
+    width: 120px
+
+///////////////////////////////////////////////////////////////////////////////
+// Large PostCard /////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////

@@ -61,6 +61,7 @@ exports.createPages = ({ actions, graphql }) => {
                 }
                 fluid {
                   src
+                  aspectRatio
                 }
               }
             }
@@ -150,7 +151,7 @@ exports.createPages = ({ actions, graphql }) => {
         })
 
         const paginatedTagPageTemplate = path.resolve(
-          'src/templates/tagsTest/index.js',
+          'src/templates/TagPage/index.js',
         )
 
         const postsPerPage = 2

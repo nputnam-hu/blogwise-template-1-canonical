@@ -1,12 +1,10 @@
 import React from 'react'
-import Pagination from './pagination'
-import { InfiniteScroll } from './infiniteScroll.tsx'
+import { InfiniteScroll } from '../infiniteScroll.tsx'
 import { FaCog } from 'react-icons/fa'
-import theme from '../theme.yaml'
-import NewPostListView from '../components/NewPostListView'
-import PostList from '../components/PostList'
+import NewPostListView from '../../components/NewPostListView'
+import PostList from '../../components/PostList'
 
-class TagView extends React.Component {
+class TagPageContent extends React.Component {
   constructor(props) {
     super(props)
     console.log('*** Constructing View ***')
@@ -30,7 +28,6 @@ class TagView extends React.Component {
 
   render() {
     const g = this.props.globalState
-    const { pageContext } = this.props
 
     const currentlyVisibleItems =
       g.itemsToShow || this.props.allPosts.slice(0, 1)
@@ -46,7 +43,7 @@ class TagView extends React.Component {
           hasMore={g.hasMore()}
           onLoadMore={g.loadMore}
         >
-          <NewPostListView posts={currentlyVisibleItems} />
+          <PostList posts={currentlyVisibleItems} />
         </InfiniteScroll>
 
         {/* Loading spinner. */}
@@ -55,20 +52,9 @@ class TagView extends React.Component {
             <FaCog />
           </div>
         )}
-
-        {/* Fallback to Pagination for non JS users. */}
-        {/* {g.useInfiniteScroll && (
-          <noscript>
-            <style>{`.spinner { display: none !important; }`}</style>
-            <Pagination paginationData={paginationData} />
-            <h4>
-              <center>Infinite Scroll does not work without JavaScript.</center>
-            </h4>
-          </noscript>
-        )} */}
       </div>
     )
   }
 }
 
-export default TagView
+export default TagPageContent
