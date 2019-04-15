@@ -17,9 +17,7 @@ class TagPageContent extends React.Component {
         slug: props.pageContext.slug,
         allItems: props.allPosts,
         numAllItems: props.allPosts.length,
-        itemsToShow: props.pageContext.pagePosts
-          .slice(0, 1)
-          .map(post => post.node),
+        itemsToShow: props.allPosts.slice(0, 1),
         itemsIndex: 1,
       })
     }
@@ -34,8 +32,6 @@ class TagPageContent extends React.Component {
   componentWillUnmount() {
     this.props.globalState.updateState({
       allItems: null,
-      // numAllItems: 0,
-      // itemsToShow: null,
     })
   }
 

@@ -74,7 +74,7 @@ export class GlobalState extends React.Component {
 
   hasMore = () => {
     console.log(`itemsIndex: ${this.state.itemsIndex}`)
-    console.log(`countPages: ${this.state.numAllItems}`)
+    console.log(`numAllItems: ${this.state.numAllItems}`)
     console.log(`useInfiniteScroll: ${this.state.useInfiniteScroll}`)
 
     return (
