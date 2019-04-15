@@ -15,15 +15,28 @@
   width: 100%
   margin-bottom: 48px
 
+  @media($mobileBreak)
+    width: 100%
+
+.Post__thumbnailContainer
+  width: 400px
+
+  @media($mobileBreak)
+    display: none
+
 .Post__thumbnail
-  width: 120px
+  // width: 100%
+  display: block
 
   @media($mobileBreak)
     display: none
 
 .Post__text
-  max-width: 200px
-  text-decoration: none
+  margin-left: 24px
+
+  @media($mobileBreak)
+    margin-left: 0px
+    max-width: 55%
 
   a
     text-decoration: none
@@ -31,12 +44,17 @@
 .Post__text__title
   font-family: $primaryFont
   color: $blackFontColor
-  font-size: 14px
+  font-size: 22px
+
+  @media($mobileBreak)
+    font-size: 14px
 
   @media($mobileBreak)
     font-family: $secondaryFont
 
 .Post__text__description
+  color: $greyFontColor
+
   @media($mobileBreak)
     display: none
 
@@ -47,6 +65,9 @@
   align-items: center
   margin-top: 12px
   font-size: 12px
+
+  @media(max-width: 350px)
+    font-size: 9px
 
   a
     text-decoration: none

@@ -1,0 +1,51 @@
+@import ../../styles/global
+
+.HeaderPost
+  display: flex
+  flex-direction: column
+
+  // align-items: flex-start
+  // justify-content: flex-start
+  margin-bottom: 24px
+
+.HeaderPost_thumbnailContainer
+  width: 100%
+
+.HeaderPost__text
+  margin-top: 12px
+  margin-bottom: 12px
+
+  a
+    text-decoration: none
+
+.HeaderPost__text__title
+  font-size: 30px
+  font-family: $primaryFont
+  color: $blackFontColor
+
+  @media($mobileBreak)
+    font-size: 22px
+
+.HeaderPost__text__description
+  display: none
+
+  @media($mobileBreak)
+    display: block
+    font-size: 12px
+    font-family: $secondaryFont
+    color: $greyFontColor
+    margin-top: 16px
+    line-height: 20px
+
+.HeaderPost__text__info
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: flex-start
+  margin-top: 12px
+
+.HeaderPost__text__info__author
+  font-size: 16px
+
+  @media($mobileBreak)
+    font-size: 14px

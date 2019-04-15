@@ -22,13 +22,13 @@ class PostCard extends React.Component {
 
     return (
       <div className={styles.Post}>
-        <div className={styles.Post__thumbnail}>
+        <div className={styles.Post__thumbnailContainer}>
           {' '}
           {thumbExists && (
             <Link to={slug}>
               <Img
                 alt={title}
-                className="articleimage desktop"
+                className={styles.Post__thumbnail}
                 fluid={thumbnail.childImageSharp.largeFluid}
               />
             </Link>
@@ -55,11 +55,7 @@ class PostCard extends React.Component {
           {' '}
           {thumbExists && (
             <Link to={slug}>
-              <Img
-                alt={title}
-                className="articleimage desktop"
-                fluid={thumbnail.childImageSharp.largeFluid}
-              />
+              <Img alt={title} fluid={thumbnail.childImageSharp.largeFluid} />
             </Link>
           )}
         </div>

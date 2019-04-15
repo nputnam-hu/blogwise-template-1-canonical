@@ -1,14 +1,18 @@
 import React from 'react'
 import { InfiniteScroll } from '../infiniteScroll.tsx'
 import { FaCog } from 'react-icons/fa'
-import NewPostListView from '../../components/NewPostListView'
+import HeaderPost from '../../components/HeaderPost'
 import PostList from '../../components/PostList'
 
 class TagPageContent extends React.Component {
   constructor(props) {
     super(props)
     console.log('*** Constructing View ***')
-    if (!props.globalState.items || !props.globalState.useInfiniteScroll) {
+    if (
+      !props.globalState.allItems ||
+      !props.globalState.useInfiniteScroll ||
+      props.globalState.slug !== props.pageContext.slug
+    ) {
       props.globalState.updateState({
         slug: props.pageContext.slug,
         allItems: props.allPosts,
@@ -16,6 +20,7 @@ class TagPageContent extends React.Component {
         itemsToShow: props.pageContext.pagePosts
           .slice(0, 1)
           .map(post => post.node),
+        itemsIndex: 1,
       })
     }
   }
@@ -23,6 +28,14 @@ class TagPageContent extends React.Component {
   componentDidMount() {
     this.props.globalState.updateState({
       isLoading: false,
+    })
+  }
+
+  componentWillUnmount() {
+    this.props.globalState.updateState({
+      allItems: null,
+      // numAllItems: 0,
+      // itemsToShow: null,
     })
   }
 
@@ -43,7 +56,8 @@ class TagPageContent extends React.Component {
           hasMore={g.hasMore()}
           onLoadMore={g.loadMore}
         >
-          <PostList posts={currentlyVisibleItems} />
+          <HeaderPost post={currentlyVisibleItems[0]} />
+          <PostList posts={currentlyVisibleItems.slice(1)} />
         </InfiniteScroll>
 
         {/* Loading spinner. */}

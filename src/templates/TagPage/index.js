@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import { GlobalStateContext } from '../../components/globalState'
 import TagPageContent from '../../components/TagPageContent'
+import LatestPosts from '../../components/LatestPosts'
 
 import Layout from '../../components/Layout'
 import styles from './styles.module.sass'
@@ -11,18 +12,23 @@ class TagPage extends Component {
     return (
       <Layout>
         <div className={styles.TagPage}>
-          <div className={styles.TagPage__title}>
-            {this.props.data.tag.name}
+          <div className={styles.TagPage__content}>
+            <div className={styles.TagPage__title}>
+              {this.props.data.tag.name}
+            </div>
+            <GlobalStateContext.Consumer>
+              {globalState => (
+                <TagPageContent
+                  globalState={globalState}
+                  pageContext={this.props.pageContext}
+                  allPosts={this.props.data.tag.posts}
+                />
+              )}
+            </GlobalStateContext.Consumer>
           </div>
-          <GlobalStateContext.Consumer>
-            {globalState => (
-              <TagPageContent
-                globalState={globalState}
-                pageContext={this.props.pageContext}
-                allPosts={this.props.data.tag.posts}
-              />
-            )}
-          </GlobalStateContext.Consumer>
+          <div className={styles.TagPage__latestPosts}>
+            <LatestPosts />
+          </div>
         </div>
       </Layout>
     )
