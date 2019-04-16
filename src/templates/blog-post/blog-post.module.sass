@@ -5,57 +5,75 @@
 @import ../../styles/global
 @import /css/quill.core.css
 
-#article-container
+.BlogPost
   width: 55%
-  margin: 40px 22.5% 10px
+  margin-top: 84px
+  margin-right: auto
+  margin-left: auto
+
+  @media ($indexBreak)
+    width: 80%
 
   @media (max-width: 800px)
     width: 90%
-    margin: 40px 5% 10px
 
-  #progressbar
-    position: fixed
-    bottom: 0
-    left: 0
-    height: 6px
-    background: #333
-    border-radius: 2px
-    z-index: 1
+.BlogPost__progressbar
+  position: fixed
+  bottom: 0
+  left: 0
+  height: 6px
+  background: #333
+  border-radius: 2px
+  z-index: 1
 
-  #article-title
-    font-family: futura-pt, sans-serif
-    font-size: 45px
-    font-weight: 300
-    color: #333333
+.BlogPost__title
+  font-family: $primaryFont
+  font-size: 45px
+  font-weight: 300
+  color: $blackFontColor
+  margin-bottom: 24px
 
-  .authorimg
-    float: left
-    margin-right: 10px
-    height: 50px
-    width: 50px
-    border-radius: 40px
+.BlogPost__authorInfo
+  padding-left: 5px
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
+  align-content: center
 
-  .authorinfo
-    padding-left: 5px
-    display: flex
-    flex-direction: column
+.BlogPost__authorLink
+  flex-direction: row
+  justify-content: flex-start
+  align-content: center
 
-  .article-authorname
-    font-family: futura-pt, sans-serif
+.authorInfo__image
+  float: left
+  margin-right: 10px
+  height: 50px
+  width: 50px
+  border-radius: 40px
+
+.authorInfo__text
+  margin-left: 6px
+
+.authorInfo__text__name
+  font-family: $secondaryFont
+  font-weight: 300
+  font-size: 16px
+  padding-top: 2px
+  padding-bottom: 2px
+
+.BlogPost__description
+  margin-top: 24px
+  margin-bottom: 24px
+  font-family: $secondaryFont
+  font-size: 18px
+  line-height: 23px
+  font-style: italic
+  color: $greyFontColor
+
+  @media (max-width: 800px)
+    margin-top: 20px
     font-size: 18px
-    padding-top: 2px
-    padding-bottom: 2px
-
-  .bodytext
-    font-family: Rubik, sans-serif
-    font-size: 20px
-    font-weight: 200
-    line-height: 30px
-    margin: 45px 0%
-
-    @media (max-width: 800px)
-      margin-top: 20px
-      font-size: 18px
 
     img
       height: auto

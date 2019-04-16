@@ -3,8 +3,8 @@ import Img from 'gatsby-image'
 import Background from 'gatsby-background-image'
 import Link from 'gatsby-link'
 import Searchbar from '../Searchbar'
-import searchIcon from './search.svg'
 import PostList from '../PostList'
+import TagList from '../TagList'
 import linkedin from './linkedin.png'
 import facebook from './facebook.png'
 import twitter from './twitter.png'
@@ -72,18 +72,7 @@ const IndexContent = ({ posts, blogData, tags }) => {
   // Construct tags list
   const TagsList = (
     <div className={styles.Index__tagsContainer}>
-      {tags && tags.length > 0 && (
-        <div className={styles.Index__tags}>
-          <div className={styles.Index__tags__title}>Topics</div>
-          <ul className={styles.Index__tags__list}>
-            {tags.map(({ node: { slug, name: tagName } }) => (
-              <Link key={slug} to={slug}>
-                <li>{tagName}</li>
-              </Link>
-            ))}
-          </ul>
-        </div>
-      )}
+      {tags && tags.length > 0 && <TagList tags={tags.map(ele => ele.node)} />}
     </div>
   )
 

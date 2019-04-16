@@ -7,6 +7,7 @@ import Layout from '../../components/Layout'
 import AuthorList from '../../components/AuthorList'
 import Time from '../../components/Time'
 import Content, { HTMLContent } from '../../components/Content'
+import TagList from '../../components/TagList'
 import MorePosts from '../../components/MorePosts'
 import styles from './blog-post.module.sass'
 import './styles.sass'
@@ -42,62 +43,60 @@ export class BlogPostTemplate extends Component {
       author,
       morePosts = [],
     } = this.props
+
     const PostContent = contentComponent || Content
 
+    // Construct progress bar
+    const Progressbar = (
+      <div
+        className={styles.BlogPost__progressbar}
+        style={{
+          width:
+            this.state.scrollHeight < 1
+              ? `calc(100% * ${this.state.scrollHeight} `
+              : 0,
+        }}
+      />
+    )
     return (
-      <section id="article-container">
-        <div
-          id="progressbar"
-          style={{
-            width:
-              this.state.scrollHeight < 1
-                ? `calc(100% * ${this.state.scrollHeight} `
-                : 0,
-          }}
-        />
+      <section id="article-container" className={styles.BlogPost}>
+        {Progressbar}
         {helmet || ''}
-        <h1 id="article-title">{title}</h1>
-        <Link style={{ textDecoration: 'none' }} to={author.slug}>
-          <Img
-            className="authorimg"
-            alt={`${author.name} headshot`}
-            fixed={author.headshot.childImageSharp.fixed}
-          />
-        </Link>
-        <div className="authorinfo">
-          <Link
-            style={{ textDecoration: 'none', color: 'black' }}
-            to={author.slug}
-          >
-            <div className="article-authorname">{author.name}</div>
+        {/* Blog Post Info */}
+        <div className={styles.BlogPost__title}>{title}</div>
+        <div className={styles.BlogPost__authorInfo}>
+          <Link style={{ textDecoration: 'none' }} to={author.slug}>
+            <Img
+              className={styles.authorInfo__image}
+              alt={`${author.name} headshot`}
+              fixed={author.headshot.childImageSharp.fixed}
+            />
           </Link>
-          <Time size="large" date={publishDate} />
+          <div className={styles.authorInfo__text}>
+            <Link
+              style={{ textDecoration: 'none', color: 'black' }}
+              to={author.slug}
+            >
+              <div className={styles.authorInfo__text__name}>{author.name}</div>
+            </Link>
+            <Time size="large" date={publishDate} />
+          </div>
         </div>
-        <i>
-          <PostContent className="bodytext" content={description} />
-        </i>
+        <PostContent
+          className={styles.BlogPost__description}
+          content={description}
+        />
+        {/* Cover Photo */}
         {coverPhoto && (
-          <Img
-            fluid={coverPhoto.childImageSharp.fluid}
-            alt="Cover Photo"
-            className="article-cover"
-          />
+          <Img fluid={coverPhoto.childImageSharp.fluid} alt="Cover Photo" />
         )}
+        {/* Post Content Section */}
         <PostContent
           className="bodytext ql-editor mainbody"
           content={htmlBody}
         />
-        {tags && tags.length > 0 && (
-          <div style={{ marginTop: `3rem` }}>
-            <ul className="taglist">
-              {tags.map(tag => (
-                <li key={`${tag.id}tag`}>
-                  <Link to={tag.slug}>{tag.name}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        {/* Tags Section */}
+        {tags && tags.length > 0 && <TagList tags={tags} />}
         {/* Article Footer */}
         <div className={styles.Article__footer}>
           <AuthorList author={author} />
