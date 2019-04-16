@@ -8,7 +8,7 @@
   background-size: cover !important
   background-position: center !important
 
-  @media (max-width: 800px)
+  @media ($mobileBreak)
     height: 250px
 
 .Index__header
@@ -30,24 +30,28 @@
   font-size: 24px
   font-style: italic
 
-  @media (max-width: 800px)
+  @media ($mobileBreak)
     font-size: 20px
 
 .Index__contentContainer
-  margin: 70px 12% 70px
+  margin-top: 48px
+  margin-right: auto
+  margin-left: auto
   display: flex
   flex-direction: row
   justify-content: space-around
   align-itens: flex-start
+  width: 90%
 
   @media ($indexBreak)
+    width: 100%
     flex-direction: column
     align-items: center
 
 .Index__content
   width: 76%
 
-  @media (max-width: 600px)
+  @media ($mobileBreak)
     width: 90%
 
 .Index__content__header
@@ -79,7 +83,12 @@
   flex-direction: column
 
   @media ($indexBreak)
-    width: 90%
+    width: 80%
+    margin-left: 0px
+
+  @media ($mobileBreak)
+    width: 85%
+    margin-left: 0px
 
 .Index__about
   display: flex
