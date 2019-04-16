@@ -69,8 +69,69 @@ const IndexContent = ({ posts, blogData, tags }) => {
     FeaturedArticles = <PostList posts={posts.map(p => p.node)} />
   }
 
+  // Construct tags list
+  const TagsList = (
+    <div className={styles.Index__tagsContainer}>
+      {tags && tags.length > 0 && (
+        <div className={styles.Index__tags}>
+          <div className={styles.Index__tags__title}>Topics</div>
+          <ul className={styles.Index__tags__list}>
+            {tags.map(({ node: { slug, name: tagName } }) => (
+              <Link key={slug} to={slug}>
+                <li>{tagName}</li>
+              </Link>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  )
+
+  // Construct social media icons
+  const SocialMediaIcons = (
+    <div className={styles.Index__socialContainer}>
+      {(twitterUrl || facebookUrl || linkedinUrl) && (
+        <div className={styles.Index__social}>
+          <div className={styles.Index__social__title}>Find us on</div>
+          <div className={styles.Index__social__links}>
+            {twitterUrl && (
+              <a
+                className={styles.Index__social__link}
+                href={twitterUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={twitter} alt="twitter" />
+              </a>
+            )}
+            {facebookUrl && (
+              <a
+                className={styles.Index__social__link}
+                href={facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={facebook} alt="facebook" />
+              </a>
+            )}
+            {linkedinUrl && (
+              <a
+                className={styles.Index__social__link}
+                href={linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={linkedin} alt="linkedin" />
+              </a>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+
   return (
-    <div>
+    <div className={styles.Index}>
       {/* Header Image */}
       {Header}
       <div className={styles.Index__contentContainer}>
@@ -86,7 +147,7 @@ const IndexContent = ({ posts, blogData, tags }) => {
           </div>
           {FeaturedArticles}
         </div>
-        {/* Right Content */}
+        {/* Right Side Content */}
         <div className={styles.Index__rightContent}>
           <Searchbar />
           {/* About Section  */}
@@ -100,60 +161,9 @@ const IndexContent = ({ posts, blogData, tags }) => {
             </Link>
           </div>
           {/* Tags Section */}
-          <div className={styles.Index__tagsContainer}>
-            {tags && tags.length > 0 && (
-              <div className={styles.Index__tags}>
-                <div className={styles.Index__tags__title}>Topics</div>
-                <ul className={styles.Index__tags__list}>
-                  {tags.map(({ node: { slug, name: tagName } }) => (
-                    <Link key={slug} to={slug}>
-                      <li>{tagName}</li>
-                    </Link>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
+          {TagsList}
           {/* Social Icons Section */}
-          <div className={styles.Index__socialContainer}>
-            {(twitterUrl || facebookUrl || linkedinUrl) && (
-              <div className={styles.Index__social}>
-                <div className={styles.Index__social__title}>Find us on</div>
-                <div className={styles.Index__social__links}>
-                  {twitterUrl && (
-                    <a
-                      className={styles.Index__social__link}
-                      href={twitterUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img src={twitter} alt="twitter" />
-                    </a>
-                  )}
-                  {facebookUrl && (
-                    <a
-                      className={styles.Index__social__link}
-                      href={facebookUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img src={facebook} alt="facebook" />
-                    </a>
-                  )}
-                  {linkedinUrl && (
-                    <a
-                      className={styles.Index__social__link}
-                      href={linkedinUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img src={linkedin} alt="linkedin" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
+          {SocialMediaIcons}
         </div>
       </div>
     </div>

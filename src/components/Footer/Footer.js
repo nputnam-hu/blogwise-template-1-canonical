@@ -1,6 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
+import blogwiseIcon from './blogwise-icon.png'
 
 import styles from './Footer.module.sass'
 
@@ -48,11 +49,7 @@ const Footer = () => (
             >
               powered by blogwise
             </a>
-            <Img
-              className={styles.Footer__poweredBy__logo}
-              alt={`${name} logo`}
-              fixed={sidebar.childImageSharp.fixed}
-            />
+            <img src={blogwiseIcon} alt="blogwise icon" />
           </div>
         </div>
       </div>
