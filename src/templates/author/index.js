@@ -1,7 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../../components/Layout'
-import PostListView from '../../components/PostListView'
+import PostList from '../../components/PostList'
+import styles from author.module.sass
 import './styles.sass'
 
 const Author = ({ data }) => {
@@ -13,7 +14,7 @@ const Author = ({ data }) => {
       <div id="author-container">
         <h1 className="authorheader">Posts from {name}</h1>
         {posts && posts.length > 0 ? (
-          <PostListView posts={posts} />
+          <PostList posts={posts} />
         ) : (
           <h1 className="authorheader">No posts yet</h1>
         )}
@@ -37,8 +38,11 @@ export const pageQuery = graphql`
         publishDate
         thumbnail {
           childImageSharp {
-            fluid(maxWidth: 153, maxHeight: 133, quality: 100) {
+            largeFluid: fluid(maxWidth: 769, maxHeight: 412, quality: 100) {
               ...GatsbyImageSharpFluid
+            }
+            smallFixed: fixed(width: 120, height: 90, quality: 100) {
+              ...GatsbyImageSharpFixed
             }
           }
         }

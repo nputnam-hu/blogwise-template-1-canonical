@@ -8,6 +8,7 @@ class TagPageContent extends React.Component {
   constructor(props) {
     super(props)
     console.log('*** Constructing View ***')
+    console.log(props.allPosts)
     if (
       !props.globalState.allItems ||
       !props.globalState.useInfiniteScroll ||
@@ -15,9 +16,9 @@ class TagPageContent extends React.Component {
     ) {
       props.globalState.updateState({
         slug: props.pageContext.slug,
-        allItems: props.allPosts,
-        numAllItems: props.allPosts.length,
-        itemsToShow: props.allPosts.slice(0, 1),
+        allItems: props.allPosts ? props.allPosts : [],
+        numAllItems: props.allPosts ? props.allPosts.length : 0,
+        itemsToShow: props.allPosts ? props.allPosts.slice(0, 1) : [],
         itemsIndex: 1,
       })
     }
@@ -37,12 +38,23 @@ class TagPageContent extends React.Component {
 
   render() {
     const g = this.props.globalState
+    const allPosts = this.props.allPosts ? this.props.allPosts : []
 
-    const currentlyVisibleItems =
-      g.itemsToShow || this.props.allPosts.slice(0, 1)
+    const currentlyVisibleItems = g.itemsToShow || allPosts
     console.log('CURRENTLY VISIBLE')
     console.log(currentlyVisibleItems)
 
+    let Content = <div>There are no posts under this topic.</div>
+    if (currentlyVisibleItems.length === 1) {
+      Content = <HeaderPost post={currentlyVisibleItems[0]} />
+    } else if (currentlyVisibleItems.length >= 2) {
+      Content = (
+        <div>
+          <HeaderPost post={currentlyVisibleItems[0]} />
+          <PostList posts={currentlyVisibleItems.slice(1)} />
+        </div>
+      )
+    }
     return (
       <div>
         <InfiniteScroll
@@ -52,8 +64,7 @@ class TagPageContent extends React.Component {
           hasMore={g.hasMore()}
           onLoadMore={g.loadMore}
         >
-          <HeaderPost post={currentlyVisibleItems[0]} />
-          <PostList posts={currentlyVisibleItems.slice(1)} />
+          {Content}
         </InfiniteScroll>
 
         {/* Loading spinner. */}
