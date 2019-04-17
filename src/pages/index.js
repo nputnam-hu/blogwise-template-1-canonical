@@ -98,8 +98,6 @@ export const pageQuery = graphql`
       name
       description
       backgroundHexCode
-      navbarHexCode
-      headerTextColor
       twitterUrl
       facebookUrl
       linkedinUrl
