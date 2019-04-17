@@ -2,21 +2,30 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../../components/Layout'
 import PostList from '../../components/PostList'
-import styles from author.module.sass
-import './styles.sass'
+import styles from './styles.module.sass'
 
 const Author = ({ data }) => {
   const {
-    author: { name, posts },
+    author: { name, posts, bio },
   } = data
+
+  const AuthorInfo = (
+    <div className={styles.AuthorInfo}>
+      <div className={styles.AuthorInfo__image}>Image</div>
+      <div className={styles.AuthorInfo__text}>
+        <div className={styles.AuthorInfo__text__name}>{name}</div>
+        <div className={styles.AuthorInfo__text__bio}>{bio}</div>
+      </div>
+    </div>
+  )
   return (
     <Layout>
-      <div id="author-container">
-        <h1 className="authorheader">Posts from {name}</h1>
+      <div className={styles.Author}>
+        {AuthorInfo}
         {posts && posts.length > 0 ? (
           <PostList posts={posts} />
         ) : (
-          <h1 className="authorheader">No posts yet</h1>
+          <div className={styles.Author__noPosts}>No posts yet</div>
         )}
       </div>
     </Layout>
@@ -48,6 +57,7 @@ export const pageQuery = graphql`
         }
         author {
           name
+          bio
           slug
         }
       }

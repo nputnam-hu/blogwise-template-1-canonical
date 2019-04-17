@@ -111,7 +111,7 @@ exports.createPages = ({ actions, graphql }) => {
       const { slug, id } = node
       createPage({
         path: slug,
-        component: path.resolve(`src/templates/author/index.js`),
+        component: path.resolve(`src/templates/AuthorPage/index.js`),
         // additional data can be passed via context
         context: {
           id,
