@@ -1,14 +1,11 @@
 import React from 'react'
 import { InfiniteScroll } from '../infiniteScroll.tsx'
 import { FaCog } from 'react-icons/fa'
-import HeaderPost from '../HeaderPost'
 import PostList from '../PostList'
 
 class AuthorPageContent extends React.Component {
   constructor(props) {
     super(props)
-    console.log('*** Constructing View ***')
-    console.log(props.allPosts)
     if (
       !props.globalState.allItems ||
       !props.globalState.useInfiniteScroll ||
@@ -38,11 +35,9 @@ class AuthorPageContent extends React.Component {
 
   render() {
     const g = this.props.globalState
-    const allPosts = this.props.allPosts ? this.props.allPosts : []
+    const allPosts = this.props.allPosts || []
 
     const currentlyVisibleItems = g.itemsToShow || allPosts
-    console.log('CURRENTLY VISIBLE')
-    console.log(currentlyVisibleItems)
 
     let Content = <div>There are no posts under this topic.</div>
     if (currentlyVisibleItems.length === 1) {

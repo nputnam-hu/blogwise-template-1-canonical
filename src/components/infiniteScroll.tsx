@@ -81,20 +81,12 @@ export class InfiniteScroll extends React.Component<InfiniteScrollProps, {}> {
     if (this.props.isLoading) {
       return
     }
-    console.log(`Has More? : ${this.props.hasMore}`)
 
     if (
       this.props.hasMore &&
       this.sentinel.getBoundingClientRect().top - window.innerHeight <
         this.props.threshold!
     ) {
-      console.log('About to load more.')
-      // console.log(
-      //   `clientRect: ${
-      //     this.sentinel.getBoundingClientRect().top
-      //   }, innerHeight: ${window.innerHeight},
-      //   ${this.props.threshold}`,
-      // )
       this.props.onLoadMore()
     }
   }

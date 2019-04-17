@@ -33,7 +33,6 @@ class Search extends Component {
       // eslint-disable-next-line no-underscore-dangle
       posts = window.__SEARCH__.search(this.state.query)
       posts = posts.filter(post => post.id !== schemaPostId)
-      console.log(posts)
     }
     return (
       <Layout>

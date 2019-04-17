@@ -19,17 +19,11 @@ const NewPostListView = ({ posts }) => (
 
       const { name, slug: authorSlug } = author
       const thumbExists = Boolean(thumbnail)
-      // if (thumbExists) {
-      //   console.log(post)
-      //   console.log(thumbnail)
-      // } else {
-      //   console.log('PROBLEM')
-      //   console.log(thumbnail)
-      // }
+
       return (
         <div className="post" key={slug}>
           <div className="article" style={thumbExists ? {} : { width: '100%' }}>
-            {thumbExists && console.log(thumbnail) && (
+            {thumbExists && (
               <Link to={slug}>
                 <Img
                   alt={title}

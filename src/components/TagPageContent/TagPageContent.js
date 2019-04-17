@@ -7,8 +7,6 @@ import PostList from '../../components/PostList'
 class TagPageContent extends React.Component {
   constructor(props) {
     super(props)
-    console.log('*** Constructing View ***')
-    console.log(props.allPosts)
     if (
       !props.globalState.allItems ||
       !props.globalState.useInfiniteScroll ||
@@ -41,8 +39,6 @@ class TagPageContent extends React.Component {
     const allPosts = this.props.allPosts ? this.props.allPosts : []
 
     const currentlyVisibleItems = g.itemsToShow || allPosts
-    console.log('CURRENTLY VISIBLE')
-    console.log(currentlyVisibleItems)
 
     let Content = <div>There are no posts under this topic.</div>
     if (currentlyVisibleItems.length === 1) {
