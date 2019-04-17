@@ -18,21 +18,31 @@
   @media($mobileBreak)
     width: 100%
 
+    // max-width: 350px
+    margin-right: auto
+    margin-left: auto
+    flex-direction: row-reverse
+
 .Post__thumbnailContainer
   width: 400px
 
   @media($mobileBreak)
-    display: none
+    width: 45%
+    min-width: 120px
 
 .Post__thumbnail
   // width: 100%
   display: block
 
   @media($mobileBreak)
-    display: none
+    // display: none
 
 .Post__text
-  margin-left: 24px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  margin-left: 36px
+  width: 65%
 
   @media($mobileBreak)
     margin-left: 0px
@@ -45,11 +55,13 @@
   font-family: $primaryFont
   color: $blackFontColor
   font-size: 22px
+  margin-bottom: 12px
+
+  @media($indexBreak)
+    margin-bottom: 6px
 
   @media($mobileBreak)
     font-size: 14px
-
-  @media($mobileBreak)
     font-family: $secondaryFont
 
 .Post__text__description
@@ -66,15 +78,30 @@
   margin-top: 12px
   font-size: 12px
 
+  @media ($mobileBreak)
+    justify-content: flex-start
+
   @media(max-width: 350px)
     font-size: 9px
 
   a
     text-decoration: none
 
+.Post__linkContainer
+  display: flex
+  flex-direction: row
+  align-items: center
+
+.Post__headshot
+  width: 20px
+  height: 20px
+  border-radius: 10px
+  margin-right: 6px
+
 .Post__text__info__author
   font-family: $secondaryFont
   color: $greyFontColor
+  margin-right: 12px
 
 .Post__thumbnailMobile
   @media($mobileBreak)

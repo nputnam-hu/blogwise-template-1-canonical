@@ -9,7 +9,7 @@
   width: 100%
 
 .HeaderPost__text
-  margin-top: 12px
+  margin-top: 24px
   margin-bottom: 12px
 
   a
@@ -23,6 +23,39 @@
   @media($mobileBreak)
     font-size: 22px
 
+.Post__text__info
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
+  align-items: center
+  margin-top: 12px
+  font-size: 12px
+
+  @media ($mobileBreak)
+    justify-content: flex-start
+
+  @media(max-width: 350px)
+    font-size: 9px
+
+  a
+    text-decoration: none
+
+.Post__linkContainer
+  display: flex
+  flex-direction: row
+  align-items: center
+
+.Post__headshot
+  width: 20px
+  height: 20px
+  border-radius: 10px
+  margin-right: 6px
+
+.Post__text__info__author
+  font-family: $secondaryFont
+  color: $greyFontColor
+  margin-right: 12px
+
 .HeaderPost__text__description
   display: none
 
@@ -31,7 +64,7 @@
     font-size: 12px
     font-family: $secondaryFont
     color: $greyFontColor
-    margin-top: 16px
+    margin-top: 20px
     line-height: 20px
 
 .HeaderPost__text__info

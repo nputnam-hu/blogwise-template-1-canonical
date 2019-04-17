@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 
 import PostListView from '../components/PostListView'
 import Layout from '../components/Layout'
-import '../templates/author/styles.module.sass'
+import '../styles/latest.sass'
 
 const Latest = ({ data: { allBlogPost } }) => {
   let LatestContents = (

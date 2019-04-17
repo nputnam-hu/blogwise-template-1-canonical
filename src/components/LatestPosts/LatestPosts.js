@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'gatsby-link'
 import { StaticQuery, graphql } from 'gatsby'
 import Time from '../Time'
-import './styles.sass'
 import styles from './LatestPosts.module.sass'
 
 const LatestPosts = () => (
@@ -31,7 +30,7 @@ const LatestPosts = () => (
       }
     `}
     render={({ allBlogPost }) => (
-      <div className={styles.LatestPost}>
+      <div className={styles.LatestPosts}>
         <div className={styles.LatestPost__title}>Latest Posts</div>
         {(allBlogPost ? allBlogPost.edges : []).map(({ node }, i) => {
           const { title, publishDate, slug, author } = node

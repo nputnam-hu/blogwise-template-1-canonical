@@ -14,8 +14,14 @@
   display: flex
   flex-direction: row
   justify-content: space-around
+  min-width: 700px
+  margin-right: auto
+  margin-left: auto
 
   @media (max-width: 1000px)
+    min-width: 320px
+
+  @media($mobileBreak)
     flex-direction: column
     align-items: center
 

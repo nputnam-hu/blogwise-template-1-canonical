@@ -17,7 +17,7 @@ class PostCard extends React.Component {
       author,
       excerpt,
     } = post
-    const { name, slug: authorSlug } = author
+    const { name, slug: authorSlug, headshot } = author
     const thumbExists = Boolean(thumbnail)
 
     return (
@@ -42,7 +42,12 @@ class PostCard extends React.Component {
             </div>
           </Link>
           <div className={styles.Post__text__info}>
-            <Link to={authorSlug}>
+            <Link className={styles.Post__linkContainer} to={authorSlug}>
+              <Img
+                alt={title}
+                className={styles.Post__headshot}
+                fluid={headshot.childImageSharp.small}
+              />
               <div className={styles.Post__text__info__author}>{name}</div>
             </Link>
             <Time
@@ -51,14 +56,14 @@ class PostCard extends React.Component {
             />
           </div>
         </div>
-        <div className={styles.Post__thumbnailMobile}>
+        {/* <div className={styles.Post__thumbnailMobile}>
           {' '}
           {thumbExists && (
             <Link to={slug}>
               <Img alt={title} fluid={thumbnail.childImageSharp.largeFluid} />
             </Link>
           )}
-        </div>
+        </div> */}
       </div>
     )
   }

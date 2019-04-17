@@ -72,7 +72,9 @@ const IndexContent = ({ posts, blogData, tags }) => {
   // Construct tags list
   const TagsList = (
     <div className={styles.Index__tagsContainer}>
-      {tags && tags.length > 0 && <TagList tags={tags.map(ele => ele.node)} />}
+      {tags && tags.length > 0 && (
+        <TagList title="Topics" tags={tags.map(ele => ele.node)} />
+      )}
     </div>
   )
 

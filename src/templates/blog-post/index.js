@@ -42,7 +42,7 @@ export class BlogPostTemplate extends Component {
       author,
       morePosts = [],
     } = this.props
-
+    const { name, headshot, bio } = author
     const PostContent = contentComponent || Content
 
     // Construct progress bar
@@ -68,7 +68,7 @@ export class BlogPostTemplate extends Component {
             <Img
               className={styles.authorInfo__image}
               alt={`${author.name} headshot`}
-              fixed={author.headshot.childImageSharp.fixed}
+              fixed={author.headshot.childImageSharp.small}
             />
           </Link>
           <div className={styles.authorInfo__text}>
@@ -97,10 +97,35 @@ export class BlogPostTemplate extends Component {
           content={htmlBody}
         />
         {/* Tags Section */}
-        {tags && tags.length > 0 && <TagList tags={tags} />}
+        {tags && tags.length > 0 && (
+          <div className={styles.BlogPost__taglistContainer}>
+            <TagList tags={tags} />
+          </div>
+        )}
         {/* Article Footer */}
         <div className={styles.Article__footer}>
-          <AuthorList author={author} />
+          <div className={styles.AuthorPage__header}>
+            <div className={styles.AuthorPage__header__imageContainer}>
+              <Img
+                className={styles.AuthorPage__header__image}
+                alt={name}
+                fixed={headshot.childImageSharp.large}
+              />
+            </div>
+            {/* <div className={styles.AuthorPage__header__imageContainerMobile}>
+              <Img
+                className={styles.AuthorPage__header__imageMobile}
+                alt={name}
+                fixed={headshot.childImageSharp.small}
+              />
+            </div> */}
+            <div className={styles.AuthorPage__header__text}>
+              <div className={styles.AuthorPage__header__text__name}>
+                {name}
+              </div>
+              <div className={styles.AuthorPage__header__text__bio}>{bio}</div>
+            </div>
+          </div>
         </div>
         <hr />
         {morePosts && morePosts.length > 0 && <MorePosts posts={morePosts} />}
@@ -173,7 +198,10 @@ export const pageQuery = graphql`
         slug
         headshot {
           childImageSharp {
-            fixed(height: 50, width: 50, quality: 100) {
+            small: fixed(height: 45, width: 45, quality: 100) {
+              ...GatsbyImageSharpFixed
+            }
+            large: fixed(height: 120, width: 120, quality: 100) {
               ...GatsbyImageSharpFixed
             }
           }

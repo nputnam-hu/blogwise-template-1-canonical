@@ -20,9 +20,18 @@
     width: 90%
 
 .TagPage__title
-  font-size: 24px
-  margin-top: 24px
+  font-size: 32px
+  margin-top: 64px
   margin-bottom: 24px
+  text-transform: uppercase
+  color: $greyFontColor
+
+  @media($mobileBreak)
+    font-size: 22px
+    margin-top: 32px
 
 .TagPage__latestPosts
   margin-top: 64px
+
+  @media($mobileBreak)
+    margin-top: 32px

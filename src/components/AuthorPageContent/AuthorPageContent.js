@@ -40,9 +40,7 @@ class AuthorPageContent extends React.Component {
     const currentlyVisibleItems = g.itemsToShow || allPosts
 
     let Content = <div>There are no posts under this topic.</div>
-    if (currentlyVisibleItems.length === 1) {
-      Content = <PostList posts={currentlyVisibleItems.slice(0, 1)} />
-    } else if (currentlyVisibleItems.length >= 2) {
+    if (currentlyVisibleItems.length >= 1) {
       Content = (
         <div>
           <PostList posts={currentlyVisibleItems} />

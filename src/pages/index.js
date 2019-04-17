@@ -71,6 +71,13 @@ export const pageQuery = graphql`
           author {
             name
             slug
+            headshot {
+              childImageSharp {
+                small: fixed(height: 130, width: 130, quality: 100) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
           }
           thumbnail {
             childImageSharp {

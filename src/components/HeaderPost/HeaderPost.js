@@ -17,7 +17,7 @@ class HeaderPost extends React.Component {
       author,
       excerpt,
     } = post
-    const { name, slug: authorSlug } = author
+    const { name, slug: authorSlug, headshot } = author
     const thumbExists = Boolean(thumbnail)
 
     return (
@@ -38,15 +38,18 @@ class HeaderPost extends React.Component {
           <Link to={slug}>
             <div className={styles.HeaderPost__text__title}>{title}</div>
           </Link>
-          <div className={styles.HeaderPost__text__info}>
-            <Link to={authorSlug}>
-              <div className={styles.HeaderPost__text__info__author}>
-                {name}
-              </div>
+          <div className={styles.Post__text__info}>
+            <Link className={styles.Post__linkContainer} to={authorSlug}>
+              <Img
+                alt={title}
+                className={styles.Post__headshot}
+                fluid={headshot.childImageSharp.small}
+              />
+              <div className={styles.Post__text__info__author}>{name}</div>
             </Link>
             <Time
               date={publishDate}
-              className={styles.HeaderPost__text__info__date}
+              className={styles.Post__text__info__date}
             />
           </div>
           <div className={styles.HeaderPost__text__description}>

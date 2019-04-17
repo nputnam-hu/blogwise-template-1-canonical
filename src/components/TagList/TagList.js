@@ -5,10 +5,10 @@ import styles from './TagList.module.sass'
 
 class TagList extends React.Component {
   render() {
-    const { tags } = this.props
+    const { tags, title } = this.props
     return (
       <div className={styles.Index__tags}>
-        <div className={styles.Index__tags__title}>Topics</div>
+        {title && <div className={styles.Index__tags__title}>{title}</div>}
         <ul className={styles.Index__tags__list}>
           {tags.map(tag => (
             <Link key={tag.slug} to={tag.slug}>

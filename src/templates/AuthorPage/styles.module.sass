@@ -17,8 +17,15 @@
 .AuthorPage__content
   width: 60%
 
+  @media($indexBreak)
+    width: 80%
+
   @media(max-width: 800px)
     width: 90%
+
+////////////////////
+// Header Section //
+////////////////////
 
 .AuthorPage__header
   display: flex
@@ -39,11 +46,17 @@
   @media($mobileBreak)
     display: none
 
+.AuthorPage__header__image
+  border-radius: 100px
+
 .AuthorPage__header__imageContainerMobile
   display: none
 
   @media($mobileBreak)
     display: inline
+
+.AuthorPage__header__imageMobile
+  border-radius: 80px
 
 .AuthorPage__header__text
   display: flex
@@ -60,6 +73,12 @@
   color: $blackFontColor
   font-size: 22px
   line-height: 31px
+  margin-bottom: 16px
+
+  @media ($mobileBreak)
+    color: $greyFontColor
+    font-weight: 600
+    font-size: 18px
 
 .AuthorPage__header__text__bio
   font-family: $secondaryFont
@@ -67,8 +86,16 @@
   font-size: 14px
   line-height: 23px
 
+  @media($mobileBreak)
+    color: $greyFontColor
+    text-align: center
+
 .AuthorPage__lineBreak
-  margin-top: 48px
-  margin-bottom: 72px
+  margin-top: 64px
+  margin-bottom: 88px
+
+  @media($mobileBreak)
+    margin-top: 48px
+    margin-bottom: 56px
 
 .AuthorPage__postsContainer

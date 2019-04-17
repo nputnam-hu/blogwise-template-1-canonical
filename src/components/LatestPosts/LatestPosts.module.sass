@@ -3,22 +3,31 @@
 .LatestPosts
   display: flex
   flex-direction: column
-  top: 40px
-  width: 90%
+  width: 65%
+  margin-right: auto
+  margin-left: auto
+  margin-top: 64px
 
   a:hover
     color: $greyFontColor
 
   @media($mobileBreak)
-    align-items: center
+    align-items: flex-start
+    width: 90%
+    margin-top: 0px
 
 .LatestPost__title
   font-family: $primaryFont
   font-size: 18px
   margin-bottom: 24px
+  margin-left: 44px
 
   @media($mobileBreak)
+    font-size: 16px
+    margin-left: 0px
+    margin-bottom: 24px
     font-family: $secondaryFont
+    text-transform: uppercase
 
 .Post
   margin-bottom: 36px
@@ -28,10 +37,9 @@
 
 .Post__numberText
   font-family: $secondaryFont
-  float: left
   font-size: 48px
   color: #bdbdbd
-  margin-right: 5px
+  margin-right: 16px
 
 .Post__content
   margin-left: 10px

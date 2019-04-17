@@ -68,10 +68,10 @@ export const pageQuery = graphql`
       bio
       headshot {
         childImageSharp {
-          small: fixed(height: 130, width: 130, quality: 100) {
+          small: fixed(height: 120, width: 120, quality: 100) {
             ...GatsbyImageSharpFixed
           }
-          large: fixed(height: 200, width: 200, quality: 100) {
+          large: fixed(height: 120, width: 120, quality: 100) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -97,6 +97,13 @@ export const pageQuery = graphql`
           name
           bio
           slug
+          headshot {
+            childImageSharp {
+              small: fixed(height: 130, width: 130, quality: 100) {
+                ...GatsbyImageSharpFixed
+              }
+            }
+          }
         }
       }
     }
