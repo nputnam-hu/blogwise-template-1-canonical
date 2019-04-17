@@ -1,9 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-
 import Layout from '../components/Layout'
-import AuthorList from '../components/AuthorList'
 
 import styles from '../styles/about.module.sass'
 
@@ -28,9 +26,24 @@ const About = ({ data: { blogData, allAuthor } }) => {
   if (allAuthor !== null) {
     const { edges: authors } = allAuthor
     AboutWriters = (
-      <div className={styles.WriterList}>
-        <div className={styles.WriterList__title}>About Writers</div>
-        <AuthorList authors={authors} />
+      <div className={styles.About__writers}>
+        <div className={styles.About__writers__title}>Writers</div>
+        <div className={styles.About__writers__list}>
+          {authors.map(({ node }) => (
+            <Link key={node.id} className={styles.writer} to={node.slug}>
+              <div className={styles.writer__headshot}>
+                <Img
+                  alt={`${node.name} headshot`}
+                  fixed={node.headshot.childImageSharp.fixed}
+                />
+              </div>
+              <div className={styles.writer__text}>
+                <div className={styles.writer__text__name}>{node.name}</div>
+                <div className={styles.writer__text__bio}>{node.bio}</div>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     )
   }
@@ -58,7 +71,7 @@ export const pageQuery = graphql`
           slug
           headshot {
             childImageSharp {
-              fixed(height: 70, width: 70, quality: 100) {
+              fixed(height: 70, width: 70) {
                 ...GatsbyImageSharpFixed
               }
             }

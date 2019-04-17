@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 
 import PostListView from '../components/PostListView'
 import Layout from '../components/Layout'
-import '../templates/author/styles.module.sass'
+import '../templates/author/styles.sass'
 
 const Latest = ({ data: { allBlogPost } }) => {
   let LatestContents = (
@@ -49,7 +49,7 @@ export const pageQuery = graphql`
           }
           thumbnail {
             childImageSharp {
-              fluid(maxWidth: 153, maxHeight: 133, quality: 100) {
+              fluid(maxWidth: 153, maxHeight: 133) {
                 ...GatsbyImageSharpFluid
               }
             }
