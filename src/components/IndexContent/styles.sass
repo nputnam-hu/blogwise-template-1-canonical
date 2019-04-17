@@ -1,0 +1,200 @@
+.header-container
+  height: 300px
+  margin: -8px
+  border-bottom: 1px solid #E0E4E7
+  background-repeat: no-repeat !important
+  background-size: cover !important
+  background-position: center !important
+
+  @media (max-width: 800px)
+    height: 250px
+
+  #headercontent
+    padding-left: 13%
+    padding-top: 75px
+
+    #headerimg
+      max-height: 75px
+      margin-bottom: 15px
+
+      @media (max-width: 800px)
+        max-width: 80vw
+
+    #headertext
+      font-family: futura-pt, sans-serif
+      color: white
+      text-transform: uppercase
+      font-weight: 200
+      font-size: 24px
+
+      @media (max-width: 800px)
+        font-size: 20px
+
+    #headerabout
+      font-family: futura-pt, sans-serif
+      color: white
+      font-size: 16px
+      padding-left: 5px
+      text-decoration: none
+
+#headerbottom
+  display: none
+
+  @media (max-width: 1000px)
+    font-family: futura-pt, sans-serif
+    display: flex
+    padding-left: 35px
+    margin-top: 25px
+    margin-bottom: -30px
+    flex-direction: row
+    justify-content: flex-start
+
+  #headersocialbuttons
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+
+    img
+      margin-top: 4px
+      height: 16px
+      margin-right: 15px
+
+  #headerabout
+    color: #B3B3B3
+    text-decoration: none
+    margin-top: 0px
+    font-size: 18px
+
+  #headersearch
+    height: 36px
+    margin-top: 3px
+    margin-left: 15px
+
+#indexcontent-container
+  margin: 70px 12% 70px
+  display: flex
+
+  @media (max-width: 1150px)
+    justify-content: center
+    width: 100%
+    margin: 70px 0% 10px
+
+  #content
+    position: relative
+    width: 76%
+
+    @media (max-width: 600px)
+      width: 90%
+
+  #featured-text
+    align-self: left
+    font-family: futura-pt, sans-serif
+    letter-spacing: 0.35px
+    color: #B3B3B3
+    font-weight: 500
+    font-size: 18px
+
+  #link-more
+    position: absolute
+    top: 5px
+    right: 0px
+    float: right
+    text-decoration: none
+    font-family: "Assistant Regular"
+    font-size: 13px
+    color: #828282
+
+  .linebreak
+    display: block
+    float: left
+    height: 2px
+    margin-top: 20px
+    margin-bottom: 20px
+
+  #rightcontent
+    width: 30%
+    margin-left: 10%
+    display: flex
+    flex-direction: column
+
+    @media (max-width: 1000px)
+      display: none
+
+    .rightheader
+      font-family: futura-pt, sans-serif
+      font-weight: 500
+      font-size: 16px
+      color: #b3b3b3
+      letter-spacing: 5%
+
+    #explore-container
+      padding-top: 40px
+
+      .taglist
+        list-style: none
+        padding-left: 0px
+        padding-bottom: 10px
+        display: flex
+        flex-wrap: wrap
+        flex-direction: row
+
+        li
+          display: flex
+          height: 35px
+          border-radius: 1px
+          width: max-content
+          padding-right: 10px
+          padding-left: 10px
+          margin: 0.5rem 0.5rem 0.5rem 0
+          background: #ebe9e7
+          align-items: center
+          justify-content: center
+          font-family: futura-pt, sans-serif
+          font-weight: 300
+          font-size: 13px
+          text-transform: uppercase
+
+        a
+          text-decoration: none
+          color: black
+
+        li:hover
+          background: #e0e0e0
+
+    #rightlogo
+      display: block
+      object-fit: contain
+      max-height: 35px
+      align-self: flex-start
+      margin-bottom: 10px
+
+    #blogdescription
+      color: black
+      font-family: "Assistant Regular"
+      font-weight: 300
+      line-height: 16px
+      color: #666666
+      font-size: 13px
+      padding-bottom: 5px
+      margin-top: 12px
+
+    #moreonblog
+      text-decoration: none
+      align-self: flex-end
+      font-family: "PT Sans"
+      font-size: 12px
+      color: #828282
+      padding-top: 5px
+
+    #sociallinks
+      display: flex
+      flex-direction: row
+      flex-wrap: wrap
+      justify-content: flex-start
+      padding-top: 5px
+
+      a
+        padding-right: 7px
+
+    .right-sociallink
+      margin-right: 30px

@@ -53,7 +53,7 @@ const TemplateWrapper = ({ showNav = true, children }) => (
           <meta property="og:url" content="/" />
           <meta
             property="og:image"
-            content={data.blogData.header.relativePath}
+            content={data.blogData.header.absolutePath}
           />
         </Helmet>
         {showNav && <Navbar />}

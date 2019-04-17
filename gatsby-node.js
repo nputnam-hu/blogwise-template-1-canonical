@@ -28,31 +28,6 @@ exports.createPages = ({ actions, graphql }) => {
         edges {
           node {
             id
-            title
-            description
-            htmlBody
-            publishDate
-            author {
-              id
-              name
-              slug
-            }
-            thumbnail {
-              id
-              childImageSharp {
-                id
-                fixed(quality: 100) {
-                  src
-                }
-                fluid(quality: 100) {
-                  src
-                  aspectRatio
-                }
-              }
-            }
-            coverPhoto {
-              id
-            }
             slug
             tags {
               id
@@ -111,7 +86,7 @@ exports.createPages = ({ actions, graphql }) => {
       const { slug, id } = node
       createPage({
         path: slug,
-        component: path.resolve(`src/templates/AuthorPage/index.js`),
+        component: path.resolve(`src/templates/author/index.js`),
         // additional data can be passed via context
         context: {
           id,
@@ -121,23 +96,16 @@ exports.createPages = ({ actions, graphql }) => {
     let tags = {}
     if (result.data.allTag !== null) {
       tags = result.data.allTag.edges
-
       tags.forEach(({ node }) => {
         const { slug, id } = node
 
-        const paginatedTagPageTemplate = path.resolve(
-          'src/templates/TagPage/index.js',
-        )
-
-        const pageData = {
-          path: `${slug}`,
-          component: paginatedTagPageTemplate,
+        createPage({
+          path: slug,
+          component: path.resolve(`src/templates/tags/index.js`),
           context: {
-            slug,
             id,
           },
-        }
-        createPage(pageData)
+        })
       })
     }
   })

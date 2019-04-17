@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 
-import styles from './Navbar.module.sass'
+import './styles.sass'
 
 const { customNavbarLinks } = require('../../../config')
 
@@ -18,10 +18,10 @@ const Navbar = () => (
     query={graphql`
       query Navbar {
         blogData {
-          backgroundHexCode
+          navbarHexCode
           header {
             childImageSharp {
-              fixed(height: 40, quality: 100) {
+              fixed(height: 40) {
                 ...GatsbyImageSharpFixed
               }
             }
@@ -30,22 +30,22 @@ const Navbar = () => (
       }
     `}
     render={({ blogData: { navbarHexCode, header } }) => (
-      <div className={styles.Navbar} style={{ background: navbarHexCode }}>
-        <Link to="/" className={styles.Navbar__logoContainer} title="Logo">
+      <div className="navbar-container" style={{ background: navbarHexCode }}>
+        <Link to="/" className="navbar-item" title="Logo">
           <Img
-            className={styles.Navbar__logo}
+            className="navbar-logo"
             fixed={header.childImageSharp.fixed}
             alt="logo"
           />
         </Link>
-        <div className={styles.Navbar__links}>
+        <div id="navbar-links">
           {customNavbarLinks.map(({ link, name }) => (
             <a
               target="_blank"
               rel="noopener noreferrer"
               href={link}
               alt={name}
-              style={{ color: getColorByBgColor(backgroundHexCode) }}
+              style={{ color: getColorByBgColor(navbarHexCode) }}
             >
               {name}
             </a>

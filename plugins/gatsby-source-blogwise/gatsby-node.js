@@ -5,6 +5,7 @@ const decode = require('unescape')
 const rp = require('request-promise')
 
 const schema = require('./schema.json')
+// const realData = require('./realData.json')
 
 exports.sourceNodes = async (
   { actions, createNodeId, createContentDigest, store, cache },
@@ -189,6 +190,8 @@ exports.sourceNodes = async (
     name: '',
     description: '',
     backgroundHexCode: '#ffffff',
+    navbarHexCode: '#ffffff',
+    headerTextColor: '#000000',
     faviconPhotoUri:
       'https://s3.amazonaws.com/megaphone-logo-uploads/1552706715156_favicon.png',
     mainSiteUrl: '',
@@ -202,6 +205,8 @@ exports.sourceNodes = async (
     description: data.description || defaultValues.description,
     backgroundHexCode:
       data.backgroundHexCode || defaultValues.backgroundHexCode,
+    navbarHexCode: data.navbarHexCode || defaultValues.navbarHexCode,
+    headerTextColor: data.headerTextColor || defaultValues.headerTextColor,
     faviconPhotoUri: data.faviconPhotoUri || defaultValues.faviconPhotoUri,
     mainSiteUrl: data.mainSiteUrl || defaultValues.mainSiteUrl,
     twitterUrl: data.twitterUrl || defaultValues.twitterUrl,
