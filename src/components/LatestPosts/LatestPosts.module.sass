@@ -1,0 +1,58 @@
+@import ../../styles/global
+
+.LatestPosts
+  display: flex
+  flex-direction: column
+  top: 40px
+  width: 90%
+
+  a:hover
+    color: $greyFontColor
+
+  @media($mobileBreak)
+    align-items: center
+
+.LatestPost__title
+  font-family: $primaryFont
+  font-size: 18px
+  margin-bottom: 24px
+
+  @media($mobileBreak)
+    font-family: $secondaryFont
+
+.Post
+  margin-bottom: 36px
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
+
+.Post__numberText
+  font-family: $secondaryFont
+  float: left
+  font-size: 48px
+  color: #bdbdbd
+  margin-right: 5px
+
+.Post__content
+  margin-left: 10px
+  width: 100%
+
+.Post__info
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  margin-top: 12px
+  color: $greyFontColor
+  width: 100%
+
+.Post__info__author
+  font-family: $primaryFont
+  font-size: 13px
+  padding: 20px auto
+
+.Post__link
+  font-size: 16px
+  text-decoration: none
+  font-family: $primaryFont
+  color: $blackFontColor
+  line-height: 16px

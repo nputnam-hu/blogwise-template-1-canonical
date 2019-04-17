@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Layout from '../components/Layout'
 import PostListView from '../components/PostListView'
-import { SearchWidget } from '../components/SearchBar'
+import { SearchWidget } from '../components/Searchbar'
 import { navigate } from 'gatsby'
 import '../styles/search.sass'
 

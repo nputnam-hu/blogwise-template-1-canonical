@@ -27,6 +27,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-purgecss', // must be after other CSS plugins,
+    `gatsby-plugin-typescript`,
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 }

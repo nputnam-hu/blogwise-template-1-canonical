@@ -1,21 +1,31 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../../components/Layout'
-import PostListView from '../../components/PostListView'
-import './styles.sass'
+import PostList from '../../components/PostList'
+import styles from './styles.module.sass'
 
 const Author = ({ data }) => {
   const {
-    author: { name, posts },
+    author: { name, posts, bio },
   } = data
+
+  const AuthorInfo = (
+    <div className={styles.AuthorInfo}>
+      <div className={styles.AuthorInfo__image}>Image</div>
+      <div className={styles.AuthorInfo__text}>
+        <div className={styles.AuthorInfo__text__name}>{name}</div>
+        <div className={styles.AuthorInfo__text__bio}>{bio}</div>
+      </div>
+    </div>
+  )
   return (
     <Layout>
-      <div id="author-container">
-        <h1 className="authorheader">Posts from {name}</h1>
+      <div className={styles.Author}>
+        {AuthorInfo}
         {posts && posts.length > 0 ? (
-          <PostListView posts={posts} />
+          <PostList posts={posts} />
         ) : (
-          <h1 className="authorheader">No posts yet</h1>
+          <div className={styles.Author__noPosts}>No posts yet</div>
         )}
       </div>
     </Layout>
@@ -37,13 +47,17 @@ export const pageQuery = graphql`
         publishDate
         thumbnail {
           childImageSharp {
-            fluid(maxWidth: 153, maxHeight: 133) {
+            largeFluid: fluid(maxWidth: 769, maxHeight: 412, quality: 100) {
               ...GatsbyImageSharpFluid
+            }
+            smallFixed: fixed(width: 120, height: 90, quality: 100) {
+              ...GatsbyImageSharpFixed
             }
           }
         }
         author {
           name
+          bio
           slug
         }
       }

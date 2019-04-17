@@ -2,31 +2,21 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import {
-  EmailIcon,
-  FacebookIcon,
-  LinkedinIcon,
-  TwitterIcon,
-  EmailShareButton,
-  FacebookShareButton,
-  LinkedinShareButton,
-  TwitterShareButton,
-} from 'react-share'
 
 import Layout from '../../components/Layout'
+import AuthorList from '../../components/AuthorList'
 import Time from '../../components/Time'
 import Content, { HTMLContent } from '../../components/Content'
+import TagList from '../../components/TagList'
 import MorePosts from '../../components/MorePosts'
-import './styles.sass'
+import styles from './blog-post.module.sass'
 
 export class BlogPostTemplate extends Component {
   state = {
     scrollHeight: 0,
-    pageUrl: '',
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
-    this.setState({ pageUrl: window.location.href })
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
@@ -52,86 +42,65 @@ export class BlogPostTemplate extends Component {
       author,
       morePosts = [],
     } = this.props
+
     const PostContent = contentComponent || Content
-    const { pageUrl } = this.state
+
+    // Construct progress bar
+    const Progressbar = (
+      <div
+        className={styles.BlogPost__progressbar}
+        style={{
+          width:
+            this.state.scrollHeight < 1
+              ? `calc(100% * ${this.state.scrollHeight} `
+              : 0,
+        }}
+      />
+    )
     return (
-      <section id="article-container">
-        <div
-          id="progressbar"
-          style={{
-            width:
-              this.state.scrollHeight < 1
-                ? `calc(100% * ${this.state.scrollHeight} `
-                : 0,
-          }}
-        />
+      <section id="article-container" className={styles.BlogPost}>
+        {Progressbar}
         {helmet || ''}
-        <h1 id="article-title">{title}</h1>
-        <Link style={{ textDecoration: 'none' }} to={author.slug}>
-          <Img
-            className="authorimg"
-            alt={`${author.name} headshot`}
-            fixed={author.headshot.childImageSharp.fixed}
-          />
-        </Link>
-        <div className="authorinfo">
+        {/* Blog Post Info */}
+        <div className={styles.BlogPost__title}>{title}</div>
+        <div className={styles.BlogPost__authorInfo}>
           <Link style={{ textDecoration: 'none' }} to={author.slug}>
-            <div className="article-authorname">{author.name}</div>
+            <Img
+              className={styles.authorInfo__image}
+              alt={`${author.name} headshot`}
+              fixed={author.headshot.childImageSharp.fixed}
+            />
           </Link>
-          <Time size="large" date={publishDate} />
-        </div>
-        <i>
-          <PostContent className="bodytext" content={description} />
-        </i>
-        {coverPhoto && (
-          <Img
-            fluid={coverPhoto.childImageSharp.fluid}
-            alt="Cover Photo"
-            className="article-cover"
-          />
-        )}
-        <PostContent className="bodytext ql-editor" content={htmlBody} />
-        {tags && tags.length > 0 && (
-          <div style={{ marginTop: `3rem` }}>
-            <ul className="taglist">
-              {tags.map(tag => (
-                <li key={`${tag.id}tag`}>
-                  <Link to={tag.slug}>{tag.name}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-        <div id="articlebottomcontent">
-          <div>
-            <Link style={{ textDecoration: 'none' }} to={author.slug}>
-              <Img
-                className="authorimg"
-                alt={`${author.name} headshot`}
-                fixed={author.headshot.childImageSharp.fixed}
-              />
+          <div className={styles.authorInfo__text}>
+            <Link
+              style={{ textDecoration: 'none', color: 'black' }}
+              to={author.slug}
+            >
+              <div className={styles.authorInfo__text__name}>{author.name}</div>
             </Link>
-            <div className="authorinfo">
-              <Link style={{ textDecoration: 'none' }} to={author.slug}>
-                <div className="article-authorname">{author.name}</div>
-              </Link>
-              <div className="article-authorbio">{author.bio}</div>
-            </div>
+            <Time size="large" date={publishDate} />
           </div>
-          <div className="sharebuttons">
-            <FacebookShareButton url={pageUrl} quote={title}>
-              <FacebookIcon size={32} round />
-            </FacebookShareButton>
-            <TwitterShareButton url={pageUrl} title={title}>
-              <TwitterIcon size={32} round />
-            </TwitterShareButton>
-            <EmailShareButton url={pageUrl} subject={title}>
-              <EmailIcon size={32} round />
-            </EmailShareButton>
-            <LinkedinShareButton url={pageUrl} title={title}>
-              <LinkedinIcon size={32} round />
-            </LinkedinShareButton>
-          </div>
+        </div>
+        <PostContent
+          className={styles.BlogPost__description}
+          content={description}
+        />
+        {/* Cover Photo */}
+        {coverPhoto && (
+          <Img fluid={coverPhoto.childImageSharp.fluid} alt="Cover Photo" />
+        )}
+        {/* Post Content Section */}
+        <PostContent
+          className={`${styles.BlogPost__content} ${
+            styles.bodytext
+          } ql-editor `}
+          content={htmlBody}
+        />
+        {/* Tags Section */}
+        {tags && tags.length > 0 && <TagList tags={tags} />}
+        {/* Article Footer */}
+        <div className={styles.Article__footer}>
+          <AuthorList author={author} />
         </div>
         <hr />
         {morePosts && morePosts.length > 0 && <MorePosts posts={morePosts} />}
@@ -158,7 +127,7 @@ const BlogPost = ({ data }) => {
             {post.coverPhoto && (
               <meta
                 property="og:image"
-                content={post.coverPhoto.absolutePath}
+                content={post.coverPhoto.relativePath}
               />
             )}
           </Helmet>
@@ -204,7 +173,7 @@ export const pageQuery = graphql`
         slug
         headshot {
           childImageSharp {
-            fixed(height: 50, width: 50) {
+            fixed(height: 50, width: 50, quality: 100) {
               ...GatsbyImageSharpFixed
             }
           }
@@ -219,6 +188,7 @@ export const pageQuery = graphql`
       edges {
         node {
           description
+          excerpt
           publishDate
           title
           slug
@@ -228,7 +198,7 @@ export const pageQuery = graphql`
           }
           thumbnail {
             childImageSharp {
-              fixed(width: 200, height: 150) {
+              fixed(width: 200, height: 150, quality: 100) {
                 ...GatsbyImageSharpFixed
               }
             }

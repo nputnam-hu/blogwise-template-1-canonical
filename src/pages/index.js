@@ -74,8 +74,11 @@ export const pageQuery = graphql`
           }
           thumbnail {
             childImageSharp {
-              fluid(maxWidth: 153, maxHeight: 133) {
+              largeFluid: fluid(maxWidth: 769, maxHeight: 412, quality: 100) {
                 ...GatsbyImageSharpFluid
+              }
+              smallFixed: fixed(width: 120, height: 90, quality: 100) {
+                ...GatsbyImageSharpFixed
               }
             }
           }
@@ -102,21 +105,21 @@ export const pageQuery = graphql`
       linkedinUrl
       header {
         childImageSharp {
-          fixed(height: 75) {
+          fixed(height: 75, quality: 100) {
             ...GatsbyImageSharpFixed
           }
         }
       }
       sidebar {
         childImageSharp {
-          fixed(height: 35) {
+          fixed(height: 35, quality: 100) {
             ...GatsbyImageSharpFixed
           }
         }
       }
       background {
         childImageSharp {
-          fluid(maxHeight: 35) {
+          fluid(maxHeight: 35, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

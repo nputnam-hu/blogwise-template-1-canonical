@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { navigate } from 'gatsby'
 import SearchIcon from './search.svg'
+import styles from './Searchbar.module.sass'
 import './styles.sass'
 
 export const SearchWidget = ({
@@ -10,7 +11,7 @@ export const SearchWidget = ({
   autoFocus = false,
   size = '',
 }) => (
-  <div>
+  <div className={styles.SearchWidget}>
     <input
       id="searchbar"
       type="text"
@@ -37,7 +38,7 @@ export const SearchWidget = ({
   </div>
 )
 
-class SearchBar extends Component {
+class Searchbar extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -63,4 +64,4 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar
+export default Searchbar

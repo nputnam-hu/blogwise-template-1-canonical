@@ -10,11 +10,15 @@ import Time from '../../components/Time'
 import Layout from '../../components/Layout'
 import './styles.sass'
 
-class TagView extends Component {
+class oldTagView extends Component {
   render() {
     let { posts } = this.props.data.tag
     const { name, description } = this.props.data.tag
     if (!posts) posts = []
+    posts.sort(
+      (post1, post2) =>
+        new Date(post2.publishDate) - new Date(post1.publishDate),
+    )
     const firstPost = posts.length > 0 ? posts[0] : null
     const otherPosts = posts.slice(1)
     return (
@@ -131,7 +135,7 @@ class TagView extends Component {
   }
 }
 
-export default TagView
+export default oldTagView
 
 export const pageQuery = graphql`
   query TaqQuery($id: String!) {
@@ -147,10 +151,10 @@ export const pageQuery = graphql`
         publishDate
         thumbnail {
           childImageSharp {
-            largeFluid: fluid(maxWidth: 769, maxHeight: 412) {
+            largeFluid: fluid(maxWidth: 769, maxHeight: 412, quality: 100) {
               ...GatsbyImageSharpFluid
             }
-            smallFixed: fixed(width: 373, height: 281) {
+            smallFixed: fixed(width: 373, height: 281, quality: 100) {
               ...GatsbyImageSharpFixed
             }
           }
@@ -160,7 +164,7 @@ export const pageQuery = graphql`
           slug
           headshot {
             childImageSharp {
-              fixed(height: 50, width: 50) {
+              fixed(height: 50, width: 50, quality: 100) {
                 ...GatsbyImageSharpFixed
               }
             }
