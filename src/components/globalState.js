@@ -57,12 +57,10 @@ export class GlobalState extends React.Component {
     })
   }
 
-  hasMore = () => {
-    return (
-      this.state.itemsIndex <= this.state.numAllItems + 1 &&
-      this.state.useInfiniteScroll
-    )
-  }
+  hasMore = () =>
+    this.state.itemsIndex <= this.state.numAllItems + 1 &&
+    this.state.useInfiniteScroll
+
   render() {
     return (
       <GlobalStateContext.Provider value={this.state}>

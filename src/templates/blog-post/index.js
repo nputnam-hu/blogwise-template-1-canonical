@@ -10,7 +10,6 @@ import Content, { HTMLContent } from '../../components/Content'
 import TagList from '../../components/TagList'
 import MorePosts from '../../components/MorePosts'
 import styles from './blog-post.module.sass'
-import './styles.sass'
 
 export class BlogPostTemplate extends Component {
   state = {
@@ -92,7 +91,9 @@ export class BlogPostTemplate extends Component {
         )}
         {/* Post Content Section */}
         <PostContent
-          className="bodytext ql-editor mainbody"
+          className={`${styles.BlogPost__content} ${
+            styles.bodytext
+          } ql-editor `}
           content={htmlBody}
         />
         {/* Tags Section */}
