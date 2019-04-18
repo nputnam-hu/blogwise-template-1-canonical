@@ -11,42 +11,47 @@
 .Post
   display: flex
   flex-direction: row
-  justify-content: space-between
+  justify-content: center
   width: 100%
   margin-bottom: 48px
 
   @media($mobileBreak)
-    width: 100%
-
-    // max-width: 350px
     margin-right: auto
     margin-left: auto
     flex-direction: row-reverse
 
+.Post_m_tagPage
+  justify-content: space-between !important
+
 .Post__thumbnailContainer
-  width: 400px
+  // width: 153px
+  align-self: flex-start
+  border: 1px solid #d3d3d3
 
   @media($mobileBreak)
-    width: 45%
-    min-width: 120px
+    // width: 45%
 
 .Post__thumbnail
-  // width: 100%
-  display: block
+  width: 153px
+  height: 133px
+  align-self: flex-start
+  border: 1px solid lightgrey
 
   @media($mobileBreak)
-    // display: none
+    width: 115px
+    height: 110px
 
 .Post__text
   display: flex
   flex-direction: column
   justify-content: space-between
   margin-left: 36px
-  width: 65%
+
+  // width: 70%
 
   @media($mobileBreak)
     margin-left: 0px
-    max-width: 55%
+    width: 55%
 
   a
     text-decoration: none
@@ -63,6 +68,7 @@
   @media($mobileBreak)
     font-size: 14px
     font-family: $secondaryFont
+    width: 90%
 
 .Post__text__description
   color: $greyFontColor
@@ -73,10 +79,10 @@
 .Post__text__info
   display: flex
   flex-direction: row
-  justify-content: space-between
+  justify-content: flex-start
   align-items: center
   margin-top: 12px
-  font-size: 12px
+  font-size: 14px
 
   @media ($mobileBreak)
     justify-content: flex-start
@@ -93,15 +99,26 @@
   align-items: center
 
 .Post__headshot
-  width: 20px
-  height: 20px
-  border-radius: 10px
+  width: 35px
+  height: 35px
+  border-radius: 20px
   margin-right: 6px
+
+.Post__text__info__text
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
+  align-items: center
+
+  @media($mobileBreak)
+    flex-direction: column
+    align-items: flex-start
 
 .Post__text__info__author
   font-family: $secondaryFont
   color: $greyFontColor
   margin-right: 12px
+  font-size: 12px
 
 .Post__thumbnailMobile
   @media($mobileBreak)

@@ -46,7 +46,6 @@
     font-size: 20px
 
 .Index__contentContainer
-  margin-top: 48px
   margin-right: auto
   margin-left: auto
   display: flex
@@ -60,8 +59,50 @@
     flex-direction: column
     align-items: center
 
+/////////////////
+// Mobile Menu //
+/////////////////
+
+.Index__mobileMenu
+  display: none
+  align-self: flex-start
+
+  @media (max-width: 1000px)
+    font-family: futura-pt, sans-serif
+    display: flex
+    padding-left: 0px
+    margin-top: 0px
+    flex-direction: row
+    justify-content: flex-start
+
+.Index__mobileMenu__social
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
+
+  img
+    margin-top: 4px
+    height: 16px
+    margin-right: 15px
+
+.Index__mobileMenu__about
+  color: #B3B3B3
+  text-decoration: none
+  margin-top: 0px
+  font-size: 18px
+
+.Index__mobileMenu__search
+  height: 36px
+  margin-top: 3px
+  margin-left: 15px
+
+/////////////////////
+// Content Section //
+/////////////////////
+
 .Index__content
   width: 80%
+  margin-top: 24px
 
   @media ($mobileBreak)
     width: 90%
@@ -71,7 +112,8 @@
   flex-direction: row
   justify-content: space-between
   align-items: flex-end
-  margin-bottom: 24px
+  margin-top: 24px
+  margin-bottom: 36px
 
 .Index__content__header__title
   font-family: $primaryFont
@@ -88,6 +130,18 @@
   color: $greyFontColor
   text-transform: uppercase
 
+.Index__midContent
+  display: none
+
+  @media ($indexBreak)
+    display: inline
+    margin-top: 12px
+    margin-bottom: 64px
+
+.Index__midContent__linebreak
+  margin-top: 48px
+  margin-bottom: 48px
+
 .Index__rightContent
   width: 30%
   margin-left: 10%
@@ -95,12 +149,16 @@
   flex-direction: column
 
   @media ($indexBreak)
-    width: 80%
-    margin-left: 0px
+    display: none
 
   @media ($mobileBreak)
-    width: 85%
-    margin-left: 0px
+    display: none
+
+.Index__rightContent__search
+  margin-top: 48px
+
+  @media($indexBreak)
+    display: none
 
 .Index__about
   display: flex
@@ -111,12 +169,15 @@
   font-family: $primaryFont
   font-weight: 500
   font-size: 16px
-  color: $blackFontColor
+  color: $greyFontColor
   letter-spacing: 0.06em
+
+.Index__about__sidebar
+  margin-top: 12px
 
 .Index__about__description
   font-family: $secondaryFont
-  font-weight: 300
+  font-weight: 400
   line-height: 20px
   color: $greyFontColor
   font-size: 13px
@@ -130,6 +191,14 @@
   color: $greyFontColor
   padding-top: 5px
   align-self: flex-end
+
+////////////////////////
+// Social Media Icons //
+////////////////////////
+
+.Index__socialContainer
+  @media($indexBreak)
+    display: none
 
 .Index__social
 

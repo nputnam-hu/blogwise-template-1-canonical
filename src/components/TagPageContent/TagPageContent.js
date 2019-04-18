@@ -47,10 +47,11 @@ class TagPageContent extends React.Component {
       Content = (
         <div>
           <HeaderPost post={currentlyVisibleItems[0]} />
-          <PostList posts={currentlyVisibleItems.slice(1)} />
+          <PostList tagPage posts={currentlyVisibleItems.slice(1)} />
         </div>
       )
     }
+
     return (
       <div>
         <InfiniteScroll

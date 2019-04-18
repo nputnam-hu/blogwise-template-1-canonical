@@ -8,6 +8,7 @@ import TagList from '../TagList'
 import linkedin from './linkedin.png'
 import facebook from './facebook.png'
 import twitter from './twitter.png'
+import searchIcon from './search.svg'
 
 import styles from './IndexContent.module.sass'
 
@@ -46,29 +47,6 @@ const IndexContent = ({ posts, blogData, tags }) => {
     </div>
   )
 
-  // Wrap header contents
-  const Header = background.childImageSharp ? (
-    <Background
-      className={styles.Index__headerContainer}
-      fluid={background.childImageSharp.fluid}
-    >
-      {HeaderContent}
-    </Background>
-  ) : (
-    <div
-      style={{ background: backgroundHexCode }}
-      className={styles.Index__headerContainer}
-    >
-      {HeaderContent}
-    </div>
-  )
-
-  // Construct featured articles
-  let FeaturedArticles = <div>Sorry, no posts yet! Come back later.</div>
-  if (posts.length !== 0) {
-    FeaturedArticles = <PostList posts={posts.map(p => p.node)} />
-  }
-
   // Construct tags list
   const TagsList = (
     <div className={styles.Index__tagsContainer}>
@@ -77,6 +55,31 @@ const IndexContent = ({ posts, blogData, tags }) => {
       )}
     </div>
   )
+
+  // Construct featured articles
+  let FeaturedArticles = <div>Sorry, no posts yet! Come back later.</div>
+  if (posts.length !== 0) {
+    FeaturedArticles = (
+      <PostList posts={posts.map(p => p.node)}>
+        <div className={styles.Index__midContent}>
+          <hr className={styles.Index__midContent__linebreak} />
+          {/* About Section  */}
+          <div className={styles.Index__about}>
+            <div className={styles.Index__about__title}>About {name}</div>
+            <div className={styles.Index__about__description}>
+              {description}
+            </div>
+            <Link className={styles.Index__about__link} to="/about">
+              Read more &gt;
+            </Link>
+          </div>
+          {/* Tags Section */}
+          {TagsList}
+          <hr className={styles.Index__midContent__linebreak} />
+        </div>
+      </PostList>
+    )
+  }
 
   // Construct social media icons
   const SocialMediaIcons = (
@@ -124,10 +127,66 @@ const IndexContent = ({ posts, blogData, tags }) => {
   return (
     <div className={styles.Index}>
       {/* Header Image */}
-      {Header}
+      {background.childImageSharp ? (
+        <div>
+          <Background
+            className={styles.Index__headerContainer}
+            fluid={background.childImageSharp.fluid}
+          >
+            {HeaderContent}
+          </Background>
+        </div>
+      ) : (
+        <div
+          style={{ background: backgroundHexCode }}
+          className={styles.Index__headerContainer}
+        >
+          {HeaderContent}
+        </div>
+      )}
       <div className={styles.Index__contentContainer}>
         {/* Featured Articles */}
         <div className={styles.Index__content}>
+          <div className={styles.Index__mobileMenu}>
+            {(twitterUrl || facebookUrl || linkedinUrl) && (
+              <div className={styles.Index__mobileMenu__social}>
+                {twitterUrl && (
+                  <a
+                    href={twitterUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={twitter} alt="twitter" />
+                  </a>
+                )}
+                {facebookUrl && (
+                  <a
+                    href={facebookUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={facebook} alt="facebook" />
+                  </a>
+                )}
+                {linkedinUrl && (
+                  <a
+                    href={linkedinUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={linkedin} alt="linkedin" />
+                  </a>
+                )}
+                <span style={{ color: '#B3B3B3', marginRight: '15px' }}>|</span>
+              </div>
+            )}
+            <Link to="/about" className={styles.Index__mobileMenu__about}>
+              About
+            </Link>
+            <Link to="/search" className={styles.Index__mobileMenu__search}>
+              <img src={searchIcon} alt="Search Posts" />
+            </Link>
+          </div>
           <div className={styles.Index__content__header}>
             <div className={styles.Index__content__header__title}>
               Featured Articles
@@ -140,13 +199,23 @@ const IndexContent = ({ posts, blogData, tags }) => {
         </div>
         {/* Right Side Content */}
         <div className={styles.Index__rightContent}>
-          <Searchbar />
+          <div className={styles.Index__rightContent__search}>
+            <Searchbar />
+          </div>
           {/* About Section  */}
           <div className={styles.Index__about}>
             <div className={styles.Index__about__title}>About {name}</div>
+            <div className={styles.Index__about__sidebar}>
+              <Img
+                alt={`${name} logo`}
+                fixed={sidebar.childImageSharp.fixed}
+                id="rightlogo"
+              />
+            </div>
             <div className={styles.Index__about__description}>
               {description}
             </div>
+
             <Link className={styles.Index__about__link} to="/about">
               Read more &gt;
             </Link>

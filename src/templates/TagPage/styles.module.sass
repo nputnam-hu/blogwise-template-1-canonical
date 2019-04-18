@@ -6,17 +6,17 @@
   margin-left: auto
   display: flex
   flex-direction: row
-  justify-content: space-between
+  justify-content: center
   align-items: flex-start
 
-  @media(max-width: 800px)
+  @media($indexBreak)
     flex-direction: column
     align-items: center
 
 .TagPage__content
   width: 60%
 
-  @media(max-width: 800px)
+  @media($indexBreak)
     width: 90%
 
 .TagPage__title
@@ -33,5 +33,5 @@
 .TagPage__latestPosts
   margin-top: 64px
 
-  @media($mobileBreak)
-    margin-top: 32px
+  @media($indexBreak)
+    display: none
