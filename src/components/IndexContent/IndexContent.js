@@ -225,6 +225,14 @@ const IndexContent = ({ posts, blogData, tags }) => {
           {/* Social Icons Section */}
           {SocialMediaIcons}
         </div>
+        <div className={styles.Index__content__mobileBottom}>
+          <Link
+            className={styles.Index__content__mobileBottom__link}
+            to="/latest"
+          >
+            See all
+          </Link>
+        </div>
       </div>
     </div>
   )

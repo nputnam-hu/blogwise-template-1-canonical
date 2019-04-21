@@ -15,7 +15,7 @@ class PostList extends React.Component {
       LargePostCard = <PostCard large post={firstPost} />
     }
 
-    let customStyles = []
+    const customStyles = []
 
     if (this.props.tagPage === true) {
       customStyles.push('tagPage')

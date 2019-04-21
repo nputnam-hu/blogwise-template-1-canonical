@@ -32,6 +32,7 @@ const LatestPosts = () => (
     render={({ allBlogPost }) => (
       <div className={styles.LatestPosts}>
         <div className={styles.LatestPost__title}>Latest Posts</div>
+        <hr className={styles.LatestPost__linebreak} />
         {(allBlogPost ? allBlogPost.edges : []).map(({ node }, i) => {
           const { title, publishDate, slug, author } = node
           return (
@@ -43,7 +44,10 @@ const LatestPosts = () => (
                 </Link>
                 <div className={styles.Post__info}>
                   <div className={styles.Post__info__author}>{author.name}</div>
-                  <Time date={publishDate} />
+                  <Time
+                    className={styles.Post__info__date}
+                    date={publishDate}
+                  />
                 </div>
               </div>
             </div>

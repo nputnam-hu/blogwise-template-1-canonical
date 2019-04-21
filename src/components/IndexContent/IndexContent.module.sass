@@ -192,6 +192,18 @@
   padding-top: 5px
   align-self: flex-end
 
+.Index__content__mobileBottom
+  width: 90%
+  display: none
+
+  @media($indexBreak)
+    display: flex
+    flex-direction: row
+    justify-content: flex-end
+
+.Index__content__mobileBottom__link
+  @extend .Index__content__header__link
+
 ////////////////////////
 // Social Media Icons //
 ////////////////////////

@@ -1,12 +1,15 @@
 @import ../../styles/global
 
 .LatestPosts
+  position: -webkit-sticky
+  position: sticky
+  top: 0
   display: flex
   flex-direction: column
   width: 65%
   margin-right: auto
   margin-left: auto
-  margin-top: 64px
+  margin-top: 0px
 
   a:hover
     color: $greyFontColor
@@ -18,9 +21,8 @@
 
 .LatestPost__title
   font-family: $primaryFont
-  font-size: 18px
-  margin-bottom: 24px
-  margin-left: 44px
+  font-size: 24px
+  color: $greyFontColor
 
   @media($mobileBreak)
     font-size: 16px
@@ -28,6 +30,13 @@
     margin-bottom: 24px
     font-family: $secondaryFont
     text-transform: uppercase
+
+.LatestPost__linebreak
+  height: 2px
+  background: #e0e0e0
+  width: 100%
+  margin-top: 12px
+  margin-bottom: 36px
 
 .Post
   margin-bottom: 36px
@@ -55,12 +64,15 @@
 
 .Post__info__author
   font-family: $primaryFont
-  font-size: 13px
+  font-size: 16px
   padding: 20px auto
 
+.Post__info__date
+  font-size: 16px !important
+
 .Post__link
-  font-size: 16px
+  font-size: 18px
   text-decoration: none
   font-family: $primaryFont
   color: $blackFontColor
-  line-height: 16px
+  line-height: 18px

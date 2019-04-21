@@ -12,22 +12,28 @@ class TagPage extends Component {
     return (
       <Layout>
         <div className={styles.TagPage}>
-          <div className={styles.TagPage__content}>
-            <div className={styles.TagPage__title}>
-              {this.props.data.tag.name}
-            </div>
-            <GlobalStateContext.Consumer>
-              {globalState => (
-                <TagPageContent
-                  globalState={globalState}
-                  pageContext={this.props.pageContext}
-                  allPosts={this.props.data.tag.posts}
-                />
-              )}
-            </GlobalStateContext.Consumer>
+          <div className={styles.TagPage__title}>
+            {this.props.data.tag.name}
           </div>
-          <div className={styles.TagPage__latestPosts}>
-            <LatestPosts />
+          <div className={styles.TagPage__description}>
+            {this.props.data.tag.description}
+          </div>
+          <hr className={styles.TagPage__linbreak} />
+          <div className={styles.TagPage__content}>
+            <div className={styles.TagPage__posts}>
+              <GlobalStateContext.Consumer>
+                {globalState => (
+                  <TagPageContent
+                    globalState={globalState}
+                    pageContext={this.props.pageContext}
+                    allPosts={this.props.data.tag.posts}
+                  />
+                )}
+              </GlobalStateContext.Consumer>
+            </div>
+            <div className={styles.TagPage__latestPosts}>
+              <LatestPosts />
+            </div>
           </div>
         </div>
       </Layout>

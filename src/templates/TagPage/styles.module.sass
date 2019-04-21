@@ -4,34 +4,48 @@
   width: 90%
   margin-right: auto
   margin-left: auto
+
+  @media($indexBreak)
+    flex-direction: column
+    align-items: center
+
+.TagPage__linbreak
+  margin-top: 24px
+  margin-bottom: 36px
+
+.TagPage__content
+  margin-right: auto
+  margin-left: auto
+  width: 100%
   display: flex
   flex-direction: row
   justify-content: center
   align-items: flex-start
 
   @media($indexBreak)
-    flex-direction: column
-    align-items: center
-
-.TagPage__content
-  width: 60%
-
-  @media($indexBreak)
     width: 90%
+
+.TagPage__posts
+  margin-top: 0px
 
 .TagPage__title
   font-size: 32px
   margin-top: 64px
   margin-bottom: 24px
-  text-transform: uppercase
   color: $greyFontColor
 
   @media($mobileBreak)
     font-size: 22px
     margin-top: 32px
 
+.TagPage__description
+  font-style: $secondaryFont
+  font-size: 16px
+  color: $greyFontColor
+
 .TagPage__latestPosts
-  margin-top: 64px
+  position: relative
+  margin-top: 0px
 
   @media($indexBreak)
     display: none
