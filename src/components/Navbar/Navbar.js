@@ -31,13 +31,15 @@ const Navbar = () => (
     `}
     render={({ blogData: { navbarHexCode, header } }) => (
       <div className={styles.Navbar} style={{ background: navbarHexCode }}>
-        <Link to="/" className={styles.Navbar__logoContainer} title="Logo">
-          <Img
-            className={styles.Navbar__logo}
-            fixed={header.childImageSharp.fixed}
-            alt="logo"
-          />
-        </Link>
+        <div>
+          <Link to="/" className={styles.Navbar__logoContainer} title="Logo">
+            <Img
+              className={styles.Navbar__logo}
+              fixed={header.childImageSharp.fixed}
+              alt="logo"
+            />
+          </Link>
+        </div>
         <div className={styles.Navbar__links}>
           {customNavbarLinks.map(({ link, name }) => (
             <a

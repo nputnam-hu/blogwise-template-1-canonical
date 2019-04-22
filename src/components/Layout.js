@@ -58,7 +58,11 @@ const TemplateWrapper = ({ showNav = true, children }) => (
             content={data.blogData.header.relativePath}
           />
         </Helmet>
-        {showNav && <Navbar />}
+        {showNav && (
+          <div>
+            <Navbar />
+          </div>
+        )}
         <div>{children}</div>
         <Footer />
       </div>

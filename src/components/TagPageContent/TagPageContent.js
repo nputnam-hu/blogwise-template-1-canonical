@@ -47,7 +47,6 @@ class TagPageContent extends React.Component {
       Content = (
         <div className={styles.TagPageContent__posts}>
           <HeaderPost post={currentlyVisibleItems[0]} />
-          <div>More posts to come.</div>
         </div>
       )
     } else if (currentlyVisibleItems.length >= 2) {
