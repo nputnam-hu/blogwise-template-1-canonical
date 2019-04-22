@@ -49,7 +49,6 @@ const Footer = () => (
             >
               powered by blogwise
             </a>
-            <img src={blogwiseIcon} alt="blogwise icon" />
           </div>
         </div>
       </div>
