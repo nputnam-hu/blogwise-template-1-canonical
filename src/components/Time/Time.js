@@ -9,6 +9,10 @@ class Time extends React.Component {
     const now = moment()
     const daysSince = m.diff(now, 'days')
     let formattedDate = <div />
+    let TimeStyles = styles.Time__text
+    if (this.props.large === true) {
+      TimeStyles = styles.Time__text__large
+    }
 
     if (daysSince > -1) {
       formattedDate = 'A couple of hours ago...'
@@ -18,7 +22,7 @@ class Time extends React.Component {
       formattedDate = m.format('MMMM Do, YYYY')
     }
 
-    return <div className={styles.Time__text}>{formattedDate}</div>
+    return <div className={TimeStyles}>{formattedDate}</div>
   }
 }
 

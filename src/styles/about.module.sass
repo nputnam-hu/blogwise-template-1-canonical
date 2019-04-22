@@ -8,8 +8,10 @@
 // About Page //
 ////////////////
 .About
-  @extend .pageSpacing
-
+  margin-top: 48px
+  margin-right: auto
+  margin-left: auto
+  width: 80%
   display: flex
   flex-direction: column
   align-items: center
@@ -30,7 +32,11 @@
   color: $blackFontColor
 
 .About__blogInfo__body
-  @extend .bodyFontSize
+  font-family: $primaryFont
+  font-size: 20px
+
+  @media($mobileBreak)
+    font-size: 18px
 
   margin-top: 24px
   text-align: center
@@ -42,7 +48,11 @@
   justify-content: flex-start
 
 .About__writers__title
-  @extend .subHeaderFontSize
+  font-size: 32px
+  font-weight: bold
+
+  @media($mobileBreak)
+    font-size: 24px
 
   margin-top: 48px
 

@@ -14,9 +14,17 @@
     margin-left: 10px
 
 .NotFoundPageTitle
-  @extend .headerFontSize
+  font-size: 36px
+  font-weight: bold
+
+  @media($mobileBreak)
+    font-size: 28px
 
 .NotFoundPageBody
-  @extend .bodyFontSize
+  font-family: $primaryFont
+  font-size: 20px
+
+  @media($mobileBreak)
+    font-size: 18px
 
   margin-top: 12px

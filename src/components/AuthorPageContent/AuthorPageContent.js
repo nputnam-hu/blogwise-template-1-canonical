@@ -39,7 +39,7 @@ class AuthorPageContent extends React.Component {
 
     const currentlyVisibleItems = g.itemsToShow || allPosts
 
-    let Content = <div>There are no posts under this topic.</div>
+    let Content = <div>There are no posts under this author yet.</div>
     if (currentlyVisibleItems.length >= 1) {
       Content = (
         <div>

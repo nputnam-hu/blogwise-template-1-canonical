@@ -1,9 +1,9 @@
 import React from 'react'
 
 export const GlobalStateContext = React.createContext({
-  allItems: null,
+  allItems: [],
   numAllItems: 0,
-  itemsToShow: null,
+  itemsToShow: [],
   itemsIndex: 1,
   isLoading: true,
   useInfiniteScroll: true /* Toggle between pagination and inf. scroll for this demo & fallback in case of error. */,
@@ -22,9 +22,9 @@ export class GlobalState extends React.Component {
     this.updateState = this.updateState.bind(this)
 
     this.state = {
-      allItems: null,
+      allItems: [],
       numAllItems: 0,
-      itemsToShow: null,
+      itemsToShow: [],
       itemsIndex: 1, // Last item which is currently shown
       isLoading: true,
       useInfiniteScroll: true,

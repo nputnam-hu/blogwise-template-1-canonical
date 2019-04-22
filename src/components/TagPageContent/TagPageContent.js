@@ -4,6 +4,8 @@ import { FaCog } from 'react-icons/fa'
 import HeaderPost from '../../components/HeaderPost'
 import PostList from '../../components/PostList'
 
+import styles from './TagPageContent.module.sass'
+
 class TagPageContent extends React.Component {
   constructor(props) {
     super(props)
@@ -42,10 +44,15 @@ class TagPageContent extends React.Component {
 
     let Content = <div>There are no posts under this topic.</div>
     if (currentlyVisibleItems.length === 1) {
-      Content = <HeaderPost post={currentlyVisibleItems[0]} />
+      Content = (
+        <div className={styles.TagPageContent__posts}>
+          <HeaderPost post={currentlyVisibleItems[0]} />
+          <div>More posts to come.</div>
+        </div>
+      )
     } else if (currentlyVisibleItems.length >= 2) {
       Content = (
-        <div>
+        <div className={styles.TagPageContent__posts}>
           <HeaderPost post={currentlyVisibleItems[0]} />
           <PostList tagPage posts={currentlyVisibleItems.slice(1)} />
         </div>

@@ -27,12 +27,15 @@
 
 .TagPage__posts
   margin-top: 0px
+  margin-right: auto
+  margin-left: auto
+  width: 100%
 
 .TagPage__title
   font-size: 32px
   margin-top: 64px
-  margin-bottom: 24px
-  color: $greyFontColor
+  margin-bottom: 12px
+  color: $blackFontColor
 
   @media($mobileBreak)
     font-size: 22px
@@ -41,11 +44,13 @@
 .TagPage__description
   font-style: $secondaryFont
   font-size: 16px
-  color: $greyFontColor
+  color: $blackFontColor
 
 .TagPage__latestPosts
-  position: relative
-  margin-top: 0px
+  position: sticky
+  top: 24px
+
+  // margin-top: 0px
 
   @media($indexBreak)
     display: none

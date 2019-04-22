@@ -4,7 +4,6 @@ import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 
 import Layout from '../../components/Layout'
-import AuthorList from '../../components/AuthorList'
 import Time from '../../components/Time'
 import Content, { HTMLContent } from '../../components/Content'
 import TagList from '../../components/TagList'
@@ -78,7 +77,7 @@ export class BlogPostTemplate extends Component {
             >
               <div className={styles.authorInfo__text__name}>{author.name}</div>
             </Link>
-            <Time size="large" date={publishDate} />
+            <Time large date={publishDate} />
           </div>
         </div>
         <PostContent
