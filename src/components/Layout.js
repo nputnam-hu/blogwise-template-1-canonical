@@ -5,6 +5,8 @@ import { StaticQuery, graphql } from 'gatsby'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
+import '../styles/all.sass'
+
 const TemplateWrapper = ({ showNav = true, children }) => (
   <StaticQuery
     query={graphql`
@@ -47,16 +49,24 @@ const TemplateWrapper = ({ showNav = true, children }) => (
           />
 
           <meta name="theme-color" content="#fff" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
 
           <meta property="og:type" content="business.business" />
           <meta property="og:title" content={data.blogData.title} />
           <meta property="og:url" content="/" />
           <meta
             property="og:image"
-            content={data.blogData.header.absolutePath}
+            content={data.blogData.header.relativePath}
           />
         </Helmet>
-        {showNav && <Navbar />}
+        {showNav && (
+          <div>
+            <Navbar />
+          </div>
+        )}
         <div>{children}</div>
         <Footer />
       </div>

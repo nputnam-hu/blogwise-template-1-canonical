@@ -5,7 +5,6 @@ const decode = require('unescape')
 const rp = require('request-promise')
 
 const schema = require('./schema.json')
-// const realData = require('./realData.json')
 
 exports.sourceNodes = async (
   { actions, createNodeId, createContentDigest, store, cache },

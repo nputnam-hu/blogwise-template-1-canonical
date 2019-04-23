@@ -1,0 +1,131 @@
+///////////////////////////////////////////////////////////////////////////////
+// PostCard.module.sass ///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+@import ../../../styles/global
+
+///////////////////////////////////////////////////////////////////////////////
+// Normal PostCard ////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+.Post
+  display: flex
+  flex-direction: row
+  justify-content: center
+  width: 100%
+  margin-bottom: 48px
+
+  @media($mobileBreak)
+    margin-right: auto
+    margin-left: auto
+    flex-direction: row-reverse
+
+.Post__link:hover *
+  color: $greyFontColor
+
+.Post__thumbnailContainer
+  // width: 153px
+  align-self: flex-start
+  border: 1px solid #d3d3d3
+
+  @media($mobileBreak)
+    // width: 45%
+
+.Post__thumbnail
+  width: 153px
+  height: 133px
+  align-self: flex-start
+  border: 1px solid lightgrey
+
+  @media($mobileBreak)
+    width: 115px
+    height: 110px
+
+.Post__text
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  margin-left: 36px
+
+  // width: 70%
+
+  @media($mobileBreak)
+    margin-left: 0px
+    // width: 55%
+
+  a
+    text-decoration: none
+
+.Post__text__title
+  font-family: $primaryFont
+  color: $blackFontColor
+  font-size: 24px
+  margin-bottom: 12px
+
+  @media($indexBreak)
+    margin-bottom: 6px
+
+  @media($mobileBreak)
+    font-size: 20px
+    font-family: $secondaryFont
+    width: 90%
+
+.Post__text__description
+  color: $greyFontColor
+  font-size: 16px
+
+  @media($mobileBreak)
+    font-size: 14px
+    width: 90%
+
+.Post__text__info
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
+  align-items: center
+  margin-top: 12px
+  font-size: 14px
+
+  @media ($mobileBreak)
+    justify-content: flex-start
+
+  @media(max-width: 350px)
+    font-size: 9px
+
+  a
+    text-decoration: none
+
+.Post__linkContainer
+  display: flex
+  flex-direction: row
+  align-items: center
+
+.Post__headshot
+  width: 35px
+  height: 35px
+  border-radius: 20px
+  margin-right: 6px
+
+.Post__text__info__text
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
+  align-items: center
+
+  @media($mobileBreak)
+    flex-direction: column
+    align-items: flex-start
+
+.Post__text__info__author
+  font-family: $secondaryFont
+  color: $greyFontColor
+  margin-right: 12px
+  font-size: 12px
+
+.Post__thumbnailMobile
+  @media($mobileBreak)
+    width: 120px
+
+///////////////////////////////////////////////////////////////////////////////
+// Large PostCard /////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////

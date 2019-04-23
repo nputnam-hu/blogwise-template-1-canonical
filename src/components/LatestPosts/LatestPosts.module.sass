@@ -1,0 +1,78 @@
+@import ../../styles/global
+
+.LatestPosts
+  position: -webkit-sticky
+  position: sticky
+  top: 0
+  display: flex
+  flex-direction: column
+  width: 65%
+  margin-right: auto
+  margin-left: auto
+  margin-top: 0px
+
+  a:hover
+    color: $greyFontColor
+
+  @media($mobileBreak)
+    align-items: flex-start
+    width: 90%
+    margin-top: 0px
+
+.LatestPost__title
+  font-family: $primaryFont
+  font-size: 24px
+  color: $greyFontColor
+
+  @media($mobileBreak)
+    font-size: 16px
+    margin-left: 0px
+    margin-bottom: 24px
+    font-family: $secondaryFont
+    text-transform: uppercase
+
+.LatestPost__linebreak
+  height: 2px
+  background: #e0e0e0
+  width: 100%
+  margin-top: 12px
+  margin-bottom: 36px
+
+.Post
+  margin-bottom: 36px
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
+
+.Post__numberText
+  font-family: $secondaryFont
+  font-size: 48px
+  color: #bdbdbd
+  margin-right: 16px
+
+.Post__content
+  margin-left: 10px
+  width: 100%
+
+.Post__info
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  margin-top: 12px
+  color: $greyFontColor
+  width: 100%
+
+.Post__info__author
+  font-family: $primaryFont
+  font-size: 16px
+  margin-top: -4px
+
+.Post__info__date
+  font-size: 16px !important
+
+.Post__link
+  font-size: 18px
+  text-decoration: none
+  font-family: $primaryFont
+  color: $blackFontColor
+  line-height: 18px

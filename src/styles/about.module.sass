@@ -8,12 +8,16 @@
 // About Page //
 ////////////////
 .About
-  @extend .pageSpacing
-
+  margin-top: 48px
+  margin-right: auto
+  margin-left: auto
+  width: 80%
   display: flex
   flex-direction: column
   align-items: center
   width: 50%
+  @media ($mobileBreak)
+    width: 85%
 
 .About__blogInfo
   display: flex
@@ -23,17 +27,21 @@
   min-width: 275px
 
 .About__blogInfo__title
-  @extend .headerFontSize
-
+  font-family: $primaryFont
+  font-size: 32px
+  line-height: 45px
   text-align: center
+  color: $blackFontColor
 
 .About__blogInfo__body
-  @extend .bodyFontSize
-
-  margin-top: 24px
+  font-family: $primaryFont
+  font-size: 20px
 
   @media($mobileBreak)
-    text-align: center
+    font-size: 18px
+
+  margin-top: 24px
+  text-align: center
 
 .About__writers
   display: flex
@@ -42,7 +50,11 @@
   justify-content: flex-start
 
 .About__writers__title
-  @extend .subHeaderFontSize
+  font-size: 32px
+  font-weight: bold
+
+  @media($mobileBreak)
+    font-size: 24px
 
   margin-top: 48px
 
@@ -53,42 +65,12 @@
   align-items: flex-start
   justify-content: flex-start
 
-/////////////////////////////
-// Individual Writer Cards //
-/////////////////////////////
+//////////////////
+// Writers List //
+//////////////////
 
-.writer
-  display: flex
-  flex-direction: row
-  align-content: flex-start
-  justify-content: flex-start
-  text-decoration: none
-  margin-top: 24px
+.WriterList
+  margin-top: 64px
 
-  &:hover
-    color: #828282
-
-.writer__headshot
-  margin-right: 24px
-  border-radius: 40px
-  position: relative
-  overflow: hidden
-  display: inline-block
-  width: 70px
-  height: 70px
-
-.writer__text
-  width: 75%
-  display: flex
-  flex-direction: column
-
-.writer__text__name
-  @extend .bodyFontSize
-
-  color: $blackFontColor
-
-.writer__text__bio
-  @extend .descFontSize
-
-  margin-top: 24px
-  color: $greyFontColor
+.WriterList__title
+  @extend .About__blogInfo__title

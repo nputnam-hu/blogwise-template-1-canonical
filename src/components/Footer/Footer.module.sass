@@ -1,0 +1,87 @@
+///////////////////////////////////////////////////////////////////////////////
+// Footer.module.sass /////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+@import ../../styles/global
+
+///////////////////
+// Footer Styles //
+///////////////////
+
+.Footer
+  margin-left: auto
+  margin-right: auto
+  height: 70px
+  width: 100%
+  position: absolute
+  left: 0
+  bottom: 0
+  display: flex
+  flex-direction: row
+  align-items: center
+
+  // @media($mobileBreak)
+  //   background: #61676F
+
+.Footer__container
+  margin-right: auto
+  margin-left: auto
+  width: 80%
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+
+.Footer__links
+  margin-left: 24px
+  display: flex
+  text-decoration: none
+  font-family: $primaryFont
+  letter-spacing: 0.25px
+  text-transform: uppercase
+
+  @media($mobileBreak)
+    margin-left: -20px
+
+.Footer__links__link
+  margin-right: 24px
+  color: $greyFontColor
+  font-size: 14px
+  letter-spacing: 0.06em
+  text-decoration: none
+
+  @media(max-width: 1250px)
+    font-size: 12px
+
+  @media ($mobileBreak)
+    margin-right: 15px
+    font-size: 10px
+
+.Footer__poweredBy
+  margin-right: 24px
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: space-between
+  font-size: 12px
+
+  a
+    margin-right: 12px
+    font-family: $primaryFont
+    letter-spacing: 0.3px
+    text-decoration: none
+    color: $greyFontColor
+
+
+  @media(max-width: 970px)
+    font-size: 10px
+
+  @media($mobileBreak)
+    margin-right: -40px
+    margin-left: auto
+    flex-direction: row-reverse
+    text-transform: lowercase
+    font-size: 10px
+
+.Footer__poweredBy__logo
+  min-width: 100px

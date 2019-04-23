@@ -1,31 +1,27 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import PostListView from '../components/PostListView'
+import PostList from '../components/PostList'
 import Layout from '../components/Layout'
-import '../templates/author/styles.sass'
+import styles from '../styles/latest.module.sass'
 
 const Latest = ({ data: { allBlogPost } }) => {
-  let LatestContents = (
+  console.log(allBlogPost.edges.posts)
+  const LatestContents =
+    allBlogPost === null ? (
+      <div>Sorry, no posts yet! Come back soon.</div>
+    ) : (
+      <PostList posts={allBlogPost.edges.map(ele => ele.node)} />
+    )
+
+  return (
     <Layout>
-      <div id="author-container">
-        <h1 id="authorheader">Latest Posts</h1>
-        <div>Sorry, no posts yet! Come back soon.</div>
+      <div className={styles.Latest}>
+        <div className={styles.Latest__title}>Latest Posts</div>
+        {LatestContents}
       </div>
     </Layout>
   )
-  if (allBlogPost !== null) {
-    const { edges: posts } = allBlogPost
-    LatestContents = (
-      <Layout>
-        <div id="author-container">
-          <h1 id="authorheader">Latest Posts</h1>
-          <PostListView posts={posts.map(p => p.node)} />
-        </div>
-      </Layout>
-    )
-  }
-  return LatestContents
 }
 export default Latest
 
@@ -46,11 +42,24 @@ export const pageQuery = graphql`
           author {
             name
             slug
+            headshot {
+              childImageSharp {
+                small: fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                large: fixed(height: 120, width: 120, quality: 100) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
           }
           thumbnail {
             childImageSharp {
-              fluid(maxWidth: 153, maxHeight: 133) {
+              largeFluid: fluid(maxWidth: 769, maxHeight: 412, quality: 100) {
                 ...GatsbyImageSharpFluid
+              }
+              smallFixed: fixed(width: 120, height: 90, quality: 100) {
+                ...GatsbyImageSharpFixed
               }
             }
           }

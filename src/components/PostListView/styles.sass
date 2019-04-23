@@ -1,3 +1,5 @@
+@import ../../styles/global
+
 #posts-container
   .linebreak
     display: block
@@ -36,7 +38,6 @@
       width: 100%
 
   .articletop
-    margin-left: 30px
     display: flex
     flex-direction: column
     justify-content: space-between
@@ -52,7 +53,7 @@
       width: 70%
 
   .articlepreview
-    font-family: "Assistant Regular"
+    font-family: $primaryFont
     font-size: 14px
     color: #828282
 
@@ -82,6 +83,7 @@
     height: 133px
     align-self: flex-start
     border: 1px solid lightgrey
+    margin-right: 24px
 
   .desktop
     @media (max-width: 1150px)

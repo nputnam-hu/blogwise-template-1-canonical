@@ -1,0 +1,86 @@
+@import ../../styles/global
+
+.HeaderPost
+  display: flex
+  flex-direction: column
+  margin-bottom: 24px
+  max-width: 900px
+
+.HeaderPost_thumbnailContainer
+  width: 100%
+  max-width: 900px
+
+.HeaderPost__text
+  margin-top: 24px
+  margin-bottom: 12px
+
+  a
+    text-decoration: none
+
+.HeaderPost__text__title
+  font-size: 30px
+  font-family: $primaryFont
+  color: $blackFontColor
+
+  @media($mobileBreak)
+    font-size: 22px
+
+.Post__text__info
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
+  align-items: center
+  margin-top: 12px
+  font-size: 16px
+
+  @media ($mobileBreak)
+    justify-content: flex-start
+
+  @media(max-width: 350px)
+    font-size: 12px
+
+  a
+    text-decoration: none
+
+.Post__linkContainer
+  display: flex
+  flex-direction: row
+  align-items: center
+
+.Post__headshot
+  width: 40px
+  height: 40px
+  border-radius: 20px
+  margin-right: 6px
+
+.Post__text__info__author
+  font-family: $secondaryFont
+  color: $greyFontColor
+  margin-right: 12px
+
+.HeaderPost__text__description
+  display: block
+  font-size: 16px
+  font-family: $secondaryFont
+  color: $greyFontColor
+  margin-top: 20px
+  line-height: 20px
+
+  @media($mobileBreak)
+    font-size: 15px
+
+.HeaderPost__text__info
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: flex-start
+  margin-top: 12px
+
+  a
+    color: $greyFontColor
+
+.HeaderPost__text__info__author
+  font-size: 16px
+
+  @media($mobileBreak)
+    font-size: 14px
