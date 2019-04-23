@@ -38,6 +38,9 @@ class HeaderPost extends React.Component {
           <Link to={slug}>
             <div className={styles.HeaderPost__text__title}>{title}</div>
           </Link>
+          <div className={styles.HeaderPost__text__description}>
+            {excerpt || description}
+          </div>
           <div className={styles.Post__text__info}>
             <Link className={styles.Post__linkContainer} to={authorSlug}>
               <Img
@@ -51,9 +54,6 @@ class HeaderPost extends React.Component {
               date={publishDate}
               className={styles.Post__text__info__date}
             />
-          </div>
-          <div className={styles.HeaderPost__text__description}>
-            {excerpt || description}
           </div>
         </div>
       </div>

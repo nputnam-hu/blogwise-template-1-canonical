@@ -177,12 +177,9 @@ const IndexContent = ({ posts, blogData, tags }) => {
                     <img src={linkedin} alt="linkedin" />
                   </a>
                 )}
-                <span style={{ color: '#B3B3B3', marginRight: '15px' }}>|</span>
+                <span style={{ color: '#B3B3B3' }}>|</span>
               </div>
             )}
-            <Link to="/about" className={styles.Index__mobileMenu__about}>
-              About
-            </Link>
             <Link to="/search" className={styles.Index__mobileMenu__search}>
               <img src={searchIcon} alt="Search Posts" />
             </Link>
@@ -230,7 +227,7 @@ const IndexContent = ({ posts, blogData, tags }) => {
             className={styles.Index__content__mobileBottom__link}
             to="/latest"
           >
-            See all
+            See More articles
           </Link>
         </div>
       </div>

@@ -20,8 +20,8 @@
     margin-left: auto
     flex-direction: row-reverse
 
-.Post:hover
-  opacity: 0.5
+.Post__link:hover *
+  color: $greyFontColor
 
 .Post__thumbnailContainer
   // width: 153px
@@ -51,7 +51,7 @@
 
   @media($mobileBreak)
     margin-left: 0px
-    width: 55%
+    // width: 55%
 
   a
     text-decoration: none
@@ -59,14 +59,14 @@
 .Post__text__title
   font-family: $primaryFont
   color: $blackFontColor
-  font-size: 22px
+  font-size: 24px
   margin-bottom: 12px
 
   @media($indexBreak)
     margin-bottom: 6px
 
   @media($mobileBreak)
-    font-size: 16px
+    font-size: 20px
     font-family: $secondaryFont
     width: 90%
 

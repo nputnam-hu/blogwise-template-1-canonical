@@ -20,8 +20,8 @@
   flex-direction: row
   align-items: center
 
-  @media($mobileBreak)
-    background: #61676F
+  // @media($mobileBreak)
+  //   background: #61676F
 
 .Footer__container
   margin-right: auto
@@ -41,7 +41,7 @@
   text-transform: uppercase
 
   @media($mobileBreak)
-    display: none
+    margin-left: -20px
 
 .Footer__links__link
   margin-right: 24px
@@ -54,7 +54,8 @@
     font-size: 12px
 
   @media ($mobileBreak)
-    display: none
+    margin-right: 15px
+    font-size: 10px
 
 .Footer__poweredBy
   margin-right: 24px
@@ -71,17 +72,14 @@
     text-decoration: none
     color: $greyFontColor
 
-    @media($mobileBreak)
-      color: white
 
   @media(max-width: 970px)
     font-size: 10px
 
   @media($mobileBreak)
-    margin-right: auto
+    margin-right: -40px
     margin-left: auto
     flex-direction: row-reverse
-    width: 100%
     text-transform: lowercase
     font-size: 10px
 

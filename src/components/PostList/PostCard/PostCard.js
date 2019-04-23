@@ -25,7 +25,7 @@ class PostCard extends React.Component {
         <div className={styles.Post__thumbnailContainer}>
           {' '}
           {thumbExists && (
-            <Link to={slug}>
+            <Link to={slug} className={styles.Post__link}>
               <Img
                 alt={title}
                 className={styles.Post__thumbnail}
@@ -35,7 +35,7 @@ class PostCard extends React.Component {
           )}
         </div>
         <div className={styles.Post__text}>
-          <Link to={slug}>
+          <Link to={slug} className={styles.Post__link}>
             <div className={styles.Post__text__title}>{title}</div>
             <div className={styles.Post__text__description}>
               {excerpt || description}

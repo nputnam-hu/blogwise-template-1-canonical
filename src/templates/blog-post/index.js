@@ -2,6 +2,16 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
+import {
+  EmailIcon,
+  FacebookIcon,
+  LinkedinIcon,
+  TwitterIcon,
+  EmailShareButton,
+  FacebookShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+} from 'react-share'
 
 import Layout from '../../components/Layout'
 import Time from '../../components/Time'
@@ -13,9 +23,11 @@ import styles from './blog-post.module.sass'
 export class BlogPostTemplate extends Component {
   state = {
     scrollHeight: 0,
+    pageUrl: '',
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
+    this.setState({ pageUrl: window.location.href })
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
@@ -43,6 +55,7 @@ export class BlogPostTemplate extends Component {
     } = this.props
     const { name, headshot, bio } = author
     const PostContent = contentComponent || Content
+    const { pageUrl } = this.state
 
     // Construct progress bar
     const Progressbar = (
@@ -103,6 +116,20 @@ export class BlogPostTemplate extends Component {
         )}
         {/* Article Footer */}
         <div className={styles.Article__footer}>
+          <div className={styles.AuthorPage__sharebuttons}>
+            <FacebookShareButton url={pageUrl} quote={title}>
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            <TwitterShareButton url={pageUrl} title={title}>
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+            <EmailShareButton url={pageUrl} subject={title}>
+              <EmailIcon size={32} round />
+            </EmailShareButton>
+            <LinkedinShareButton url={pageUrl} title={title}>
+              <LinkedinIcon size={32} round />
+            </LinkedinShareButton>
+          </div>
           <div className={styles.AuthorPage__header}>
             <div className={styles.AuthorPage__header__imageContainer}>
               <Img
@@ -111,13 +138,7 @@ export class BlogPostTemplate extends Component {
                 fixed={headshot.childImageSharp.large}
               />
             </div>
-            {/* <div className={styles.AuthorPage__header__imageContainerMobile}>
-              <Img
-                className={styles.AuthorPage__header__imageMobile}
-                alt={name}
-                fixed={headshot.childImageSharp.small}
-              />
-            </div> */}
+
             <div className={styles.AuthorPage__header__text}>
               <div className={styles.AuthorPage__header__text__name}>
                 {name}
@@ -180,6 +201,7 @@ export const pageQuery = graphql`
       description
       coverPhoto {
         absolutePath
+        relativePath
         childImageSharp {
           fluid(maxWidth: 450, quality: 100) {
             ...GatsbyImageSharpFluid

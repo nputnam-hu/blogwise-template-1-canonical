@@ -26,7 +26,9 @@ class TagPage extends Component {
                   <TagPageContent
                     globalState={globalState}
                     pageContext={this.props.pageContext}
-                    allPosts={this.props.data.tag.posts}
+                    allPosts={this.props.data.allBlogPost.edges.map(
+                      ele => ele.node,
+                    )}
                   />
                 )}
               </GlobalStateContext.Consumer>
@@ -48,33 +50,40 @@ export const pageQuery = graphql`
     tag(id: { eq: $id }) {
       name
       description
-      posts {
-        id
-        excerpt
-        description
-        slug
-        title
-        publishDate
-        thumbnail {
-          childImageSharp {
-            largeFluid: fluid(maxWidth: 769, maxHeight: 412, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-            smallFixed: fixed(width: 120, height: 90, quality: 100) {
-              ...GatsbyImageSharpFixed
-            }
-          }
-        }
-        author {
-          name
+    }
+    allBlogPost(
+      filter: { tags: { elemMatch: { id: { in: [$id] } } } }
+      sort: { fields: [publishDate], order: DESC }
+    ) {
+      edges {
+        node {
+          id
+          excerpt
+          description
           slug
-          headshot {
+          title
+          publishDate
+          thumbnail {
             childImageSharp {
-              small: fixed(height: 120, width: 120, quality: 100) {
+              largeFluid: fluid(maxWidth: 769, maxHeight: 412, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+              smallFixed: fixed(width: 120, height: 90, quality: 100) {
                 ...GatsbyImageSharpFixed
               }
-              large: fixed(height: 120, width: 120, quality: 100) {
-                ...GatsbyImageSharpFixed
+            }
+          }
+          author {
+            name
+            slug
+            headshot {
+              childImageSharp {
+                small: fixed(height: 120, width: 120, quality: 100) {
+                  ...GatsbyImageSharpFixed
+                }
+                large: fixed(height: 120, width: 120, quality: 100) {
+                  ...GatsbyImageSharpFixed
+                }
               }
             }
           }
