@@ -170,10 +170,7 @@ const BlogPost = ({ data }) => {
             <meta name="description" content={`${post.description}`} />
             <meta property="og:title" content={post.title} />
             {post.coverPhoto && (
-              <meta
-                property="og:image"
-                content={post.coverPhoto.relativePath}
-              />
+              <meta property="og:image" content={post.coverPhoto.url} />
             )}
           </Helmet>
         }
@@ -200,8 +197,7 @@ export const pageQuery = graphql`
       title
       description
       coverPhoto {
-        absolutePath
-        relativePath
+        url
         childImageSharp {
           fluid(maxWidth: 450, quality: 100) {
             ...GatsbyImageSharpFluid
