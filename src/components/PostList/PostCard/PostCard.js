@@ -7,7 +7,7 @@ import styles from './PostCard.module.sass'
 
 class PostCard extends React.Component {
   render() {
-    const { post, customStyles = [] } = this.props
+    const { post } = this.props
     const {
       title,
       description,
@@ -20,14 +20,8 @@ class PostCard extends React.Component {
     const { name, slug: authorSlug, headshot } = author
     const thumbExists = Boolean(thumbnail)
 
-    let custom1 = {}
-
-    if (customStyles.includes('tagPage')) {
-      custom1 = { justifyContent: 'space-between' }
-    }
-
     return (
-      <div style={custom1} className={styles.Post}>
+      <div className={styles.Post}>
         <div className={styles.Post__thumbnailContainer}>
           {' '}
           {thumbExists && (

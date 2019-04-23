@@ -49,6 +49,10 @@ const TemplateWrapper = ({ showNav = true, children }) => (
           />
 
           <meta name="theme-color" content="#fff" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
 
           <meta property="og:type" content="business.business" />
           <meta property="og:title" content={data.blogData.title} />
