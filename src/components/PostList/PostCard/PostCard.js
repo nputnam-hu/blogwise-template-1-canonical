@@ -35,8 +35,9 @@ class PostCard extends React.Component {
           )}
         </div>
         <div
-          className={`${styles.Post__text} ${!thumbExists &&
-            styles.Post__noThumbnail}`}
+          className={`${styles.Post__text} ${
+            thumbExists ? '' : styles.Post__noThumbnail
+          }`}
         >
           <Link to={slug} className={styles.Post__link}>
             <div className={styles.Post__text__title}>{title}</div>
