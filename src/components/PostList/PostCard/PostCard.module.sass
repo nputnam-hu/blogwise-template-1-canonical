@@ -11,8 +11,7 @@
 .Post
   display: flex
   flex-direction: row
-  justify-content: center
-  width: 100%
+  justify-content: flex-start
   margin-bottom: 48px
 
   @media($mobileBreak)
@@ -41,17 +40,17 @@
     width: 115px
     height: 110px
 
+.Post__noThumbnail
+  margin-left: 0px !important
+
 .Post__text
   display: flex
   flex-direction: column
   justify-content: space-between
   margin-left: 36px
 
-  // width: 70%
-
   @media($mobileBreak)
     margin-left: 0px
-    // width: 55%
 
   a
     text-decoration: none
