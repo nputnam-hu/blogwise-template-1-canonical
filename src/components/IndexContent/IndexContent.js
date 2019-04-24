@@ -127,23 +127,55 @@ const IndexContent = ({ posts, blogData, tags }) => {
   return (
     <div className={styles.Index}>
       {/* Header Image */}
-      {background.childImageSharp ? (
-        <div>
-          <Background
+      <div>
+        {background.childImageSharp ? (
+          <div>
+            <Background
+              className={styles.Index__headerContainer}
+              fluid={background.childImageSharp.fluid}
+            >
+              <div
+                className={styles.Index__header}
+                style={{ background: background ? '' : backgroundHexCode }}
+              >
+                <Img
+                  className={styles.Index__header__img}
+                  alt={`${name} logo`}
+                  fixed={header.childImageSharp.fixed}
+                />
+                <div
+                  className={styles.Index__header__text}
+                  style={{ color: headerTextColor }}
+                >
+                  {title}
+                </div>
+              </div>
+            </Background>
+          </div>
+        ) : (
+          <div
+            style={{ background: backgroundHexCode }}
             className={styles.Index__headerContainer}
-            fluid={background.childImageSharp.fluid}
           >
-            {HeaderContent}
-          </Background>
-        </div>
-      ) : (
-        <div
-          style={{ background: backgroundHexCode }}
-          className={styles.Index__headerContainer}
-        >
-          {HeaderContent}
-        </div>
-      )}
+            <div
+              className={styles.Index__header}
+              style={{ background: background ? '' : backgroundHexCode }}
+            >
+              <Img
+                className={styles.Index__header__img}
+                alt={`${name} logo`}
+                fixed={header.childImageSharp.fixed}
+              />
+              <div
+                className={styles.Index__header__text}
+                style={{ color: headerTextColor }}
+              >
+                {title}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
       <div className={styles.Index__contentContainer}>
         {/* Featured Articles */}
         <div className={styles.Index__content}>
