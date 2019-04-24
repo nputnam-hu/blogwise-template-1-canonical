@@ -133,7 +133,22 @@ const IndexContent = ({ posts, blogData, tags }) => {
             className={styles.Index__headerContainer}
             fluid={background.childImageSharp.fluid}
           >
-            {HeaderContent}
+            <div
+      className={styles.Index__header}
+      style={{ background: background ? '' : backgroundHexCode }}
+    >
+      <Img
+        className={styles.Index__header__img}
+        alt={`${name} logo`}
+        fixed={header.childImageSharp.fixed}
+      />
+      <div
+        className={styles.Index__header__text}
+        style={{ color: headerTextColor }}
+      >
+        {title}
+      </div>
+    </div>
           </Background>
         </div>
       ) : (
@@ -141,7 +156,22 @@ const IndexContent = ({ posts, blogData, tags }) => {
           style={{ background: backgroundHexCode }}
           className={styles.Index__headerContainer}
         >
-          {HeaderContent}
+<div
+      className={styles.Index__header}
+      style={{ background: background ? '' : backgroundHexCode }}
+    >
+      <Img
+        className={styles.Index__header__img}
+        alt={`${name} logo`}
+        fixed={header.childImageSharp.fixed}
+      />
+      <div
+        className={styles.Index__header__text}
+        style={{ color: headerTextColor }}
+      >
+        {title}
+      </div>
+    </div>
         </div>
       )}
       <div className={styles.Index__contentContainer}>
