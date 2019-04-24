@@ -4,7 +4,7 @@ const defaultConfig = {
   faviconPhotoUri: '',
   customNavbarLinks: [],
   token:
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImIwZWQzMTU4LTU3YTAtNGQxMS05Mjk5LWM2NTUwMDNhMzI4ZSIsImVtYWlsIjoiZGFyYUBibG9nd2lzZS5jbyJ9.J4sjfTqHcNH13jF2DXayzB1D3JobHKlK3zGfWalPnTA',
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImY3ZTExYzZhLWM2N2EtNDI2ZS04ZTM1LWQ1OTM5YzhlMzUwZSIsImVtYWlsIjoic2FtK2JhcmFja0BydWJpbmthcGxhbi5jb20ifQ.R4cHtEvrgLiPw3SpNzg0jbvThWB9bi_8471oaTxyRZ8',
   apiUrl: 'https://megaphone-api-prod.herokuapp.com',
   hasBeenInitialized: false,
 }
