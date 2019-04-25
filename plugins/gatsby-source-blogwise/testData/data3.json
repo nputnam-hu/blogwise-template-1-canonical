@@ -1,0 +1,28 @@
+{
+  "authors": [
+    {
+      "id": "49bdf2c9-1d27-45b9-80c0-8078c6a71a2a",
+      "name": "Lisa Rotenstein",
+      "headshotUri": "https://s3.amazonaws.com/megaphone-logo-uploads/defaultUser.png",
+      "bio": null
+    }
+  ],
+  "posts": [],
+  "tags": [],
+  "data": {
+    "title": "CareZooming’s Blog",
+    "name": "CareZooming",
+    "description": "",
+    "headerPhotoUri": "https://megaphone-logo-uploads.s3.amazonaws.com/1556117811274_CZ%20Logo.jpg",
+    "sidebarPhotoUri": "https://megaphone-logo-uploads.s3.amazonaws.com/1556117811274_CZ%20Logo.jpg",
+    "faviconPhotoUri": "",
+    "bgImgUri": "",
+    "backgroundHexCode": "#eb144c",
+    "mainSiteUrl": "",
+    "twitterUrl": "",
+    "facebookUrl": "",
+    "linkedinUrl": "",
+    "headerTextColor": "#000",
+    "navbarHexCode": "#eb144c"
+  }
+}

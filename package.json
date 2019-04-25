@@ -46,7 +46,7 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "start": "npm run develop",
+    "start": "DEV_ENV=true npm run develop",
     "clean": "node downloadConfig.js && rimraf .cache public",
     "build": "npm run clean && gatsby build",
     "develop": "npm run clean && gatsby develop",

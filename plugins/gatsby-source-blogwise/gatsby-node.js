@@ -22,7 +22,10 @@ exports.sourceNodes = async (
   let blogData = {}
 
   if (process.env.PREVIEW) {
-    const testFile = `data${process.env.PREVIEW}.json`
+    const testFile = `./testData/data${process.env.PREVIEW}.json`
+    blogData = require(testFile)
+  } else if (process.env.NODE_ENV === 'development') {
+    const testFile = `./testData/data1.json`
     blogData = require(testFile)
   } else {
     blogData = await rp({
@@ -34,11 +37,10 @@ exports.sourceNodes = async (
       json: true,
     })
   }
+
   const { schemaPost, schemaTag, schemaAuthor } = schema
   let { posts, authors, tags } = blogData
   const { data } = blogData
-
-  fs.writeFileSync('data.json', JSON.stringify(blogData), 'utf8')
 
   posts = posts.concat(schemaPost)
   tags = { ...tags, ...schemaTag }
