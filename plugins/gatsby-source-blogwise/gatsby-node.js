@@ -3,6 +3,7 @@ const { kebabCase } = require('lodash')
 const truncate = require('truncatise')
 const decode = require('unescape')
 const rp = require('request-promise')
+const fs = require('fs')
 
 const schema = require('./schema.json')
 
@@ -17,14 +18,25 @@ exports.sourceNodes = async (
   if (!apiUrl) {
     throw new Error('Must provide a valid API url')
   }
-  const blogData = await rp({
-    method: 'GET',
-    uri: `${apiUrl}/blogs/build`,
-    headers: {
-      'x-access-token': token,
-    },
-    json: true,
-  })
+
+  let blogData = {}
+
+  if (process.env.PREVIEW) {
+    const testFile = `./testData/data${process.env.PREVIEW}.json`
+    blogData = require(testFile)
+  } else if (process.env.NODE_ENV === 'development') {
+    const testFile = `./testData/data1.json`
+    blogData = require(testFile)
+  } else {
+    blogData = await rp({
+      method: 'GET',
+      uri: `${apiUrl}/blogs/build`,
+      headers: {
+        'x-access-token': token,
+      },
+      json: true,
+    })
+  }
 
   const { schemaPost, schemaTag, schemaAuthor } = schema
   let { posts, authors, tags } = blogData
