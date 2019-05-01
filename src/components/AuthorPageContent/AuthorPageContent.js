@@ -47,6 +47,7 @@ class AuthorPageContent extends React.Component {
         </div>
       )
     }
+
     return (
       <div>
         <InfiniteScroll
