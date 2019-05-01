@@ -52,7 +52,7 @@ class AuthorPageContent extends React.Component {
       <div>
         <InfiniteScroll
           throttle={160}
-          threshold={100}
+          threshold={110}
           isLoading={g.isLoading}
           hasMore={g.hasMore()}
           onLoadMore={g.loadMore}
