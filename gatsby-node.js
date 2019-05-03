@@ -177,6 +177,7 @@ exports.onPostBootstrap = ({ getNodes }) => {
     authorHeadshotUri: node.authorHeadshotUri,
     authorSlugFallback: node.authorSlug,
     thumbnailUri: node.thumbnailUri,
+    tagNameList: node.tagNameList,
   }))
   fs.writeFileSync('./public/search_index.json', JSON.stringify({ docs }))
 }
