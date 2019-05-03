@@ -14,29 +14,73 @@ class PostCard extends React.Component {
       slug,
       publishDate,
       thumbnail,
+      thumbnailUri,
       author,
+      authorName,
+      authorHeadshotUri,
+      authorSlugFallback,
       excerpt,
     } = post
     const { name, slug: authorSlug, headshot } = author
     const thumbExists = Boolean(thumbnail)
+    const thumbnailUriExists = Boolean(thumbnailUri)
+    const headshotExists = Boolean(headshot)
+    const headshotUriExists = Boolean(authorHeadshotUri)
+    let renderedThumbnail = <div />
+    let renderedHeadshot = <div />
 
-    return (
-      <div className={styles.Post}>
+    if (thumbExists) {
+      renderedThumbnail = (
         <div className={styles.Post__thumbnailContainer}>
-          {' '}
-          {thumbExists && (
-            <Link to={slug} className={styles.Post__link}>
+          <Link to={slug} className={styles.Post__thumbnailLink}>
+            <div>
               <Img
                 alt={title}
                 className={styles.Post__thumbnail}
                 fluid={thumbnail.childImageSharp.largeFluid}
               />
-            </Link>
-          )}
+            </div>
+          </Link>
         </div>
+      )
+    } else if (thumbnailUriExists) {
+      renderedThumbnail = (
+        <div className={styles.Post__thumbnailContainer}>
+          <Link to={slug} className={styles.Post__thumbnailLink}>
+            <div>
+              <img
+                alt={title}
+                className={styles.Post__thumbnailUri}
+                src={thumbnailUri}
+              />
+            </div>
+          </Link>
+        </div>
+      )
+    }
+    if (headshotExists) {
+      renderedHeadshot = (
+        <Img
+          alt={title}
+          className={styles.Post__headshot}
+          fluid={headshot.childImageSharp.small}
+        />
+      )
+    } else if (headshotUriExists) {
+      renderedHeadshot = (
+        <img
+          alt="author headshot"
+          className={styles.Post__headshot}
+          src={authorHeadshotUri}
+        />
+      )
+    }
+    return (
+      <div className={styles.Post}>
+        {renderedThumbnail}
         <div
           className={`${styles.Post__text} ${
-            thumbExists ? '' : styles.Post__noThumbnail
+            thumbExists || thumbnailUriExists ? '' : styles.Post__noThumbnail
           }`}
         >
           <Link to={slug} className={styles.Post__link}>
@@ -46,14 +90,15 @@ class PostCard extends React.Component {
             </div>
           </Link>
           <div className={styles.Post__text__info}>
-            <Link className={styles.Post__linkContainer} to={authorSlug}>
-              <Img
-                alt={title}
-                className={styles.Post__headshot}
-                fluid={headshot.childImageSharp.small}
-              />
+            <Link
+              className={styles.Post__linkContainer}
+              to={authorSlug || authorSlugFallback}
+            >
+              {renderedHeadshot}
               <div className={styles.Post__text__info__text}>
-                <div className={styles.Post__text__info__author}>{name}</div>
+                <div className={styles.Post__text__info__author}>
+                  {name || authorName}
+                </div>
                 <Time
                   date={publishDate}
                   className={styles.Post__text__info__date}
@@ -62,14 +107,6 @@ class PostCard extends React.Component {
             </Link>
           </div>
         </div>
-        {/* <div className={styles.Post__thumbnailMobile}>
-          {' '}
-          {thumbExists && (
-            <Link to={slug}>
-              <Img alt={title} fluid={thumbnail.childImageSharp.largeFluid} />
-            </Link>
-          )}
-        </div> */}
       </div>
     )
   }

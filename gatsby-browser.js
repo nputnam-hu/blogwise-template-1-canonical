@@ -12,8 +12,8 @@ export const onClientEntry = () => {
       if (docs.length === 0) return
       const search = new JsSearch.Search('id')
       search.addIndex('title')
-      search.addIndex(['author', 'name'])
-      search.addIndex('tags')
+      search.addIndex('authorName')
+      search.addIndex('tagNameList')
       search.addDocuments(docs)
       // eslint-disable-next-line no-underscore-dangle
       window.__SEARCH__ = search

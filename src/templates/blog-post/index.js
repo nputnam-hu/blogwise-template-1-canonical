@@ -158,6 +158,7 @@ const BlogPost = ({ data }) => {
   const morePosts = data.allBlogPost
     ? data.allBlogPost.edges.map(p => p.node)
     : []
+  const thumbnailExists = Boolean(post.thumbnail)
   return (
     <Layout>
       <BlogPostTemplate
@@ -170,7 +171,10 @@ const BlogPost = ({ data }) => {
             <meta name="description" content={`${post.description}`} />
             <meta property="og:title" content={post.title} />
             {post.coverPhoto && (
-              <meta property="og:image" content={post.coverPhoto.url} />
+              <meta
+                property="og:image"
+                content={thumbnailExists && post.thumbnail.url}
+              />
             )}
           </Helmet>
         }
@@ -203,6 +207,9 @@ export const pageQuery = graphql`
             ...GatsbyImageSharpFluid
           }
         }
+      }
+      thumbnail {
+        url
       }
       tags {
         id
