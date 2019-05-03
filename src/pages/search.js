@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Layout from '../components/Layout'
 import PostListView from '../components/PostListView'
+import PostList from '../components/PostList'
 import { SearchWidget } from '../components/Searchbar'
 import { navigate } from 'gatsby'
 import '../styles/search.sass'
@@ -50,7 +51,7 @@ class Search extends Component {
                 ? `Results for "${this.state.query}"`
                 : `No Results for "${this.state.query}"`)}
           </h1>
-          {posts.length > 0 && <PostListView posts={posts} />}
+          {posts.length > 0 && <PostList posts={posts} />}
         </div>
       </Layout>
     )

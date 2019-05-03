@@ -23,14 +23,25 @@
   color: $greyFontColor
 
 .Post__thumbnailContainer
-  // width: 153px
-  align-self: flex-start
+  width: 153px
+  height: 133px
   border: 1px solid #d3d3d3
 
   @media($mobileBreak)
-    // width: 45%
+    width: 115px
+    height: 110px
 
 .Post__thumbnail
+  width: 153px
+  height: 133px
+  align-self: flex-end
+  border: 1px solid lightgrey
+
+  @media($mobileBreak)
+    width: 115px
+    height: 110px
+
+.Post__thumbnailUri
   width: 153px
   height: 133px
   align-self: flex-start
@@ -42,6 +53,13 @@
 
 .Post__noThumbnail
   margin-left: 0px !important
+
+.Post__thumbnailLink
+  width: 153px
+  height: 133px
+
+.Post__thumbnailLink:hover
+  color: $greyFontColor
 
 .Post__text
   display: flex

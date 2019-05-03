@@ -45,6 +45,15 @@ exports.sourceNodes = async (
   posts = posts.concat(schemaPost)
   tags = { ...tags, ...schemaTag }
   authors = authors.concat(schemaAuthor)
+  const authorInfo = {}
+
+  authors.forEach(author => {
+    authorInfo[author.id] = {
+      name: author.name,
+      headshotUri: author.headshotUri,
+      slug: `/authors/${kebabCase(author.name)}`,
+    }
+  })
 
   const createPostId = id => `blogwise-post-${id}`
   const createAuthorId = id => `blogwise-author-${id}`
@@ -61,7 +70,6 @@ exports.sourceNodes = async (
   // objects to store the posts associated with each author and tag
   const authorPosts = {}
   const tagPosts = {}
-  console.log(posts)
 
   const postData = await Promise.all(
     posts.map(async post => {
@@ -76,6 +84,9 @@ exports.sourceNodes = async (
         publishDate: post.publishDate,
         slug: post.slug,
         author___NODE: createAuthorId(post.authorId),
+        authorName: authorInfo[post.authorId].name,
+        authorHeadshotUri: authorInfo[post.authorId].headshotUri,
+        authorSlug: authorInfo[post.authorId].slug,
         tags___NODE: postTagsNodeIds,
       }
       authorPosts[postAuthorNodeId] = [

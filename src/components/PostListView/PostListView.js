@@ -15,6 +15,8 @@ const PostListView = ({ posts }) => (
         thumbnail,
         thumbnailUri,
         author,
+        authorName,
+        authorHeadshotUri,
         excerpt,
       }) => {
         const { name, slug: authorSlug } = author
@@ -63,7 +65,7 @@ const PostListView = ({ posts }) => (
                 </Link>
                 <div className="author-container">
                   <Link style={{ textDecoration: 'none' }} to={authorSlug}>
-                    <div className="authorname">{name}</div>
+                    <div className="authorname">{name || authorName}</div>
                   </Link>
                   <Time date={publishDate} size="med" />
                 </div>
