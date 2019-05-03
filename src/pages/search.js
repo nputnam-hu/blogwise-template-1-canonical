@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Layout from '../components/Layout'
-import PostListView from '../components/PostListView'
 import PostList from '../components/PostList'
 import { SearchWidget } from '../components/Searchbar'
 import { navigate } from 'gatsby'

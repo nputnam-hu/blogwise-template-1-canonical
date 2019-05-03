@@ -12,7 +12,7 @@ export const onClientEntry = () => {
       if (docs.length === 0) return
       const search = new JsSearch.Search('id')
       search.addIndex('title')
-      search.addIndex(['author', 'name'])
+      search.addIndex('authorName')
       search.addIndex('tags')
       search.addDocuments(docs)
       // eslint-disable-next-line no-underscore-dangle
