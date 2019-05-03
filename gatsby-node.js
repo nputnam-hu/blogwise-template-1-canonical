@@ -173,6 +173,7 @@ exports.onPostBootstrap = ({ getNodes }) => {
     excerpt: node.excerpt,
     publishDate: node.publishDate,
     tags: node.tags___NODE,
+    thumbnailUri: node.thumbnailUri,
   }))
   fs.writeFileSync('./public/search_index.json', JSON.stringify({ docs }))
 }

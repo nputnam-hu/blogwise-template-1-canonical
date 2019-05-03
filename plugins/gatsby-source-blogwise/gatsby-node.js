@@ -61,6 +61,7 @@ exports.sourceNodes = async (
   // objects to store the posts associated with each author and tag
   const authorPosts = {}
   const tagPosts = {}
+  console.log(posts)
 
   const postData = await Promise.all(
     posts.map(async post => {
@@ -111,6 +112,7 @@ exports.sourceNodes = async (
         }
       }
       if (post.thumbnailUri) {
+        postNodeData.thumbnailUri = post.thumbnailUri
         const thumbnailNode = await createRemoteFileNode({
           url: post.thumbnailUri,
           parentNodeId: postNodeId,

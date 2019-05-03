@@ -13,26 +13,40 @@ const PostListView = ({ posts }) => (
         slug,
         publishDate,
         thumbnail,
+        thumbnailUri,
         author,
         excerpt,
       }) => {
         const { name, slug: authorSlug } = author
         const thumbExists = Boolean(thumbnail)
+        const thumbUriExists = Boolean(thumbnailUri)
+        let renderedThumbnail = <div />
+        if (thumbExists) {
+          renderedThumbnail = (
+            <Link to={slug}>
+              <Img
+                alt={title}
+                className="articleimage desktop"
+                fluid={thumbnail.childImageSharp.fluid}
+              />
+            </Link>
+          )
+        } else if (thumbUriExists) {
+          renderedThumbnail = (
+            <img
+              src={thumbnailUri}
+              className="articleimage desktop"
+              alt="thumbnail"
+            />
+          )
+        }
         return (
           <div className="post" key={slug}>
             <div
               className="article"
               style={thumbExists ? {} : { width: '100%' }}
             >
-              {thumbExists && (
-                <Link to={slug}>
-                  <Img
-                    alt={title}
-                    className="articleimage desktop"
-                    fluid={thumbnail.childImageSharp.fluid}
-                  />
-                </Link>
-              )}
+              {renderedThumbnail}
               <div className="articletop">
                 <Link style={{ textDecoration: 'none' }} to={slug}>
                   <div className="mobile-articletop">
