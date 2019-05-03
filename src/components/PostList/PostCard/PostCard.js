@@ -26,7 +26,6 @@ class PostCard extends React.Component {
     const thumbnailUriExists = Boolean(thumbnailUri)
     const headshotExists = Boolean(headshot)
     const headshotUriExists = Boolean(authorHeadshotUri)
-    console.log(authorSlugFallback)
     let renderedThumbnail = <div />
     let renderedHeadshot = <div />
 
