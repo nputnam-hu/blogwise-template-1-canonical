@@ -234,12 +234,6 @@ class IndexContent extends React.Component {
               <div className={styles.Index__content__header__title}>
                 Featured Articles
               </div>
-              <Link
-                className={styles.Index__content__header__link}
-                to="/latest"
-              >
-                See all
-              </Link>
             </div>
             <div>
               <InfiniteScroll
@@ -287,14 +281,6 @@ class IndexContent extends React.Component {
             {TagsList}
             {/* Social Icons Section */}
             {SocialMediaIcons}
-          </div>
-          <div className={styles.Index__content__mobileBottom}>
-            <Link
-              className={styles.Index__content__mobileBottom__link}
-              to="/latest"
-            >
-              See More articles
-            </Link>
           </div>
         </div>
       </div>
