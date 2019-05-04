@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
+import { GlobalStateContext } from '../components/globalState'
 import Layout from '../components/Layout'
 import IndexContent from '../components/IndexContent'
 
@@ -18,10 +19,20 @@ export default class IndexPage extends Component {
     if (data.allTag !== null) {
       tags = data.allTag.edges // eslint-disable-line
     }
+    console.log(posts)
 
     return hasBeenInitialized ? (
       <Layout showNav={false}>
-        <IndexContent posts={posts} tags={tags} blogData={data.blogData} />
+        <GlobalStateContext.Consumer>
+          {globalState => (
+            <IndexContent
+              allPosts={posts}
+              globalState={globalState}
+              tags={tags}
+              blogData={data.blogData}
+            />
+          )}
+        </GlobalStateContext.Consumer>
       </Layout>
     ) : (
       <div
@@ -57,7 +68,6 @@ export const pageQuery = graphql`
   query IndexQuery($schemaPostId: String, $schemaTagId: String) {
     allBlogPost(
       sort: { order: DESC, fields: [publishDate] }
-      limit: 5
       filter: { id: { ne: $schemaPostId } }
     ) {
       edges {
