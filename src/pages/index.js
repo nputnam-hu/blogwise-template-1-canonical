@@ -19,7 +19,6 @@ export default class IndexPage extends Component {
     if (data.allTag !== null) {
       tags = data.allTag.edges // eslint-disable-line
     }
-    console.log(posts)
 
     return hasBeenInitialized ? (
       <Layout showNav={false}>

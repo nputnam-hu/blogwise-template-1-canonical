@@ -32,8 +32,7 @@ exports.sourceNodes = async (
   } else if (process.env.PREVIEW) {
     const testFile = `./testData/data${process.env.PREVIEW}.json`
     blogData = require(testFile)
-  }
-  if (process.env.NODE_ENV === 'development') {
+  } else if (process.env.NODE_ENV === 'development') {
     // Download from db.
     blogData = await rp({
       method: 'GET',
