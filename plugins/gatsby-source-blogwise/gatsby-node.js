@@ -109,9 +109,15 @@ exports.sourceNodes = async (
         publishDate: post.publishDate,
         slug: post.slug,
         author___NODE: createAuthorId(post.authorId),
-        authorName: authorInfo[post.authorId].name,
-        authorHeadshotUri: authorInfo[post.authorId].headshotUri,
-        authorSlug: authorInfo[post.authorId].slug,
+        authorName: authorInfo[post.authorId]
+          ? authorInfo[post.authorId].name
+          : null,
+        authorHeadshotUri: authorInfo[post.authorId]
+          ? authorInfo[post.authorId].headshotUri
+          : null,
+        authorSlug: authorInfo[post.authorId]
+          ? authorInfo[post.authorId].slug
+          : null,
         tags___NODE: postTagsNodeIds,
         tagNameList,
       }
