@@ -27,6 +27,7 @@ export class BlogPostTemplate extends Component {
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
+    // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({ pageUrl: window.location.href })
   }
   componentWillUnmount() {

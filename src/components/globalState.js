@@ -33,7 +33,6 @@ export class GlobalState extends React.Component {
       loadMore: this.loadMore,
       toggle: this.toggle,
     }
-    console.log('running here too')
   }
 
   updateState = mergeableStateObject => {

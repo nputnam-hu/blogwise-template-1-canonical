@@ -7,18 +7,8 @@ import IndexContent from '../components/IndexContent'
 const { hasBeenInitialized } = require('../../config.json')
 
 export default class IndexPage extends Component {
-  constructor() {
-    super()
-
-    this.state = {
-      posts: [],
-      tags: {},
-    }
-  }
   render() {
     const { data } = this.props
-    let posts = []
-    let tags = {}
 
     return hasBeenInitialized ? (
       <Layout showNav={false}>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { graphql } from 'gatsby'
 import Layout from '../../components/Layout'
 import Content, { HTMLContent } from '../../components/Content'
 import './styles.sass'

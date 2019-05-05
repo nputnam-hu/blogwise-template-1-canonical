@@ -37,7 +37,6 @@ class TagPageContent extends React.Component {
   render() {
     const g = this.props.globalState
     const allPosts = this.props.allPosts ? this.props.allPosts : []
-    console.log(g.allItems)
 
     const currentlyVisibleItems = g.itemsToShow || allPosts
     let Content = <div>There are no posts under this topic.</div>
