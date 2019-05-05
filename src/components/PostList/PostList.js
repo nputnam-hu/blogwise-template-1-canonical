@@ -33,9 +33,11 @@ class PostList extends React.Component {
       const secondHalf = posts.slice(3)
       PostCards = (
         <div>
-          {firstHalf.map(post => (
-            <PostCard customStyles={customStyles} post={post} key={post.id} />
-          ))}
+          {firstHalf.map(post => {
+            return (
+              <PostCard customStyles={customStyles} post={post} key={post.id} />
+            )
+          })}
           {this.props.children}
           {secondHalf.map(post => (
             <PostCard customStyles={customStyles} post={post} key={post.id} />

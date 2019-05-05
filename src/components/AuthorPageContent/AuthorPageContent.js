@@ -6,6 +6,10 @@ import PostList from '../PostList'
 class AuthorPageContent extends React.Component {
   constructor(props) {
     super(props)
+    props.globalState.updateState({
+      allItems: null,
+      itemsToShow: null,
+    })
     if (
       !props.globalState.allItems ||
       !props.globalState.useInfiniteScroll ||
@@ -24,12 +28,6 @@ class AuthorPageContent extends React.Component {
   componentDidMount() {
     this.props.globalState.updateState({
       isLoading: false,
-    })
-  }
-
-  componentWillUnmount() {
-    this.props.globalState.updateState({
-      allItems: null,
     })
   }
 

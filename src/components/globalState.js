@@ -33,6 +33,7 @@ export class GlobalState extends React.Component {
       loadMore: this.loadMore,
       toggle: this.toggle,
     }
+    console.log('running here too')
   }
 
   updateState = mergeableStateObject => {
@@ -48,7 +49,9 @@ export class GlobalState extends React.Component {
     }))
     const i = this.state.itemsIndex
 
-    const newItems = this.state.allItems.slice(0, i + 1)
+    const newItems = this.state.allItems
+      ? this.state.allItems.slice(0, i + 1)
+      : []
 
     // Add new items to ones visible.
     this.setState({

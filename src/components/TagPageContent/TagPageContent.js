@@ -9,6 +9,10 @@ import styles from './TagPageContent.module.sass'
 class TagPageContent extends React.Component {
   constructor(props) {
     super(props)
+    props.globalState.updateState({
+      allItems: null,
+      itemsToShow: null,
+    })
     if (
       !props.globalState.allItems ||
       !props.globalState.useInfiniteScroll ||
@@ -30,18 +34,12 @@ class TagPageContent extends React.Component {
     })
   }
 
-  componentWillUnmount() {
-    this.props.globalState.updateState({
-      allItems: null,
-    })
-  }
-
   render() {
     const g = this.props.globalState
     const allPosts = this.props.allPosts ? this.props.allPosts : []
+    console.log(g.allItems)
 
     const currentlyVisibleItems = g.itemsToShow || allPosts
-
     let Content = <div>There are no posts under this topic.</div>
     if (currentlyVisibleItems.length === 1) {
       Content = (

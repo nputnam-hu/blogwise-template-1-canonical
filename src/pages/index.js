@@ -7,27 +7,27 @@ import IndexContent from '../components/IndexContent'
 const { hasBeenInitialized } = require('../../config.json')
 
 export default class IndexPage extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      posts: [],
+      tags: {},
+    }
+  }
   render() {
     const { data } = this.props
     let posts = []
     let tags = {}
-
-    if (data.allBlogPost !== null) {
-      posts = data.allBlogPost.edges // eslint-disable-line
-    }
-
-    if (data.allTag !== null) {
-      tags = data.allTag.edges // eslint-disable-line
-    }
 
     return hasBeenInitialized ? (
       <Layout showNav={false}>
         <GlobalStateContext.Consumer>
           {globalState => (
             <IndexContent
-              allPosts={posts}
+              allPosts={data.allBlogPost.edges.map(ele => ele.node)}
               globalState={globalState}
-              tags={tags}
+              tags={data.allTag.edges}
               blogData={data.blogData}
             />
           )}

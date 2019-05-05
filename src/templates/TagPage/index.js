@@ -9,6 +9,7 @@ import styles from './styles.module.sass'
 
 class TagPage extends Component {
   render() {
+    console.log(this.props.data.allBlogPost.edges.map(ele => ele.node))
     return (
       <Layout>
         <div className={styles.TagPage}>

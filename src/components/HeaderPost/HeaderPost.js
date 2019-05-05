@@ -8,6 +8,7 @@ import styles from './HeaderPost.module.sass'
 class HeaderPost extends React.Component {
   render() {
     const { post } = this.props
+
     const {
       title,
       description,

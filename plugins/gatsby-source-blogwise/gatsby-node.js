@@ -34,18 +34,18 @@ exports.sourceNodes = async (
     blogData = require(testFile)
   } else if (process.env.NODE_ENV === 'development') {
     // Download from db.
-    // blogData = await rp({
-    //   method: 'GET',
-    //   uri: `${apiUrl}/blogs/build`,
-    //   headers: {
-    //     'x-access-token': token,
-    //   },
-    //   json: true,
-    // })
+    blogData = await rp({
+      method: 'GET',
+      uri: `${apiUrl}/blogs/build`,
+      headers: {
+        'x-access-token': token,
+      },
+      json: true,
+    })
     // fs.writeFileSync('newData.json', JSON.stringify(blogData))
     // Use local data from testData
-    const testFile = `./testData/data3.json`
-    blogData = require(testFile)
+    // const testFile = `./testData/data3.json`
+    // blogData = require(testFile)
   } else {
     blogData = await rp({
       method: 'GET',

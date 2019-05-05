@@ -18,6 +18,10 @@ import styles from './IndexContent.module.sass'
 class IndexContent extends React.Component {
   constructor(props) {
     super(props)
+    props.globalState.updateState({
+      allItems: null,
+      itemsToShow: null,
+    })
     if (!props.globalState.allItems || !props.globalState.useInfiniteScroll) {
       props.globalState.updateState({
         allItems: props.allPosts ? props.allPosts : [],
@@ -31,12 +35,6 @@ class IndexContent extends React.Component {
   componentDidMount() {
     this.props.globalState.updateState({
       isLoading: false,
-    })
-  }
-
-  componentWillUnmount() {
-    this.props.globalState.updateState({
-      allItems: null,
     })
   }
 
@@ -74,7 +72,7 @@ class IndexContent extends React.Component {
     let FeaturedArticles = <div>Sorry, no posts yet! Come back later.</div>
     if (currentlyVisibleItems.length >= 1) {
       FeaturedArticles = (
-        <PostList posts={currentlyVisibleItems.map(p => p.node)}>
+        <PostList posts={currentlyVisibleItems}>
           <div className={styles.Index__midContent}>
             <hr className={styles.Index__midContent__linebreak} />
             {/* About Section  */}
