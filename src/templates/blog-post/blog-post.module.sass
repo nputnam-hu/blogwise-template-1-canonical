@@ -148,6 +148,9 @@
 .BlogPost__content
   margin-top: 48px
 
+  img
+    width: 100%
+
   // font-size: 16px
 
   @media($mobileBreak)
@@ -175,7 +178,7 @@
 .AuthorPage__sharebuttons
   position: fixed
   top: 40%
-  left: 10%
+  left: 15%
   height: 250px
   margin-right: auto
   margin-left: auto
@@ -184,13 +187,15 @@
   flex-direction: column
   justify-content: space-around
 
+  @media($indexBreak)
+    display: none
+
   img
     margin-bottom: 24px
 
 .AuthorPage__sharebuttonsFixed
   position: absolute !important
   top: auto
-  left: 10%
   bottom: 660px
 
 .AuthorPage__header__imageContainer
@@ -249,6 +254,6 @@
 ////////////////////
 
 .Article__footer
-  width: 80%
+  width: 100%
   margin-right: auto
   margin-left: auto
