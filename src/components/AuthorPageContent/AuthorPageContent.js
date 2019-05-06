@@ -4,31 +4,18 @@ import { FaCog } from 'react-icons/fa'
 import PostList from '../PostList'
 
 class AuthorPageContent extends React.Component {
-  constructor(props) {
-    super(props)
-    props.globalState.updateState({
-      allItems: null,
-      itemsToShow: null,
-    })
-    if (
-      !props.globalState.allItems ||
-      !props.globalState.useInfiniteScroll ||
-      props.globalState.slug !== props.pageContext.slug
-    ) {
-      props.globalState.updateState({
-        slug: props.pageContext.slug,
-        allItems: props.allPosts ? props.allPosts : [],
-        numAllItems: props.allPosts ? props.allPosts.length : 0,
-        itemsToShow: props.allPosts ? props.allPosts.slice(0, 1) : [],
-        itemsIndex: 1,
-      })
-    }
-  }
-
   componentDidMount() {
     this.props.globalState.updateState({
       isLoading: false,
     })
+    if (this.props.globalState.allItems !== this.props.allPosts) {
+      this.props.globalState.updateState({
+        allItems: this.props.allPosts ? this.props.allPosts : [],
+        numAllItems: this.props.allPosts ? this.props.allPosts.length : 0,
+        itemsToShow: this.props.allPosts ? this.props.allPosts.slice(0, 1) : [],
+        itemsIndex: 1,
+      })
+    }
   }
 
   render() {
