@@ -15,7 +15,7 @@ const MorePosts = ({ posts }) => (
             {thumbnail ? (
               <Img alt={title} fixed={thumbnail.childImageSharp.fixed} />
             ) : (
-              <div style={{ height: 342, width: 178 }} />
+              <div />
             )}
             <div className={styles.Post__title}> {title}</div>
             <div className={styles.Post__excerpt}> {excerpt}</div>
