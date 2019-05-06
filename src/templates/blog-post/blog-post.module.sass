@@ -6,7 +6,7 @@
 @import /css/quill.core.css
 
 .bodytext
-  font-family: $secondaryFont
+  font-family: $blogFont
   font-size: 20px
   font-weight: 300
   line-height: 30px
@@ -14,7 +14,9 @@
   flex-direction: column
 
   img
-    max-width: 500px
+    max-width: 800px
+    padding-top: 48px
+    padding-bottom: 48px
 
   code
     font-size: 14px
@@ -145,7 +147,6 @@
 
 .BlogPost__content
   margin-top: 48px
-  font-family: $secondaryFont
 
   // font-size: 16px
 
@@ -172,14 +173,25 @@
     align-items: center
 
 .AuthorPage__sharebuttons
-  margin-top: 20px
+  position: fixed
+  top: 40%
+  left: 10%
+  height: 250px
   margin-right: auto
   margin-left: auto
   align-self: center
   display: flex
-  flex-direction: row
-  width: 200px
+  flex-direction: column
   justify-content: space-around
+
+  img
+    margin-bottom: 24px
+
+.AuthorPage__sharebuttonsFixed
+  position: absolute !important
+  top: auto
+  left: 10%
+  bottom: 660px
 
 .AuthorPage__header__imageContainer
   margin-right: 48px
@@ -187,8 +199,6 @@
 
   @media($mobileBreak)
     margin-right: 0px
-
-  //   display: none
 
 .AuthorPage__header__image
   border-radius: 100px
