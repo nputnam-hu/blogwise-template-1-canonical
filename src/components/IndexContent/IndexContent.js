@@ -50,8 +50,6 @@ class IndexContent extends React.Component {
     const allPosts = this.props.allPosts ? this.props.allPosts : []
 
     const currentlyVisibleItems = g.itemsToShow || allPosts
-    console.log(allPosts)
-    console.log(g.itemsToShow)
 
     // Construct tags list
     const TagsList = (

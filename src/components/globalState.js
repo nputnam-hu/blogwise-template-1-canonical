@@ -41,8 +41,6 @@ export class GlobalState extends React.Component {
 
   loadMore = () => {
     this.setState({ isLoading: true, error: undefined })
-    console.log('Load more is running, starting vals are...')
-    console.log(this.state.allItems)
 
     // Increment the item index
     this.setState(state => ({
