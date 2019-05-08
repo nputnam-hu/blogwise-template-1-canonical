@@ -4,7 +4,6 @@ const truncate = require('truncatise')
 const decode = require('unescape')
 const rp = require('request-promise')
 const fs = require('fs')
-
 const schema = require('./schema.json')
 
 exports.sourceNodes = async (
@@ -21,12 +20,32 @@ exports.sourceNodes = async (
 
   let blogData = {}
 
-  if (process.env.PREVIEW) {
+  if (process.env.PREVIEW === 1) {
+    blogData = await rp({
+      method: 'GET',
+      uri: `${apiUrl}/blogs/build`,
+      headers: {
+        'x-access-token': token,
+      },
+      json: true,
+    })
+  } else if (process.env.PREVIEW) {
     const testFile = `./testData/data${process.env.PREVIEW}.json`
     blogData = require(testFile)
   } else if (process.env.NODE_ENV === 'development') {
-    const testFile = `./testData/data1.json`
-    blogData = require(testFile)
+    // Download from db.
+    blogData = await rp({
+      method: 'GET',
+      uri: `${apiUrl}/blogs/build`,
+      headers: {
+        'x-access-token': token,
+      },
+      json: true,
+    })
+    // fs.writeFileSync('newData.json', JSON.stringify(blogData))
+    // Use local data from testData
+    // const testFile = `./testData/data3.json`
+    // blogData = require(testFile)
   } else {
     blogData = await rp({
       method: 'GET',
@@ -91,9 +110,15 @@ exports.sourceNodes = async (
         publishDate: post.publishDate,
         slug: post.slug,
         author___NODE: createAuthorId(post.authorId),
-        authorName: authorInfo[post.authorId].name,
-        authorHeadshotUri: authorInfo[post.authorId].headshotUri,
-        authorSlug: authorInfo[post.authorId].slug,
+        authorName: authorInfo[post.authorId]
+          ? authorInfo[post.authorId].name
+          : null,
+        authorHeadshotUri: authorInfo[post.authorId]
+          ? authorInfo[post.authorId].headshotUri
+          : null,
+        authorSlug: authorInfo[post.authorId]
+          ? authorInfo[post.authorId].slug
+          : null,
         tags___NODE: postTagsNodeIds,
         tagNameList,
       }

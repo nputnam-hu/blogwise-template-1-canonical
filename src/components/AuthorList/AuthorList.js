@@ -1,6 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import Img from 'gatsby-image'
 
 import AuthorCard from './AuthorCard'
 

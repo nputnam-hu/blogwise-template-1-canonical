@@ -1,28 +1,58 @@
 {
   "authors": [
     {
-      "id": "49bdf2c9-1d27-45b9-80c0-8078c6a71a2a",
-      "name": "Lisa Rotenstein",
-      "headshotUri": "https://s3.amazonaws.com/megaphone-logo-uploads/defaultUser.png",
-      "bio": null
+      "id": "792270a8-7597-4e40-a001-5044d955966d",
+      "name": "Tim Tamm",
+      "headshotUri": "https://megaphone-logo-uploads.s3.amazonaws.com/1556653524635_Tim.jpg",
+      "bio": ""
     }
   ],
-  "posts": [],
-  "tags": [],
+  "posts": [
+    {
+      "id": "c0b4a8ae-42a1-40f4-8e06-fa8285e34003",
+      "title": "Intro to Pet Ownership: Dogs",
+      "description": "a",
+      "htmlBody": "<p>a</p>",
+      "publishDate": "2019-04-30T04:00:00.000Z",
+      "coverPhotoUri": "https://unsplash.com/photos/2_3c4dIFYFU/download.jpeg",
+      "thumbnailUri": "https://unsplash.com/photos/2_3c4dIFYFU/download.jpeg",
+      "tagIds": [],
+      "slug": "/a/2019-04-30-intro-to-pet-ownership-dogs",
+      "authorId": "792270a8-7597-4e40-a001-5044d955966d"
+    }
+  ],
+  "tags": {
+    "7aef3819-4319-4d2f-9e43-40fb6862fe74": {
+      "name": "Blogging",
+      "description": "Tell great stories"
+    },
+    "97172d5a-cbee-4d79-9783-02afac7083fa": {
+      "name": "Entrepreneurship",
+      "description": "Thoughts on investing, startups, and how to build products that empower other businesses"
+    },
+    "beece857-e557-487d-ae5a-28b2f3f81ff6": {
+      "name": "Programming",
+      "description": "The latest from our engineering team"
+    },
+    "c32c349c-4261-45d1-9e64-d380b0390eb9": {
+      "name": "Marketing",
+      "description": "Reach your customers better"
+    }
+  },
   "data": {
-    "title": "CareZooming’s Blog",
-    "name": "CareZooming",
-    "description": "",
-    "headerPhotoUri": "https://megaphone-logo-uploads.s3.amazonaws.com/1556117811274_CZ%20Logo.jpg",
-    "sidebarPhotoUri": "https://megaphone-logo-uploads.s3.amazonaws.com/1556117811274_CZ%20Logo.jpg",
+    "title": "The Lightning Blog",
+    "name": "blogwise",
+    "description": "blogwise is the fastest way to start content marketing for your business. \nWe are dedicated to making it as easy as possible to build and run a great blog for your business.",
+    "headerPhotoUri": "https://s3.amazonaws.com/megaphone-logo-uploads/1552705852376_logo-yellow.png",
+    "sidebarPhotoUri": "https://s3.amazonaws.com/megaphone-logo-uploads/1552706183877_blogwiseLogo-square.png",
     "faviconPhotoUri": "",
-    "bgImgUri": "",
-    "backgroundHexCode": "#eb144c",
+    "bgImgUri": "https://megaphone-logo-uploads.s3.amazonaws.com/1552705907732_header_background.png",
+    "backgroundHexCode": "#266eec",
     "mainSiteUrl": "",
-    "twitterUrl": "",
-    "facebookUrl": "",
-    "linkedinUrl": "",
-    "headerTextColor": "#000",
-    "navbarHexCode": "#eb144c"
+    "twitterUrl": "https://twitter.com/realblogwise",
+    "facebookUrl": "https://www.facebook.com/blogwise.co",
+    "linkedinUrl": "https://www.linkedin.com/company/blogwise",
+    "headerTextColor": "#ffffff",
+    "navbarHexCode": "#67b4f9"
   }
 }

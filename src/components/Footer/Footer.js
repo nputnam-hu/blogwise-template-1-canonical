@@ -10,17 +10,10 @@ const Footer = () => (
         blogData {
           name
           mainSiteUrl
-          sidebar {
-            childImageSharp {
-              fixed(height: 35, quality: 100) {
-                ...GatsbyImageSharpFixed
-              }
-            }
-          }
         }
       }
     `}
-    render={({ blogData: { name, mainSiteUrl, sidebar } }) => (
+    render={({ blogData: { name, mainSiteUrl } }) => (
       <div className={styles.Footer}>
         <div className={styles.Footer__container}>
           <div className={styles.Footer__links}>

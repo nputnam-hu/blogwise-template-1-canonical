@@ -3,15 +3,16 @@ import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import {
-  EmailIcon,
-  FacebookIcon,
-  LinkedinIcon,
-  TwitterIcon,
   EmailShareButton,
   FacebookShareButton,
   LinkedinShareButton,
   TwitterShareButton,
 } from 'react-share'
+
+import EmailIcon from '../../../static/social-icons/email-icon.svg'
+import FacebookIcon from '../../../static/social-icons/facebook-icon.svg'
+import LinkedinIcon from '../../../static/social-icons/linkedin-icon.svg'
+import TwitterIcon from '../../../static/social-icons/twitter-icon.svg'
 
 import Layout from '../../components/Layout'
 import Time from '../../components/Time'
@@ -27,6 +28,7 @@ export class BlogPostTemplate extends Component {
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
+    // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({ pageUrl: window.location.href })
   }
   componentWillUnmount() {
@@ -74,6 +76,26 @@ export class BlogPostTemplate extends Component {
         {Progressbar}
         {helmet || ''}
         {/* Blog Post Info */}
+        <div
+          className={`${styles.AuthorPage__sharebuttons} ${
+            this.state.scrollHeight < 1
+              ? ' '
+              : styles.AuthorPage__sharebuttonsFixed
+          }`}
+        >
+          <FacebookShareButton url={pageUrl} quote={title}>
+            <img src={FacebookIcon} />
+          </FacebookShareButton>
+          <TwitterShareButton url={pageUrl} title={title}>
+            <img src={TwitterIcon} />
+          </TwitterShareButton>
+          <EmailShareButton url={pageUrl} subject={title}>
+            <img src={EmailIcon} />
+          </EmailShareButton>
+          <LinkedinShareButton url={pageUrl} title={title}>
+            <img src={LinkedinIcon} />
+          </LinkedinShareButton>
+        </div>
         <div className={styles.BlogPost__title}>{title}</div>
         <div className={styles.BlogPost__authorInfo}>
           <Link style={{ textDecoration: 'none' }} to={author.slug}>
@@ -116,36 +138,25 @@ export class BlogPostTemplate extends Component {
         )}
         {/* Article Footer */}
         <div className={styles.Article__footer}>
-          <div className={styles.AuthorPage__sharebuttons}>
-            <FacebookShareButton url={pageUrl} quote={title}>
-              <FacebookIcon size={32} round />
-            </FacebookShareButton>
-            <TwitterShareButton url={pageUrl} title={title}>
-              <TwitterIcon size={32} round />
-            </TwitterShareButton>
-            <EmailShareButton url={pageUrl} subject={title}>
-              <EmailIcon size={32} round />
-            </EmailShareButton>
-            <LinkedinShareButton url={pageUrl} title={title}>
-              <LinkedinIcon size={32} round />
-            </LinkedinShareButton>
-          </div>
-          <div className={styles.AuthorPage__header}>
-            <div className={styles.AuthorPage__header__imageContainer}>
-              <Img
-                className={styles.AuthorPage__header__image}
-                alt={name}
-                fixed={headshot.childImageSharp.large}
-              />
-            </div>
-
-            <div className={styles.AuthorPage__header__text}>
-              <div className={styles.AuthorPage__header__text__name}>
-                {name}
+          <Link style={{ textDecoration: 'none' }} to={author.slug}>
+            <div className={styles.AuthorPage__header}>
+              <div className={styles.AuthorPage__header__imageContainer}>
+                <Img
+                  className={styles.AuthorPage__header__image}
+                  alt={name}
+                  fixed={headshot.childImageSharp.large}
+                />
               </div>
-              <div className={styles.AuthorPage__header__text__bio}>{bio}</div>
+              <div className={styles.AuthorPage__header__text}>
+                <div className={styles.AuthorPage__header__text__name}>
+                  {name}
+                </div>
+                <div className={styles.AuthorPage__header__text__bio}>
+                  {bio}
+                </div>
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
         <hr />
         {morePosts && morePosts.length > 0 && <MorePosts posts={morePosts} />}
@@ -235,7 +246,7 @@ export const pageQuery = graphql`
     allBlogPost(
       sort: { fields: [publishDate], order: DESC }
       filter: { id: { ne: $id }, tags: { elemMatch: { id: { in: $tagIds } } } }
-      limit: 3
+      limit: 2
     ) {
       edges {
         node {
@@ -250,7 +261,7 @@ export const pageQuery = graphql`
           }
           thumbnail {
             childImageSharp {
-              fixed(width: 200, height: 150, quality: 100) {
+              fixed(width: 340, height: 175, quality: 100) {
                 ...GatsbyImageSharpFixed
               }
             }

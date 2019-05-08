@@ -23,11 +23,9 @@ class PostList extends React.Component {
 
     let PostCards = <div />
     if (posts && posts.length <= 3) {
-      PostCards = posts.map(post => {
-        return (
-          <PostCard customStyles={customStyles} post={post} key={post.id} />
-        )
-      })
+      PostCards = posts.map(post => (
+        <PostCard customStyles={customStyles} post={post} key={post.id} />
+      ))
     } else if (posts && posts.length > 3) {
       const firstHalf = posts.slice(0, 3)
       const secondHalf = posts.slice(3)
