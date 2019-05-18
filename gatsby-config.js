@@ -1,4 +1,4 @@
-const { token, apiUrl } = require('./config')
+const { token, apiUrl, googleAnalyticsToken } = require('./config')
 
 module.exports = {
   plugins: [
@@ -24,6 +24,12 @@ module.exports = {
       options: {
         token,
         apiUrl,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: googleAnalyticsToken,
       },
     },
     'gatsby-plugin-purgecss', // must be after other CSS plugins,
